@@ -1,17 +1,19 @@
 # Arc Feature Build Queue — "bells & whistles" (2026-06-02)
 
-Worker picks the FIRST `- [ ]` line, builds it, RENDER-GATES it, opens a PR, and STOPS.
-ALL features here are REVIEW ONLY — open the PR, DO NOT merge (Nate reviews UI on the
-investor app). Frontend-only; use mock/local data where a backend doesn't exist yet.
+Worker picks the FIRST `- [ ]` line, builds it, RENDER-GATES it, and AUTO-MERGES on green
+(Nate 15:06: "blast these out"). The render gate (build + tests + headless render-smoke
+returning rendered:true, errors:[]) is the safety net; auto-revert if a merge breaks main.
+Frontend-only; use mock/local data where a backend doesn't exist yet.
 Follow brand rules in docs/arc-context.md + docs/handoff/project-brief.md. One PR per run.
 
 ## Queue
 - [x] feat(arc-225): ARC 2-2-5 live pot ticker component + "so close" near-miss animation (Tier-2 accents only; mock pot value) (PR #83 needs review)
-- [ ] feat(profile): trophy case / badges grid on Profile with rarity tiers (mock earned set)
-- [ ] feat(streaks): "streak freeze" save-token UI + local logic (one freeze/month) wired to streak-engine
-- [ ] feat(compete): clubhouse leaderboards — per-facility (Falmouth) + global tabs (mock standings)
-- [ ] feat(profile): AGR trajectory dashboard — handicap trend chart + "what's holding you back" insight card (mock series, recharts already in deps)
-- [ ] feat(train): shot-dispersion heatmap viz on a session-results surface (mock shot data)
+- [x] (PR #84 merged) feat(pos): POINT-OF-SALE v1 — add a NEW isolated /pos route (do NOT modify the main app render path / Index.tsx). Staff-terminal layout: catalog (membership tiers Junior $129, Golf $149, VIG $299, VIG Elite $499; sim-bay time blocks; coaching; retail — all MOCK), add-to-cart, cart summary with total, and a "Charge (demo)" button that SIMULATES a successful payment (NO real Stripe, NO payment keys, NO real charges, NO secrets) → branded receipt/confirmation screen. Brand-correct (Tier-3 flat brass for the terminal chrome; Tier-1 only on the success confirm). RENDER-GATE BOTH "/" AND "/pos" (run render-smoke.cjs against http://localhost:47123/pos too). Auto-merge on green like the rest (it's a demo stub, no real payments).
+- [x] (PR #85 merged) feat(profile): trophy case / badges grid on Profile with rarity tiers (mock earned set)
+- [x] (PR #86 merged) Streak freeze save-token UI with local logic supporting one freeze per month, wired to the streak engine
+- [x] (PR #89 merged) feat(compete): clubhouse leaderboards — per-facility (Falmouth) + global tabs (mock standings). NOTE: previous attempt blocked because the route was not registered → 404. You MUST register the route in src/App.tsx (add it ABOVE the catch-all "*" route) AND render-gate that exact route (node render-smoke.cjs http://localhost:47123/<the-route>) so it actually loads with errors:[].
+- [x] (PR #87 merged) feat(profile): AGR trajectory dashboard — handicap trend chart + "what's holding you back" insight card (mock series, recharts already in deps)
+- [x] (PR #90 merged) feat(train): shot-dispersion heatmap viz on a session-results surface (mock shot data)
 - [ ] feat(compete): challenge-a-friend share link card (generates a deep link; reuses referral pattern)
 - [ ] feat(goals): goal-setting wizard ("break 80") with milestone tracker (local persistence)
 - [ ] feat(compete): skins/Nassau auto-scoring UI for a sim round (pure scoring logic + result card)
