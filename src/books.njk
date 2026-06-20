@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+permalink: /books/
+title: "All Books — Made Out of Clay Productions"
+description: "Browse all nine premium full-color picture books by Isaiah Hartwell across three series. Patience, neurodiversity, and lion-kingdom adventure — each $13.99 on Amazon."
+schemaBooks: true
+breadcrumbs:
+  - { name: "Home", url: "/" }
+  - { name: "Books", url: "/books/" }
+---
+<section class="page-head">
+  <div class="wrap">
+    <h1>All Books</h1>
+    <p>Nine picture books across three series. Premium full color, 8.5×8.5, ${{ site.bookPrice }} each — available on Amazon.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {% for book in books %}
+      {%- set s = lookups.seriesBySlug[book.series] -%}
+      <article class="book-detail" id="{{ book.slug }}">
+        <img src="{{ book.cover }}" alt="{{ book.alt }}" width="280" height="280" loading="lazy">
+        <div>
+          <p class="book-card-series" style="color: {{ s.accent }}">{{ s.name }}{% if book.order %} · Book {{ book.order }}{% endif %}</p>
+          <h2>{{ book.title }}</h2>
+          <p>{{ book.blurb }}</p>
+          <div class="themes">
+            {% for t in book.themes %}<span class="theme-tag">{{ t }}</span>{% endfor %}
+          </div>
+          <p class="book-meta">Hardcover · 8.5×8.5 full color · ${{ site.bookPrice }}</p>
+          {% if book.status == "live" and book.asin %}
+          <a class="btn btn-primary"
+             href="{{ book.asin | amazonUrl(site.associateTag) }}"
+             target="_blank" rel="sponsored noopener"
+             data-track="buy_on_amazon_click"
+             data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">
+            Buy on Amazon
+          </a>
+          {% else %}
+          <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% include "partials/faq.njk" %}

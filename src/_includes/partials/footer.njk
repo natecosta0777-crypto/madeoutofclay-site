@@ -1,0 +1,39 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="brand-text">Made Out of Clay Productions</span>
+      <p>Premium full-color picture books by {{ site.authorPenName }}. Independent imprint.</p>
+    </div>
+
+    <nav class="footer-col" aria-label="Books">
+      <h2>Books</h2>
+      <ul>
+        <li><a href="/books/">All Books</a></li>
+        <li><a href="/series/sunnys-table/">At Sunny's Table</a></li>
+        <li><a href="/series/just-the-way-you-are/">Just the Way You Are</a></li>
+        <li><a href="/series/kingdom-of-judea/">The Kingdom of Judea</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="More">
+      <h2>More</h2>
+      <ul>
+        <li><a href="/author/">Author</a></li>
+        <li><a href="/press/">Press</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+
+    {# Footer newsletter signup (Spec §1.4 — site-wide second signup) #}
+    <div class="footer-signup">
+      <h2>Stay in the loop</h2>
+      {% include "partials/newsletter.njk" %}
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <p>&copy; {{ site.buildYear }} {{ site.name }}. All rights reserved.</p>
+    <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </div>
+</footer>

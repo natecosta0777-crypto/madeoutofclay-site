@@ -1,0 +1,22 @@
+{# Social-proof block (Spec §2.1). Renders ONLY real reviews from
+   _data/reviews.json. Hides entirely when there are none — no fabricated
+   reviews. A review object should look like:
+   { "rating": 5, "quote": "...", "source": "Verified Amazon Review" } #}
+{%- set realReviews = [] -%}
+{%- for r in reviews -%}{% if r.quote %}{% set realReviews = (realReviews.push(r), realReviews) %}{% endif %}{%- endfor -%}
+{%- if realReviews.length -%}
+<section class="reviews" aria-label="Reader reviews">
+  <div class="wrap">
+    <h2 class="section-title">What readers are saying</h2>
+    <div class="reviews-grid">
+      {% for r in realReviews %}
+      <figure class="review-card">
+        {% if r.rating %}<div class="stars" aria-label="{{ r.rating }} out of 5 stars">{% for i in range(0, r.rating) %}★{% endfor %}</div>{% endif %}
+        <blockquote>{{ r.quote }}</blockquote>
+        <figcaption>— {{ r.source or "Verified Amazon Review" }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif -%}

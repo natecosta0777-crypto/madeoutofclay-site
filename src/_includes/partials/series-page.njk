@@ -1,0 +1,34 @@
+{# Shared series page body. The including page sets `seriesSlug`. #}
+{% from "partials/book-card.njk" import bookCard %}
+{%- set s = lookups.seriesBySlug[seriesSlug] -%}
+{%- set seriesBooks = lookups.booksBySeries[seriesSlug] -%}
+
+<section class="series-banner" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }};">
+  <div class="wrap">
+    <p class="eyebrow">{{ s.subject }}</p>
+    <h1>{{ s.name }}</h1>
+    <p>{{ s.blurb }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Books in this series</h2>
+    <div class="book-grid">
+      {% for book in seriesBooks %}
+        {{ bookCard(book, site, "") }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/reviews.njk" %}
+
+<section class="cta-band" style="background: {{ s.accent }};">
+  <div class="wrap wrap-narrow">
+    <h2>Don't miss the next one</h2>
+    <p>Join the family list for new {{ s.name }} releases and free printables.</p>
+    {% set signupLocation = "series-" + seriesSlug %}
+    {% include "partials/newsletter.njk" %}
+  </div>
+</section>

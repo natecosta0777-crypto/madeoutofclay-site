@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {# --- Title + description (Spec §4.1) --- #}
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+
+  {# --- Canonical (Spec §4.1 / §4.7) --- #}
+  {%- set pageUrl = page.url | absoluteUrl(site.url) -%}
+  <link rel="canonical" href="{{ pageUrl }}">
+  <meta name="robots" content="index, follow">
+
+  {# --- Open Graph (Spec §4.1) --- #}
+  {%- set ogImg = (ogImage or "/assets/og/default.svg") | absoluteUrl(site.url) -%}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ ogTitle or title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:url" content="{{ pageUrl }}">
+  <meta property="og:image" content="{{ ogImg }}">
+
+  {# --- Twitter Card (Spec §4.1) --- #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ogTitle or title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ ogImg }}">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="style" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  {# --- JSON-LD schema, built centrally from data + per-page flags (Spec §4.4) --- #}
+  {%- if schemaOrg -%}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": site.name,
+    "url": site.url,
+    "email": site.email,
+    "logo": "/assets/og/default.svg" | absoluteUrl(site.url),
+    "description": site.description,
+    "sameAs": [site.amazonAuthorUrl] if site.amazonAuthorUrl else []
+  } | dump | safe }}</script>
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": site.name,
+    "url": site.url
+  } | dump | safe }}</script>
+  {%- endif -%}
+
+  {%- if schemaBooks -%}
+    {%- for b in books -%}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": b.title,
+    "author": { "@type": "Person", "name": site.authorPenName },
+    "publisher": { "@type": "Organization", "name": site.name },
+    "bookFormat": "https://schema.org/Hardcover",
+    "inLanguage": "en",
+    "image": b.cover | absoluteUrl(site.url),
+    "url": b.slug | absoluteUrl(site.url + "/books/#"),
+    "sku": b.asin,
+    "offers": {
+      "@type": "Offer",
+      "price": site.bookPrice,
+      "priceCurrency": site.currency,
+      "availability": ("https://schema.org/InStock" if b.status == "live" else "https://schema.org/PreOrder"),
+      "url": (b.asin | amazonUrl(site.associateTag)) if b.asin else site.url + "/books/"
+    }
+  } | dump | safe }}</script>
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if schemaFaq -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for item in faqs %}
+      { "@type": "Question", "name": {{ item.q | dump | safe }},
+        "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | striptags | dump | safe }} } }{% if not loop.last %},{% endif %}
+      {%- endfor %}
+    ]
+  }
+  </script>
+  {%- endif -%}
+
+  {%- if schemaArticle -%}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "image": ogImage | absoluteUrl(site.url) if ogImage else ("/assets/og/default.svg" | absoluteUrl(site.url)),
+    "datePublished": page.date | isoDate,
+    "dateModified": page.date | isoDate,
+    "author": { "@type": "Person", "name": site.authorPenName },
+    "publisher": { "@type": "Organization", "name": site.name },
+    "mainEntityOfPage": page.url | absoluteUrl(site.url)
+  } | dump | safe }}</script>
+  {%- endif -%}
+
+  {%- if breadcrumbs -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {%- for crumb in breadcrumbs %}
+      { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ crumb.name | dump | safe }}, "item": {{ crumb.url | absoluteUrl(site.url) | dump | safe }} }{% if not loop.last %},{% endif %}
+      {%- endfor %}
+    ]
+  }
+  </script>
+  {%- endif -%}
+
+  {# --- Analytics config (consent-gated; tags injected by main.js after accept — Spec §3.5) --- #}
+  <script>
+    window.MOC_CONFIG = {
+      ga4Id: {{ site.ga4Id | dump | safe }},
+      metaPixelId: {{ site.metaPixelId | dump | safe }}
+    };
+  </script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body{% if seriesSlug %} data-series="{{ seriesSlug }}"{% endif %}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  {% include "partials/consent.njk" %}
+</body>
+</html>

@@ -1,0 +1,72 @@
+---
+layout: layouts/base.njk
+permalink: /
+title: "Made Out of Clay Productions — Picture Books by Isaiah Hartwell"
+description: "Premium full-color picture books for kids ages 2–7. Nine titles across three series — gentle, inclusive, and made to be read again and again. By Isaiah Hartwell."
+schemaOrg: true
+schemaFaq: true
+---
+{% from "partials/book-card.njk" import bookCard %}
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Independent picture-book imprint</p>
+      <h1>Stories for the kids who feel things deeply.</h1>
+      <p class="lead">Nine premium full-color picture books across three heartfelt series — about patience, belonging, courage, and being celebrated exactly as you are.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="/books/">Explore all books</a>
+        <a class="btn btn-secondary btn-lg" href="/series/just-the-way-you-are/">Meet the series</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="false">
+      <img src="/assets/covers/scooter-cant-wait-for-spring.svg" alt="Cover of Scooter Can't Wait for Spring" width="200" height="200">
+      <img src="/assets/covers/clay-has-amazing-powers.svg" alt="Cover of Clay Has Amazing Powers" width="200" height="200">
+      <img src="/assets/covers/calebs-homeland.svg" alt="Cover of Caleb's Homeland" width="200" height="200">
+    </div>
+  </div>
+</section>
+
+{% include "partials/trust.njk" %}
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Three series, one heart</h2>
+    <p class="section-intro">Every book stands on its own — pick the one that fits your kid today.</p>
+    <div class="series-grid">
+      {% for s in series %}
+      <div class="series-card" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }};">
+        <h3>{{ s.name }}</h3>
+        <p class="series-tag">{{ s.tagline }}</p>
+        <p>{{ s.blurb }}</p>
+        <a class="series-link" href="/series/{{ s.slug }}/">Explore {{ s.name }} &rarr;</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">The collection</h2>
+    <p class="section-intro">Tap any title to buy on Amazon — premium full color, 8.5×8.5, ${{ site.bookPrice }} each.</p>
+    <div class="book-grid">
+      {% for book in books %}
+        {{ bookCard(book, site, lookups.seriesBySlug[book.series].name) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/reviews.njk" %}
+
+{% include "partials/faq.njk" %}
+
+<section class="cta-band">
+  <div class="wrap wrap-narrow">
+    <h2>New books &amp; free printables</h2>
+    <p>Join the family list for new releases, coloring pages, and gentle reads for the kids you love.</p>
+    {% set signupLocation = "homepage" %}
+    {% include "partials/newsletter.njk" %}
+  </div>
+</section>

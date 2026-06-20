@@ -1,0 +1,26 @@
+{# Reusable book card. Renders cover, title, series, and a direct Amazon buy
+   button (Spec §1.1). "Coming Soon" books render a disabled state, never a
+   dead link. All buy links: target=_blank, rel="sponsored noopener", tagged. #}
+{% macro bookCard(book, site, seriesName) %}
+<article class="book-card">
+  <a class="book-card-cover" href="/books/#{{ book.slug }}">
+    <img src="{{ book.cover }}" alt="{{ book.alt }}" width="300" height="300" loading="lazy">
+  </a>
+  <div class="book-card-body">
+    {% if seriesName %}<p class="book-card-series">{{ seriesName }}</p>{% endif %}
+    <h3 class="book-card-title">{{ book.title }}</h3>
+    {% if book.status == "live" and book.asin %}
+    <a class="btn btn-primary btn-buy"
+       href="{{ book.asin | amazonUrl(site.associateTag) }}"
+       target="_blank" rel="sponsored noopener"
+       data-track="buy_on_amazon_click"
+       data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">
+      Buy on Amazon
+    </a>
+    <p class="book-card-price">${{ site.bookPrice }} · 8.5×8.5 full color</p>
+    {% else %}
+    <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+    {% endif %}
+  </div>
+</article>
+{% endmacro %}

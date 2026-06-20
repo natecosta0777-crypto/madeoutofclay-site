@@ -1,0 +1,16 @@
+{
+  "name": "madeoutofclay-site",
+  "version": "1.0.0",
+  "description": "Made Out of Clay Productions — children's picture-book imprint marketing site (static, Eleventy).",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

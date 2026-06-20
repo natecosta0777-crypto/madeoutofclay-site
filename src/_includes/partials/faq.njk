@@ -1,0 +1,15 @@
+{# FAQ display block (Spec §4.6). FAQPage JSON-LD is emitted by the page that
+   includes this, from the same _data/faqs.json. #}
+<section class="faq" aria-label="Frequently asked questions">
+  <div class="wrap wrap-narrow">
+    <h2 class="section-title">Questions parents &amp; teachers ask</h2>
+    <div class="faq-list">
+      {% for item in faqs %}
+      <details class="faq-item"{% if loop.first %} open{% endif %}>
+        <summary>{{ item.q }}</summary>
+        <div class="faq-answer">{{ item.a | safe }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

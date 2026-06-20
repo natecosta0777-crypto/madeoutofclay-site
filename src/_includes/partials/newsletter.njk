@@ -1,0 +1,21 @@
+{# Newsletter signup — wired to site.newsletterAction (OPEN DECISION #2).
+   If no action is configured, renders a disabled "coming soon" note instead of
+   a dead form. Fires newsletter_signup analytics event via data-track. #}
+{%- set signupLocation = signupLocation or "footer" -%}
+{%- if site.newsletterAction -%}
+<form class="newsletter-form" action="{{ site.newsletterAction }}" method="post"
+      data-track="newsletter_signup" data-location="{{ signupLocation }}" novalidate>
+  <label class="visually-hidden" for="nl-email-{{ signupLocation }}">Email address</label>
+  <div class="field-row">
+    <input id="nl-email-{{ signupLocation }}" type="email" name="email" required
+           autocomplete="email" placeholder="you@example.com">
+    <button type="submit">Subscribe</button>
+  </div>
+  {# Honeypot — bots fill this, humans never see it (Spec §1.4) #}
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="visually-hidden" aria-hidden="true">
+  <p class="form-status" role="status" aria-live="polite"></p>
+  <p class="form-fineprint">No spam. Just new books and free printables now and then.</p>
+</form>
+{%- else -%}
+<p class="newsletter-soon">Newsletter coming soon — check back for new books and free printables.</p>
+{%- endif -%}

@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+permalink: /press/
+title: "Press & Media — Made Out of Clay Productions"
+description: "Press, review-copy, and interview information for Made Out of Clay Productions and author Isaiah Hartwell."
+breadcrumbs:
+  - { name: "Home", url: "/" }
+  - { name: "Press", url: "/press/" }
+---
+<section class="page-head">
+  <div class="wrap">
+    <h1>Press &amp; Media</h1>
+    <p>For reviewers, journalists, librarians, and booksellers.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap prose">
+    <h2>About the imprint</h2>
+    <p>Made Out of Clay Productions is an independent children's picture-book imprint publishing under the pen name Isaiah Hartwell — nine premium full-color titles across three series, for kids ages 2–7.</p>
+    {# Spec §4.8: this points to /author (which exists), NOT /about (which does not). #}
+    <p><a href="/author/">Read the full author bio &rarr;</a></p>
+
+    <h2>Review copies &amp; interviews</h2>
+    <p>We're happy to provide review copies and arrange author interviews. Use the contact form and choose the matching inquiry type.</p>
+    <p><a class="btn btn-primary" href="/contact/">Request a review copy</a></p>
+
+    <h2>Quick facts</h2>
+    <ul>
+      <li>9 books across 3 series</li>
+      <li>Premium full color · 8.5×8.5 · ${{ site.bookPrice }}</li>
+      <li>Available on Amazon</li>
+      <li>Author: {{ site.authorPenName }}</li>
+      <li>Contact: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+    </ul>
+  </div>
+</section>

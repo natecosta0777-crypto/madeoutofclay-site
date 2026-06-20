@@ -1,0 +1,13 @@
+{# Cookie consent banner (Spec §3.5). Hidden by default; main.js shows it only
+   when analytics IDs are configured AND no choice has been stored yet.
+   Pre-consent: no GA4/Pixel cookies are set. #}
+<div class="consent-banner" id="consent-banner" role="dialog" aria-live="polite"
+     aria-label="Cookie consent" hidden>
+  <p class="consent-text">
+    We use cookies to understand traffic and improve the site. Nothing loads until you choose.
+  </p>
+  <div class="consent-actions">
+    <button type="button" class="btn btn-ghost" data-consent="decline">Decline</button>
+    <button type="button" class="btn btn-primary" data-consent="accept">Accept</button>
+  </div>
+</div>

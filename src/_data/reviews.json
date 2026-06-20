@@ -1,0 +1,6 @@
+[
+  {
+    "_comment": "OPEN DECISION #6 — populate ONLY with real Amazon review quotes / testimonials. Delete this placeholder object and add real ones. If the array is empty, the reviews component hides itself automatically (no fabricated reviews).",
+    "_placeholder": true
+  }
+]

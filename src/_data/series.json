@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "sunnys-table",
+    "name": "At Sunny's Table",
+    "subject": "A Sloth Family Picture Book Series",
+    "tagline": "Patience, quiet, and the slow warmth of belonging.",
+    "blurb": "A gentle sloth family gathers around the table to learn — slowly, lovingly — that good things are worth the wait. Stories about patience, connection, and feeling like you belong.",
+    "metaTitle": "At Sunny's Table — A Sloth Family Picture Book Series | Made Out of Clay",
+    "metaDescription": "Three gentle picture books about patience, quiet, and sibling love. By Isaiah Hartwell. On Amazon, $13.99.",
+    "accent": "#e8a04b",
+    "accentSoft": "#fbeede"
+  },
+  {
+    "slug": "just-the-way-you-are",
+    "name": "Just the Way You Are",
+    "subject": "Neurodiversity Picture Books for Kids",
+    "tagline": "For the kids who don't fit the mold — and the families raising them.",
+    "blurb": "Inclusion and neurodiversity picture books inspired by a real boy named Clayton. Identity-first, deficit-free stories that celebrate kids exactly as they are.",
+    "metaTitle": "Just the Way You Are — Neurodiversity Picture Books for Kids | Made Out of Clay",
+    "metaDescription": "Inclusion and neurodiversity picture books for the kids who don't fit the mold — and the families raising them.",
+    "accent": "#5b8def",
+    "accentSoft": "#e6eefc"
+  },
+  {
+    "slug": "kingdom-of-judea",
+    "name": "The Kingdom of Judea",
+    "subject": "A Lion Adventure Picture Book Series",
+    "tagline": "Courage, home, and who you become along the way.",
+    "blurb": "Caleb and the Cubs set out on an epic lion-kingdom adventure about courage, homeland, and growing into who you're meant to be.",
+    "metaTitle": "The Kingdom of Judea — A Lion Adventure Picture Book Series | Made Out of Clay",
+    "metaDescription": "Caleb and the Cubs: an epic lion-kingdom adventure about courage, home, and who you become.",
+    "accent": "#c2562e",
+    "accentSoft": "#f7e3d8"
+  }
+]
