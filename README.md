@@ -59,16 +59,18 @@ the site degrades gracefully (no broken markup, no dangling params).
 - **Series** — `src/_data/series.json` (names, taglines, blurbs, SEO titles/descriptions, accent colors).
 - **FAQs** — `src/_data/faqs.json` (drives the FAQ block **and** FAQPage schema).
 - **Author / Press bios** — `src/author.njk`, `src/press.njk` *(contain placeholder bio copy — replace before launch).*
-- **Blog** — `src/blog/posts/*.md`. Two posts are live; six are drafts (`draft: true`) with briefs/outlines ready to finish. Drafts produce no output file and stay out of the sitemap until you flip `draft: false`.
+- **Blog** — `src/blog/posts/*.md`. All 8 launch-calendar posts are written and live. New drafts: set `draft: true` and they produce no output file and stay out of the sitemap until you flip it to `false`.
 
 > Book blurbs and author bio are **draft placeholder copy** (marked in the data).
 > Review and replace before promoting.
 
-### Real cover art
-Placeholder SVG covers live in `src/assets/covers/`. To use real art, drop the
-files in and update each book's `cover` path in `books.json`. Real OG share image:
-replace `src/assets/og/default.svg` with a 1200×630 PNG and point `ogImage` at it
-(per-page `ogImage` front matter also supported).
+### Cover art + OG image
+Real cover art for the 8 live books was pulled from Amazon (500×500 JPGs in
+`src/assets/covers/`). *Just Like My Brother* (unreleased) uses a placeholder
+SVG until its cover exists. The 1200×630 OG share image
+(`src/assets/og/default.png`) is composited from real covers via
+`node tools/gen-og.js` (re-run after swapping covers). To replace any cover,
+drop the file in and update that book's `cover` path in `books.json`.
 
 ---
 
@@ -91,8 +93,9 @@ replace `src/assets/og/default.svg` with a 1200×630 PNG and point `ogImage` at 
 - ✅ Blog infra + content calendar (§5)
 
 **Needs Nate's real values to go fully live:** `associateTag`, `ga4Id`,
-`metaPixelId`, `newsletterAction`, `contactAction` (all in `site.js`); real cover
-art + 1200×630 OG PNG; final book blurbs + author bio; real reviews.
+`metaPixelId`, `newsletterAction`, `contactAction` (all in `site.js`); final book
+blurbs + author/press bios (placeholder DRAFT copy now); real reviews; *Just Like
+My Brother* cover when available. (Real covers + OG image are done.)
 
 ---
 

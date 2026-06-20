@@ -14,7 +14,7 @@
   <meta name="robots" content="index, follow">
 
   {# --- Open Graph (Spec §4.1) --- #}
-  {%- set ogImg = (ogImage or "/assets/og/default.svg") | absoluteUrl(site.url) -%}
+  {%- set ogImg = (ogImage or "/assets/og/default.png") | absoluteUrl(site.url) -%}
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:title" content="{{ ogTitle or title }}">
   <meta property="og:description" content="{{ description }}">
@@ -40,7 +40,7 @@
     "name": site.name,
     "url": site.url,
     "email": site.email,
-    "logo": "/assets/og/default.svg" | absoluteUrl(site.url),
+    "logo": "/assets/og/default.png" | absoluteUrl(site.url),
     "description": site.description,
     "sameAs": [site.amazonAuthorUrl] if site.amazonAuthorUrl else []
   } | dump | safe }}</script>
@@ -97,7 +97,7 @@
     "@type": "Article",
     "headline": title,
     "description": description,
-    "image": ogImage | absoluteUrl(site.url) if ogImage else ("/assets/og/default.svg" | absoluteUrl(site.url)),
+    "image": ogImage | absoluteUrl(site.url) if ogImage else ("/assets/og/default.png" | absoluteUrl(site.url)),
     "datePublished": page.date | isoDate,
     "dateModified": page.date | isoDate,
     "author": { "@type": "Person", "name": site.authorPenName },

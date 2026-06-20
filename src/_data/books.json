@@ -8,7 +8,7 @@
     "status": "live",
     "blurb": "Scooter the sloth is sure spring will never come. A warm, funny story about patience and learning to love the wait. [DRAFT COPY — review before launch.]",
     "themes": ["patience", "waiting", "seasons", "family"],
-    "cover": "/assets/covers/scooter-cant-wait-for-spring.svg",
+    "cover": "/assets/covers/scooter-cant-wait-for-spring.jpg",
     "alt": "Cover of Scooter Can't Wait for Spring, a sloth picture book from At Sunny's Table"
   },
   {
@@ -20,7 +20,7 @@
     "status": "live",
     "blurb": "When the world gets too loud, Scooter learns it's okay to ask for quiet. A gentle story for sensitive kids who get overwhelmed by noise. [DRAFT COPY — review before launch.]",
     "themes": ["sensory", "quiet", "self-advocacy", "calm"],
-    "cover": "/assets/covers/scooter-needs-it-quiet.svg",
+    "cover": "/assets/covers/scooter-needs-it-quiet.jpg",
     "alt": "Cover of Scooter Needs It Quiet, a sloth picture book from At Sunny's Table"
   },
   {
@@ -44,7 +44,7 @@
     "status": "live",
     "blurb": "Inspired by a real boy, Clay sees the world a little differently — and that's exactly his superpower. An identity-first story of neurodiversity and self-worth. [DRAFT COPY — review before launch.]",
     "themes": ["neurodiversity", "self-worth", "inclusion", "identity"],
-    "cover": "/assets/covers/clay-has-amazing-powers.svg",
+    "cover": "/assets/covers/clay-has-amazing-powers.jpg",
     "alt": "Cover of Clay Has Amazing Powers, a neurodiversity picture book from Just the Way You Are"
   },
   {
@@ -56,7 +56,7 @@
     "status": "live",
     "blurb": "A soothing bedtime story that helps big feelings settle down for the night. Calm, rhythmic, and made for the hardest part of the day. [DRAFT COPY — review before launch.]",
     "themes": ["bedtime", "calm", "routine", "big feelings"],
-    "cover": "/assets/covers/good-night-dinosaur.svg",
+    "cover": "/assets/covers/good-night-dinosaur.jpg",
     "alt": "Cover of Good Night Dinosaur, a bedtime picture book from Just the Way You Are"
   },
   {
@@ -68,7 +68,7 @@
     "status": "live",
     "blurb": "The water is scary until it isn't. A reassuring story for nervous kids learning to love the pool at their own pace. [DRAFT COPY — review before launch.]",
     "themes": ["courage", "anxiety", "water", "trying new things"],
-    "cover": "/assets/covers/hello-pool.svg",
+    "cover": "/assets/covers/hello-pool.jpg",
     "alt": "Cover of Hello, Pool, a picture book about courage from Just the Way You Are"
   },
   {
@@ -80,7 +80,7 @@
     "status": "live",
     "blurb": "Young Caleb the lion sets out to discover what 'home' really means. Book one of the Kingdom of Judea adventure. [DRAFT COPY — review before launch.]",
     "themes": ["adventure", "home", "courage", "identity"],
-    "cover": "/assets/covers/calebs-homeland.svg",
+    "cover": "/assets/covers/calebs-homeland.jpg",
     "alt": "Cover of Caleb's Homeland, a lion adventure picture book from The Kingdom of Judea"
   },
   {
@@ -92,7 +92,7 @@
     "status": "live",
     "blurb": "The journey is long and the cubs are weary, but courage is built one step at a time. Book two of the Kingdom of Judea. [DRAFT COPY — review before launch.]",
     "themes": ["perseverance", "courage", "journey", "friendship"],
-    "cover": "/assets/covers/the-long-walk.svg",
+    "cover": "/assets/covers/the-long-walk.jpg",
     "alt": "Cover of The Long Walk, a lion adventure picture book from The Kingdom of Judea"
   },
   {
@@ -104,7 +104,7 @@
     "status": "live",
     "blurb": "At the high ridge, Asher must choose who he wants to become. The stirring finale of the Kingdom of Judea adventure. [DRAFT COPY — review before launch.]",
     "themes": ["courage", "growing up", "choices", "leadership"],
-    "cover": "/assets/covers/asher-and-the-high-ridge.svg",
+    "cover": "/assets/covers/asher-and-the-high-ridge.jpg",
     "alt": "Cover of Asher and the High Ridge, a lion adventure picture book from The Kingdom of Judea"
   }
 ]
