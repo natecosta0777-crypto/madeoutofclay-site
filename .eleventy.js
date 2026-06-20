@@ -2,7 +2,14 @@
  * Eleventy config — Made Out of Clay Productions
  * Static output, no client-side framework. Every page renders from src/_data.
  */
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+
 module.exports = function (eleventyConfig) {
+  // Rewrites root-relative URLs to respect pathPrefix (set below). Lets the
+  // same build work at root (apex domain / Netlify / Vercel) AND under a
+  // subpath (GitHub project Pages) with no link edits.
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
   // Copy static assets straight through to the build output.
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
@@ -53,6 +60,8 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
+    // Default "/" for root deploys; CI sets PATH_PREFIX for project Pages.
+    pathPrefix: process.env.PATH_PREFIX || "/",
     dir: {
       input: "src",
       includes: "_includes",

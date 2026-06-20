@@ -26,7 +26,11 @@ jobs:
       - run: npm ci
       # Fills only MISSING cover/OG art (committed placeholders + real art survive).
       - run: node tools/gen-placeholders.js
+      # Project Pages serve under /<repo>/ — build with that prefix so links work.
+      # On a custom domain (apex) or Netlify/Vercel, drop this env for root "/".
       - run: npm run build
+        env:
+          PATH_PREFIX: /madeoutofclay-site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
