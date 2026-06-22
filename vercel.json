@@ -6,9 +6,9 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.madeoutofclayprod.com" }],
-      "destination": "https://madeoutofclayprod.com/:path*",
+      "destination": "https://madeoutofclayprod.com/$1",
       "permanent": true
     }
   ]
