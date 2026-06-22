@@ -5,3 +5,5 @@ _site/
 .env
 .env.*
 .cache/
+.vercel/
+.vercel

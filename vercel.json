@@ -3,5 +3,13 @@
   "buildCommand": "npm run build",
   "outputDirectory": "_site",
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.madeoutofclayprod.com" }],
+      "destination": "https://madeoutofclayprod.com/:path*",
+      "permanent": true
+    }
+  ]
 }
