@@ -1,0 +1,24 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/api/contact", "destination": "/api/contact.js" },
+    { "source": "/books", "destination": "/books/index.html" },
+    { "source": "/author", "destination": "/author/index.html" },
+    { "source": "/press", "destination": "/press/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/series/sunnys-table", "destination": "/series/sunnys-table/index.html" },
+    { "source": "/series/just-the-way-you-are", "destination": "/series/just-the-way-you-are/index.html" },
+    { "source": "/series/kingdom-of-judea", "destination": "/series/kingdom-of-judea/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
