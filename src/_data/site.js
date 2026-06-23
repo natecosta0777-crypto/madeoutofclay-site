@@ -23,7 +23,7 @@ module.exports = {
 
   // --- OPEN DECISION #5: Analytics -----------------------------------------
   ga4Id: "", // "G-XXXXXXXXXX"  — leave "" to emit no GA4 tag
-  metaPixelId: "", // "1234567890"  — leave "" to emit no Pixel
+  metaPixelId: "1719897139144003", // Meta Pixel "Made Out of Clay" — consent-gated
 
   // --- OPEN DECISION #2: Email provider (ESP) ------------------------------
   // Paste the form ACTION url from your ESP's embedded form (Mailchimp/Kit/etc).
