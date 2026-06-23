@@ -10,7 +10,7 @@ module.exports = {
   name: "Made Out of Clay Productions",
   shortName: "Made Out of Clay",
   url: "https://madeoutofclayprod.com", // no trailing slash
-  email: "hello@madeoutofclayprod.com",
+  email: "clay@madeoutofclayprod.com",
   authorPenName: "Isaiah Hartwell",
   tagline: "Premium full-color picture books for the kids who feel things deeply.",
   description:
