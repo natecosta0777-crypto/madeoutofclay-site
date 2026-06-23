@@ -28,7 +28,8 @@ module.exports = {
   // --- OPEN DECISION #2: Email provider (ESP) ------------------------------
   // Paste the form ACTION url from your ESP's embedded form (Mailchimp/Kit/etc).
   // Leave "" and the newsletter forms render in a disabled "coming soon" state.
-  newsletterAction: "",
+  // Beehiiv hosted subscribe endpoint (pub: madeoutofclay.beehiiv.com).
+  newsletterAction: "https://madeoutofclay.beehiiv.com/subscribe",
 
   // --- OPEN DECISION #3: Contact form backend ------------------------------
   // Formspree/Basin/Web3Forms endpoint. Leave "" to disable submit.

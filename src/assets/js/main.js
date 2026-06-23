@@ -136,6 +136,16 @@
         return;
       }
 
+      // Cross-origin hosted endpoints (e.g. Beehiiv) open their own confirm
+      // page in a new tab. Let the native submit proceed — an async POST would
+      // be CORS-blocked on read and then double-submit via the fallback.
+      if (form.getAttribute("target") === "_blank") {
+        window.track(eventName, extraParams(form));
+        if (status) { status.textContent = successMsg(eventName); status.className = "form-status is-success"; }
+        setTimeout(function () { form.reset(); }, 50);
+        return; // native submit proceeds in new tab
+      }
+
       // Progressive enhancement: try async POST so we can show inline success.
       e.preventDefault();
       var data = new FormData(form);

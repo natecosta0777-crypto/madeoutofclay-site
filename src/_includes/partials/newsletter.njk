@@ -3,7 +3,7 @@
    a dead form. Fires newsletter_signup analytics event via data-track. #}
 {%- set signupLocation = signupLocation or "footer" -%}
 {%- if site.newsletterAction -%}
-<form class="newsletter-form" action="{{ site.newsletterAction }}" method="post"
+<form class="newsletter-form" action="{{ site.newsletterAction }}" method="post" target="_blank"
       data-track="newsletter_signup" data-location="{{ signupLocation }}" novalidate>
   <label class="visually-hidden" for="nl-email-{{ signupLocation }}">Email address</label>
   <div class="field-row">
