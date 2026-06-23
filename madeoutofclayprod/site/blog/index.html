@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Made Out of Clay Productions</title>
+  <meta name="description" content="Stories, ideas, and resources for families — from the team behind Made Out of Clay Productions. Three series. Nine books. One imprint." />
+  <link rel="canonical" href="https://madeoutofclayprod.vercel.app/blog" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Made Out of Clay Productions" />
+  <meta property="og:title" content="Blog — Made Out of Clay Productions" />
+  <meta property="og:description" content="Stories, ideas, and resources for families — from the team behind Made Out of Clay Productions." />
+  <meta property="og:url" content="https://madeoutofclayprod.vercel.app/blog" />
+  <meta property="og:image" content="https://madeoutofclayprod.vercel.app/assets/logo.png" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Made Out of Clay Productions" />
+  <meta name="twitter:description" content="Stories, ideas, and resources for families from the team behind Made Out of Clay Productions." />
+  <meta name="twitter:image" content="https://madeoutofclayprod.vercel.app/assets/logo.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Made Out of Clay Productions Blog",
+    "url": "https://madeoutofclayprod.vercel.app/blog",
+    "description": "Stories, ideas, and resources for families — from the team behind Made Out of Clay Productions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Made Out of Clay Productions",
+      "url": "https://madeoutofclayprod.vercel.app",
+      "logo": { "@type": "ImageObject", "url": "https://madeoutofclayprod.vercel.app/assets/logo.png" }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Why We Started Made Out of Clay Productions",
+        "url": "https://madeoutofclayprod.vercel.app/blog/why-we-started",
+        "datePublished": "2026-06-02",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Reading Together: Why Family Storytime Still Matters",
+        "url": "https://madeoutofclayprod.vercel.app/blog/reading-together",
+        "datePublished": "2026-06-05",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Teaching Patience to Young Children Through Stories",
+        "url": "https://madeoutofclayprod.vercel.app/blog/teaching-patience-through-stories",
+        "datePublished": "2026-06-08",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Neurodiversity Books That Actually Get It Right",
+        "url": "https://madeoutofclayprod.vercel.app/blog/neurodiversity-books-that-get-it-right",
+        "datePublished": "2026-06-10",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Reading With a Child Who Has ADHD: What Actually Works",
+        "url": "https://madeoutofclayprod.vercel.app/blog/reading-with-adhd-child",
+        "datePublished": "2026-06-12",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "The Sibling Stories That Changed How We Write",
+        "url": "https://madeoutofclayprod.vercel.app/blog/sibling-bonds-picture-books",
+        "datePublished": "2026-06-15",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Adventure, Faith, and Values: Inside the Kingdom of Judea Series",
+        "url": "https://madeoutofclayprod.vercel.app/blog/adventure-faith-values-kingdom-judea",
+        "datePublished": "2026-06-18",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "How to Choose Children's Books That Reflect Your Child",
+        "url": "https://madeoutofclayprod.vercel.app/blog/choosing-books-that-reflect-your-child",
+        "datePublished": "2026-06-22",
+        "author": { "@type": "Person", "name": "Isaiah Hartwell" }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .blog-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border-color: var(--terra);
+    }
+    .blog-card-cover {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--cream-dark);
+    }
+    .blog-card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .blog-card:hover .blog-card-cover img {
+      transform: scale(1.04);
+    }
+    .blog-card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card-meta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 8px;
+    }
+    .blog-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .blog-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .blog-card-read {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--terra);
+      text-decoration: none;
+    }
+    .faq-cta {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .faq-cta h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .faq-cta p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="../assets/logo-nav.png" alt="Made Out of Clay Productions" class="nav-logo-img" />
+  </a>
+  <div class="nav-links">
+    <a href="/books">Books</a>
+    <a href="/series/sunnys-table">Series</a>
+    <a href="/author">Author</a>
+    <a href="/press">Press</a>
+    <a href="/blog" style="color: var(--terra); font-weight: 700;">Blog</a>
+    <a href="/contact" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-label">The Blog</div>
+    <h1>Stories, Ideas &amp; Resources for Families</h1>
+    <p>Thoughts on reading, parenting, neurodiversity, faith, and the books we make — from Isaiah Hartwell and the Made Out of Clay team.</p>
+  </div>
+</div>
+
+<section class="section">
+
+  <div class="blog-grid">
+
+    <!-- Post 1 -->
+    <a href="/blog/why-we-started" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/scooter-spring.png" alt="Why We Started Made Out of Clay Productions" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 2, 2026 · Origin Story</div>
+        <h3>Why We Started Made Out of Clay Productions</h3>
+        <p>Every book we've made traces back to a single moment — a child who couldn't find themselves on a bookshelf. Here's how Isaiah Hartwell went from that realization to three series and nine books.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 2 -->
+    <a href="/blog/reading-together" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/just-like-brother.png" alt="Reading Together: Why Family Storytime Still Matters" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 5, 2026 · Family Reading</div>
+        <h3>Reading Together: Why Family Storytime Still Matters</h3>
+        <p>In a world of screens and schedules, the ten minutes you spend reading aloud with your child are doing more than you think. The science — and the sloth family — both agree.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 3 -->
+    <a href="/blog/teaching-patience-through-stories" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/scooter-spring.png" alt="Teaching Patience to Young Children Through Stories" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 8, 2026 · Child Development</div>
+        <h3>Teaching Patience to Young Children Through Stories</h3>
+        <p>Scooter wants spring to arrive right now. Every child knows that feeling. We look at why picture books — not lectures — are the most effective tool for building patience in young kids.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 4 -->
+    <a href="/blog/neurodiversity-books-that-get-it-right" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/clay-amazing-powers.png" alt="Neurodiversity Books That Actually Get It Right" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 10, 2026 · Neurodiversity</div>
+        <h3>Neurodiversity Books That Actually Get It Right</h3>
+        <p>Not all neurodiversity representation is equal. We break down what separates a book that truly helps from one that merely means well — and what we built the Just the Way You Are series to do differently.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 5 -->
+    <a href="/blog/reading-with-adhd-child" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/clay-amazing-powers.png" alt="Reading With a Child Who Has ADHD: What Actually Works" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 12, 2026 · ADHD &amp; Reading</div>
+        <h3>Reading With a Child Who Has ADHD: What Actually Works</h3>
+        <p>Sitting still for a whole picture book can feel impossible for some kids — and demoralizing for parents. Practical strategies, honest talk, and a book about a boy who sees the world differently.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 6 -->
+    <a href="/blog/sibling-bonds-picture-books" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/just-like-brother.png" alt="The Sibling Stories That Changed How We Write" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 15, 2026 · Siblings &amp; Family</div>
+        <h3>The Sibling Stories That Changed How We Write</h3>
+        <p>Sibling relationships are the longest relationships most of us will ever have. They're also almost impossible to write honestly for young children. Here's what we learned trying.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 7 -->
+    <a href="/blog/adventure-faith-values-kingdom-judea" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/calebs-homeland.png" alt="Adventure, Faith, and Values: Inside the Kingdom of Judea Series" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 18, 2026 · Series Spotlight</div>
+        <h3>Adventure, Faith, and Values: Inside the Kingdom of Judea Series</h3>
+        <p>A lion cub named Caleb. A valley called Vine Hills. A homeland worth fighting for. We go deep inside our most ambitious series — how it was built, what it's teaching, and why it looks the way it does.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+    <!-- Post 8 -->
+    <a href="/blog/choosing-books-that-reflect-your-child" class="blog-card">
+      <div class="blog-card-cover">
+        <img src="../assets/covers/hello-pool.png" alt="How to Choose Children's Books That Reflect Your Child" />
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">June 22, 2026 · For Parents</div>
+        <h3>How to Choose Children's Books That Reflect Your Child</h3>
+        <p>Mirror books. Window books. The difference matters more than most parents realize. A practical guide to finding books that don't just entertain — they confirm to your child that they belong.</p>
+        <span class="blog-card-read">Read more →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="faq-cta">
+    <h2>Have questions about our books?</h2>
+    <p>Reading ages, where to buy, what series to start with, bulk orders — we've answered the most common ones.</p>
+    <a href="/blog/faq" class="btn-primary">Read the FAQ →</a>
+  </div>
+
+</section>
+
+<div class="newsletter">
+  <h2>New books. New stories. First to know.</h2>
+  <p>Join our list and be the first to hear about new releases, series updates, and behind-the-scenes from the studio.</p>
+  <form class="newsletter-form" onsubmit="return false;">
+    <input type="email" placeholder="your@email.com" />
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/books">Books</a>
+    <a href="/series/sunnys-table">At Sunny's Table</a>
+    <a href="/series/just-the-way-you-are">Just the Way You Are</a>
+    <a href="/series/kingdom-of-judea">The Kingdom of Judea</a>
+    <a href="/author">Author</a>
+    <a href="/press">Press</a>
+    <a href="/blog">Blog</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <p>© 2026 Made Out of Clay Productions · All books by Isaiah Hartwell · <a href="mailto:hello@madeoutofclayprod.com">hello@madeoutofclayprod.com</a></p>
+</footer>
+
+</body>
+</html>
