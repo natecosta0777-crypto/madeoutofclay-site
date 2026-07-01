@@ -10,6 +10,13 @@
       "has": [{ "type": "host", "value": "www.madeoutofclayprod.com" }],
       "destination": "https://madeoutofclayprod.com/$1",
       "permanent": true
-    }
+    },
+    { "source": "/schools", "destination": "/library/schools/", "permanent": false },
+    { "source": "/printables", "destination": "/app/printables/", "permanent": false },
+    { "source": "/account", "destination": "/app/account/", "permanent": false },
+    { "source": "/free/confirm", "destination": "/free/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/app/book/:slug", "destination": "/reader/?b=:slug" }
   ]
 }

@@ -6,6 +6,32 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Digital Book Club routes (mirror of vercel.json; live deploy is Vercel)
+[[redirects]]
+  from = "/schools"
+  to = "/library/schools/"
+  status = 302
+
+[[redirects]]
+  from = "/printables"
+  to = "/app/printables/"
+  status = 302
+
+[[redirects]]
+  from = "/account"
+  to = "/app/account/"
+  status = 302
+
+[[redirects]]
+  from = "/free/confirm"
+  to = "/free/"
+  status = 302
+
+[[redirects]]
+  from = "/app/book/:slug"
+  to = "/reader/?b=:slug"
+  status = 200
+
 # Pretty 404
 [[redirects]]
   from = "/*"
