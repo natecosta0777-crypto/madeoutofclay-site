@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account — Made Out of Clay Library</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;--denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1120px;margin:0 auto;gap:16px}
+  .logo{font-weight:800;font-size:1.05rem}.logo span{color:var(--terracotta)}
+  nav.menu{display:flex;gap:6px;flex-wrap:wrap}
+  nav.menu a{padding:8px 14px;border-radius:30px;font-size:.9rem;font-weight:700;color:var(--muted)}
+  nav.menu a.on{background:var(--terracotta);color:#fff}
+  h1{font-size:1.8rem;padding:26px 0 4px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px}
+  .card h2{font-size:1.15rem;margin-bottom:10px}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .muted{color:var(--muted);font-size:.92rem}
+  .badge{display:inline-block;background:var(--sage);color:#fff;font-size:.74rem;font-weight:800;padding:4px 10px;border-radius:20px}
+  .btn{border:none;cursor:pointer;font-family:inherit;font-weight:800;border-radius:30px;padding:11px 20px;font-size:.92rem}
+  .btn-primary{background:var(--terracotta);color:#fff}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .btn-soft{background:var(--cream);color:var(--ink);border:1px solid var(--line)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .chip{background:var(--cream);border:1px solid var(--line);border-radius:30px;padding:7px 14px;font-size:.84rem;font-weight:700;cursor:pointer}
+  .chip.on{background:var(--denim);color:#fff;border-color:var(--denim)}
+  .save{background:#fdf0d6;border:1px solid var(--mustard);border-radius:12px;padding:14px;margin-top:12px;font-size:.92rem}
+  footer{padding:30px 0;color:var(--muted);font-size:.82rem;text-align:center;border-top:1px solid var(--line);margin-top:10px}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <a class="logo" href="/app">Made Out of Clay<span> Library</span></a>
+  <nav class="menu"><a href="/app">Home</a><a href="/app/printables">Printables</a><a class="on" href="/app/account">Account</a></nav>
+  <div style="font-weight:700;font-size:.85rem">natecosta0777@gmail.com</div>
+</div></header>
+
+<div class="wrap">
+  <h1>Your account</h1>
+
+  <div class="card">
+    <h2>Your plan</h2>
+    <div class="row">
+      <div><span class="badge">MONTHLY</span> <span style="font-weight:800">$1.99/mo</span><div class="muted">Renews Jul 23, 2026 · card •••• 4242</div></div>
+      <a class="btn btn-soft" onclick="portal()">Update card</a>
+    </div>
+    <div class="save">
+      <b>Save 2 months — switch to annual.</b> Go to $19.99/year (just $1.66/mo) and never think about it again.
+      <div style="margin-top:10px"><button class="btn btn-primary" onclick="portal()">Switch to annual →</button></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Your reader: Lily</h2>
+    <div class="muted">We lead the home screen with what Lily needs right now.</div>
+    <div class="chips">
+      <span class="chip on">Big Feelings</span><span class="chip">Calm / Bedtime</span><span class="chip">Brave Girls</span><span class="chip">STEM / Maker</span><span class="chip">Curiosity</span>
+    </div>
+    <div class="row" style="margin-top:14px"><div class="muted">Age</div><div style="font-weight:700">5</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Need a break?</h2>
+    <div class="muted">Life gets busy. Pause anytime and pick up right where you left off — your spot and your printables stay saved.</div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn btn-soft" onclick="pause()">⏸ Pause my subscription</button>
+      <button class="btn btn-ghost" onclick="cancelFlow()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Billing</h2>
+    <div class="muted">Invoices, receipts, and payment method are managed securely.</div>
+    <div style="margin-top:12px"><button class="btn btn-soft" onclick="portal()">Open billing portal</button></div>
+  </div>
+</div>
+
+<footer>Cancel or pause in two taps · no ads, no tracking of your kid · <a href="/library" style="color:var(--terracotta);font-weight:700">Back to library</a></footer>
+<script>
+  // All actions stub to the Stripe Customer Portal — wire portal URL when Stripe is connected.
+  function portal(){ alert("Opens the Stripe Customer Portal once Stripe is connected (plan switch, card, invoices)."); }
+  function pause(){ alert("Pause flow — handled by the Stripe Customer Portal once connected. Spot + printables stay saved."); }
+  function cancelFlow(){
+    if(confirm("Before you go — want to PAUSE instead, or switch to annual and save 2 months? Click Cancel to keep your options, OK to continue cancelling.")){
+      alert("Cancellation runs through the Stripe Customer Portal once connected.");
+    }
+  }
+</script>
+</body>
+</html>

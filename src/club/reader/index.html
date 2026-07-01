@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read-Along · Made Out of Clay Library</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;
+    --denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:#28231d;line-height:1.5}
+  a{text-decoration:none;color:inherit}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#1f1b16;color:#f1e9da;gap:12px}
+  .topbar a.back{color:#f1d9a8;font-weight:700;font-size:.9rem;white-space:nowrap}
+  .topbar .title{font-weight:800;font-size:.98rem;text-align:center;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar .series{color:#b7ab97;font-weight:700;font-size:.82rem}
+  .stage{max-width:880px;margin:0 auto;padding:18px}
+  .spread{position:relative;border-radius:16px;aspect-ratio:1/1;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4);background:#1f1b16}
+  .spread img{width:100%;height:100%;object-fit:contain;display:block}
+  .tap{position:absolute;top:0;bottom:0;width:30%;z-index:3;cursor:pointer}
+  .tap.left{left:0}.tap.right{right:0}
+  .player{max-width:880px;margin:0 auto;padding:0 18px 24px}
+  .progressbar{height:6px;background:#3a342b;border-radius:6px;overflow:hidden;margin:14px 0}
+  .progressbar i{display:block;height:100%;width:0;background:var(--mustard);transition:width .3s linear}
+  .controls{display:flex;align-items:center;justify-content:center;gap:18px;color:#f1e9da}
+  .controls button{background:none;border:none;color:#f1e9da;font-size:1.5rem;cursor:pointer;padding:8px}
+  .play{width:64px;height:64px;border-radius:50%;background:var(--terracotta)!important;color:#fff!important;font-size:1.6rem!important;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #a85c3b}
+  .pagecount{color:#b7ab97;font-weight:700;font-size:.9rem;text-align:center;margin-top:8px}
+  .belowdock{background:var(--cream);color:var(--ink);border-radius:20px 20px 0 0;margin-top:18px;padding:24px 0 36px}
+  .belowdock .in{max-width:880px;margin:0 auto;padding:0 20px}
+  .actbtn{display:inline-flex;align-items:center;gap:8px;background:var(--terracotta);color:#fff;font-weight:800;padding:13px 22px;border-radius:30px}
+  .actbtn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  h2.more{font-size:1.2rem;margin-bottom:14px}
+  .shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:14px;overflow-x:auto;padding-bottom:6px}
+  .book .cover{border-radius:12px;aspect-ratio:1/1;overflow:hidden;background:linear-gradient(150deg,#C9744D,#7E5A78)}
+  .book .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .book .t{font-size:.85rem;font-weight:800;padding-top:6px;line-height:1.2}
+  .book .s{font-size:.74rem;color:var(--muted);font-weight:700;padding-top:2px}
+  .nextup{background:var(--sage);color:#fff;border-radius:14px;padding:16px 18px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .nextup a{background:#fff;color:var(--ink);font-weight:800;padding:9px 18px;border-radius:30px}
+  .notfound{max-width:640px;margin:60px auto;text-align:center;color:#f1e9da;padding:0 20px}
+  .notfound a{color:#f1d9a8;font-weight:800}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="/app">‹ Library</a>
+  <div class="title" id="booktitle">Loading…</div>
+  <a class="back" href="/app/printables">🖍️ Activity</a>
+</div>
+
+<div class="stage" id="stagewrap">
+  <div class="spread" id="spread">
+    <img id="spreadimg" alt="">
+    <div class="tap left" onclick="turn(-1)" aria-label="Previous page"></div>
+    <div class="tap right" onclick="turn(1)" aria-label="Next page"></div>
+  </div>
+</div>
+
+<div class="player" id="player">
+  <div class="progressbar"><i id="prog"></i></div>
+  <div class="controls">
+    <button onclick="turn(-1)" aria-label="Previous page">⏮</button>
+    <button class="play" id="playbtn" onclick="togglePlay()" aria-label="Auto-turn pages">▶</button>
+    <button onclick="turn(1)" aria-label="Next page">⏭</button>
+  </div>
+  <div class="pagecount">Page <span id="pnum">1</span> of <span id="ptot">–</span></div>
+</div>
+
+<div class="belowdock" id="dock" style="display:none">
+  <div class="in">
+    <div class="nextup" id="nextup" style="display:none">
+      <div><b>You're on a roll!</b> Up next: <b id="nexttitle"></b></div>
+      <a id="nextlink" href="#">Read next →</a>
+    </div>
+    <div class="actions">
+      <a class="actbtn" href="/app/printables">🖍️ Printable activities</a>
+      <a class="actbtn alt" href="/app">＋ More like this</a>
+    </div>
+    <h2 class="more">More in <span id="seriesname">Brave Like Me</span></h2>
+    <div class="shelf" id="moreshelf"></div>
+  </div>
+</div>
+
+<script>
+  // Reader loads real spread art from the generated manifest.
+  // Book selection: /reader/?b=<slug>  (also supports legacy /app/book/<slug> paths).
+  // Audio read-alongs are not attached yet; the play button auto-turns pages.
+  var book=null, list=[], i=0, playing=false, timer=null, perPage=7000;
+  var img=document.getElementById('spreadimg'), prog=document.getElementById('prog'),
+      pnum=document.getElementById('pnum'), playbtn=document.getElementById('playbtn');
+
+  function slugFromLocation(){
+    var q=new URLSearchParams(location.search).get('b');
+    if(q) return q;
+    var m=location.pathname.match(/\/app\/book\/([^\/]+)/);
+    return m ? m[1] : null;
+  }
+  function render(){
+    img.src=book.spreads[i];
+    img.alt=book.title+' — page '+(i+1)+' of '+book.pages;
+    pnum.textContent=i+1;
+    prog.style.width=(book.pages>1 ? (i/(book.pages-1)*100) : 100)+'%';
+    if(i+1<book.pages){ var pre=new Image(); pre.src=book.spreads[i+1]; }
+  }
+  function turn(d){
+    if(!book) return;
+    i=Math.max(0,Math.min(book.pages-1,i+d));
+    render();
+    if(playing){clearTimeout(timer); if(i<book.pages-1) timer=setTimeout(function(){turn(1)},perPage); else stop();}
+  }
+  function togglePlay(){ playing?stop():start(); }
+  function start(){
+    if(!book) return;
+    playing=true; playbtn.textContent='⏸';
+    if(i>=book.pages-1){ i=0; render(); }
+    timer=setTimeout(function(){turn(1)},perPage);
+  }
+  function stop(){ playing=false; playbtn.textContent='▶'; clearTimeout(timer); }
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight') turn(1);
+    if(e.key==='ArrowLeft') turn(-1);
+  });
+
+  fetch('/assets/club/books.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var series=data.series[0];
+      list=series.episodes;
+      var slug=slugFromLocation();
+      book=list.filter(function(e){ return e.slug===slug && e.status==='ready'; })[0];
+      if(!book){ book=list.filter(function(e){ return e.status==='ready'; })[0]; }
+      if(!book){ showNotFound(); return; }
+      document.getElementById('booktitle').innerHTML=book.title+' <span class="series">· '+series.name+'</span>';
+      document.title=book.title+' — Read-Along · Made Out of Clay Library';
+      document.getElementById('ptot').textContent=book.pages;
+      i=0; render();
+      // next up
+      var next=list.filter(function(e){ return e.num===book.num+1 && e.status==='ready'; })[0];
+      if(next){
+        document.getElementById('nextup').style.display='flex';
+        document.getElementById('nexttitle').textContent=next.title;
+        document.getElementById('nextlink').href='/reader/?b='+next.slug;
+      }
+      // more shelf
+      var shelf=document.getElementById('moreshelf');
+      document.getElementById('seriesname').textContent=series.name;
+      list.forEach(function(e){
+        if(e.slug===book.slug || e.status!=='ready') return;
+        var a=document.createElement('a');
+        a.className='book';
+        a.href='/reader/?b='+e.slug;
+        a.innerHTML='<div class="cover"><img loading="lazy" src="'+e.cover+'" alt="Cover of '+e.title+'"></div><div class="t">'+e.title+'</div><div class="s">Ep '+e.num+'</div>';
+        shelf.appendChild(a);
+      });
+      document.getElementById('dock').style.display='block';
+    })
+    .catch(showNotFound);
+
+  function showNotFound(){
+    document.getElementById('stagewrap').innerHTML=
+      '<div class="notfound"><h1>We couldn\'t find that book.</h1><p style="margin:12px 0 18px">It may not be published yet.</p><a href="/app">‹ Back to the library</a></div>';
+    document.getElementById('player').style.display='none';
+  }
+</script>
+</body>
+</html>

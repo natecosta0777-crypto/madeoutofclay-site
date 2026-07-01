@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Library — Made Out of Clay</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;
+    --denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1120px;margin:0 auto;gap:16px}
+  .logo{font-weight:800;font-size:1.05rem}.logo span{color:var(--terracotta)}
+  nav.menu{display:flex;gap:6px;flex-wrap:wrap}
+  nav.menu a{padding:8px 14px;border-radius:30px;font-size:.9rem;font-weight:700;color:var(--muted)}
+  nav.menu a.on{background:var(--terracotta);color:#fff}
+  /* welcome banner */
+  .perso{background:linear-gradient(120deg,#fdeccf,#e9f0e6);border-bottom:1px solid var(--line)}
+  .perso .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;flex-wrap:wrap;gap:10px}
+  .perso b{color:var(--terracotta)}
+  .perso a{background:var(--denim);color:#fff;border-radius:30px;padding:7px 16px;font-size:.85rem;font-weight:700}
+  /* sections */
+  section{padding:26px 0}
+  .row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+  .row-head h2{font-size:1.3rem}
+  .row-head .sub{font-size:.85rem;font-weight:700;color:var(--muted)}
+  .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+  .book{cursor:pointer}
+  .cover{position:relative;border-radius:14px;aspect-ratio:1/1;border:1px solid rgba(0,0,0,.05);box-shadow:0 4px 12px rgba(80,60,30,.10);overflow:hidden;background:linear-gradient(150deg,#C9744D,#7E5A78)}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .cover .soon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;text-align:center;padding:14px}
+  .cover .ribbon{position:absolute;top:10px;right:-30px;background:var(--terracotta);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.05em;padding:4px 34px;transform:rotate(45deg);z-index:2}
+  .book .meta{padding:8px 2px 0}
+  .book .title{font-weight:800;font-size:.95rem;line-height:1.2}
+  .book .series{font-size:.76rem;color:var(--muted);font-weight:700;margin-top:2px}
+  /* printables cta */
+  .printcta{background:var(--sage);color:#fff;border-radius:18px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .printcta h2{font-size:1.4rem;margin-bottom:4px}
+  .printcta a{background:#fff;color:var(--ink);font-weight:800;padding:11px 22px;border-radius:30px}
+  footer{padding:30px 0;color:var(--muted);font-size:.82rem;text-align:center;border-top:1px solid var(--line);margin-top:20px}
+  @media(max-width:640px){nav.menu{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="/app">Made Out of Clay<span> Library</span></a>
+    <nav class="menu">
+      <a class="on" href="/app">Home</a>
+      <a href="/app/printables">Printables</a>
+      <a href="/app/account">Account</a>
+      <a href="/library">About the club</a>
+    </nav>
+  </div>
+</header>
+
+<!-- WELCOME BANNER -->
+<div class="perso">
+  <div class="wrap">
+    <div>Welcome to the <b>free Digital Book Club</b> — Season 1: Brave Like Me. New books added every week.</div>
+    <a href="/free">Join free for email delivery →</a>
+  </div>
+</div>
+
+<!-- SEASON 1 SHELF (rendered from /assets/club/books.json) -->
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>Brave Like Me · Season 1</h2><span class="sub" id="shelf-count"></span></div>
+    <div class="shelf" id="shelf"></div>
+  </div>
+</section>
+
+<!-- PRINTABLES HUB -->
+<section>
+  <div class="wrap">
+    <div class="printcta">
+      <div>
+        <h2>🖍️ The Printables Hub</h2>
+        <div style="opacity:.95">Coloring pages, feelings wheels, brave-badges and build-along projects — a printable for every book, plus theme packs.</div>
+      </div>
+      <a href="/app/printables">Open Printables →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made Out of Clay Library · new books every week · no ads, no tracking of your kid · <a href="/app/account" style="color:var(--terracotta);font-weight:700">Manage plan</a>
+</footer>
+
+<script>
+  // Shelf renders from the generated manifest (tools/build-club-assets.js).
+  fetch('/assets/club/books.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var series = data.series[0];
+      var shelf = document.getElementById('shelf');
+      var ready = 0;
+      series.episodes.forEach(function(ep){
+        var el;
+        if (ep.status === 'ready') {
+          ready++;
+          el = document.createElement('a');
+          el.className = 'book';
+          el.href = '/reader/?b=' + ep.slug;
+          el.innerHTML =
+            '<div class="cover"><img loading="lazy" src="' + ep.cover + '" alt="Cover of ' + ep.title + '"></div>' +
+            '<div class="meta"><div class="title">' + ep.title + '</div><div class="series">' + series.name + ' · Ep ' + ep.num + '</div></div>';
+        } else {
+          el = document.createElement('div');
+          el.className = 'book';
+          el.style.cursor = 'default';
+          el.innerHTML =
+            '<div class="cover"><div class="soon">Coming soon</div></div>' +
+            '<div class="meta"><div class="title">' + ep.title + '</div><div class="series">' + series.name + ' · Ep ' + ep.num + '</div></div>';
+        }
+        shelf.appendChild(el);
+      });
+      document.getElementById('shelf-count').textContent = ready + ' books ready to read';
+    })
+    .catch(function(){
+      document.getElementById('shelf').innerHTML =
+        '<p style="color:var(--muted)">Could not load the bookshelf. Please refresh, or visit <a href="/library" style="color:var(--terracotta);font-weight:700">the library page</a>.</p>';
+    });
+</script>
+</body>
+</html>

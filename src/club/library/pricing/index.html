@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Made Out of Clay Library</title>
+<link rel="canonical" href="https://madeoutofclayprod.com/library/pricing">
+<meta name="robots" content="index,follow">
+<style>
+  :root{--mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;--denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  a{color:var(--terracotta);text-decoration:none}
+  header.site{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1080px;margin:0 auto}
+  .logo{font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--terracotta)}
+  .nav .cta{background:var(--terracotta);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;padding:10px 18px;border-radius:40px}
+  .eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--terracotta);text-align:center;margin-bottom:10px}
+  .h2{font-size:2rem;text-align:center;max-width:720px;margin:0 auto 14px;line-height:1.25}
+  .lead{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 26px;font-size:1.05rem}
+  .plans{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+  .plan{position:relative;background:var(--cream);border:2px solid var(--line);border-radius:20px;padding:28px;width:320px;max-width:100%}
+  .plan.best{border-color:var(--terracotta);background:#fff;box-shadow:0 10px 30px rgba(201,116,77,.16)}
+  .plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--terracotta);color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+  .plan h3{margin-bottom:6px;font-size:1.1rem}
+  .price{font-size:2.6rem;font-weight:800;color:var(--ink)}
+  .price small{font-size:1rem;color:var(--muted);font-weight:600}
+  .save{color:var(--sage);font-weight:700;font-size:.95rem;margin:6px 0 14px}
+  .plan ul{list-style:none;margin:14px 0 20px;text-align:left}
+  .plan li{padding:7px 0 7px 26px;position:relative;font-size:.97rem;color:var(--ink)}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--sage);font-weight:800}
+  .btn-plan{display:block;width:100%;text-align:center;padding:14px;border-radius:40px;font-weight:800;border:none;font-size:1rem;cursor:pointer;background:var(--terracotta);color:#fff;box-shadow:0 5px 0 #a85c3b}
+  .plan.alt .btn-plan{background:transparent;color:var(--muted);border:2px solid var(--line);box-shadow:none}
+  .guarantee{text-align:center;color:var(--muted);font-size:.9rem;margin-top:22px}
+  .note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:12px}
+  section{padding:56px 0}
+  footer{background:#2e2923;color:#d9d0c2;padding:40px 0 30px;text-align:center;font-size:.9rem}
+  footer a{color:#f1d9a8}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="logo" href="/library">Made Out of Clay<span> Library</span></a>
+    <a class="cta" href="/free">Join free club</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Simple pricing</div>
+    <h2 class="h2">Less than a coffee. Pause or cancel anytime.</h2>
+    <p class="lead">Start with the free book club, or unlock the full library.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <div class="save">Stories + printables weekly</div>
+        <ul>
+          <li>Free digital books every week</li>
+          <li>Printable activities</li>
+          <li>Letters from CL001</li>
+          <li>No payment required</li>
+        </ul>
+        <a class="btn-plan" href="/free">Join free club →</a>
+      </div>
+      <div class="plan best">
+        <span class="badge">Best value — 2 months free</span>
+        <h3>Annual</h3>
+        <div class="price">$19.99<small>/year</small></div>
+        <div class="save">Just $1.66/mo — save 16%</div>
+        <ul>
+          <li>Every book + read-along</li>
+          <li>Every printable activity</li>
+          <li>New titles every week</li>
+          <li>Pause or cancel anytime</li>
+        </ul>
+        <button class="btn-plan" onclick="checkout('annual')">Start annual — $19.99/yr</button>
+      </div>
+      <div class="plan alt">
+        <h3>Monthly</h3>
+        <div class="price">$1.99<small>/month</small></div>
+        <div class="save" style="color:var(--muted)">Flexible, month to month</div>
+        <ul>
+          <li>Every book + read-along</li>
+          <li>Every printable activity</li>
+          <li>New titles every week</li>
+          <li>Pause or cancel anytime</li>
+        </ul>
+        <button class="btn-plan" onclick="checkout('monthly')">Start monthly — $1.99/mo</button>
+      </div>
+    </div>
+    <p class="guarantee">No ads. No tracking of your kid. Cancel or pause in two taps.</p>
+    <p class="note">Stripe checkout wiring in progress — becomes fully functional once payment keys are connected.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="margin-bottom:10px"><a href="/library">Library</a> · <a href="/free">Free Club</a> · <a href="/library/schools">For Schools</a> · <a href="https://madeoutofclayprod.com/">Main Site</a></div>
+    <div style="opacity:.7;font-size:.82rem">Made Out of Clay Productions. Prices in USD; cancel or pause anytime. &copy; 2026</div>
+  </div>
+</footer>
+
+<script>
+  // TODO: replace with real Stripe Checkout after Nate connects keys.
+  // Annual Price = price_annual, Monthly Price = price_monthly.
+  function checkout(plan){
+    alert(plan === 'annual'
+      ? 'Annual ($19.99/yr) — checkout goes live once Stripe is wired.'
+      : 'Monthly ($1.99/mo) — checkout goes live once Stripe is wired.');
+    // window.location = '/api/checkout?plan=' + plan;
+  }
+</script>
+</body>
+</html>

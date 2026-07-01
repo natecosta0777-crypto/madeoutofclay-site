@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Printables Hub — Made Out of Clay Library</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;--denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1120px;margin:0 auto;gap:16px}
+  .logo{font-weight:800;font-size:1.05rem}.logo span{color:var(--terracotta)}
+  nav.menu{display:flex;gap:6px;flex-wrap:wrap}
+  nav.menu a{padding:8px 14px;border-radius:30px;font-size:.9rem;font-weight:700;color:var(--muted)}
+  nav.menu a.on{background:var(--terracotta);color:#fff}
+  .hero{padding:30px 0 6px}
+  .hero h1{font-size:1.9rem}.hero p{color:var(--muted);margin-top:4px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;padding:18px 0}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 16px;font-size:.85rem;font-weight:700;cursor:pointer}
+  .chip.on{background:var(--denim);color:#fff;border-color:var(--denim)}
+  section{padding:14px 0 26px}
+  h2.row{font-size:1.25rem;margin-bottom:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .sheet{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(80,60,30,.06)}
+  .thumb{aspect-ratio:1/1.3;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff}
+  .c-feel{background:linear-gradient(150deg,#7E5A78,#5E7FA3)}.c-brave{background:linear-gradient(150deg,#C9744D,#7E5A78)}
+  .c-stem{background:linear-gradient(150deg,#5E7FA3,#8FAE8B)}.c-affirm{background:linear-gradient(150deg,#E8B84B,#C9744D)}.c-curio{background:linear-gradient(150deg,#8FAE8B,#5E7FA3)}
+  .sheet .m{padding:12px}
+  .sheet .t{font-size:.95rem;font-weight:800;line-height:1.2}
+  .sheet .s{font-size:.74rem;color:var(--muted);font-weight:700;margin-top:3px}
+  .dl{display:block;text-align:center;margin-top:10px;background:var(--terracotta);color:#fff;font-weight:800;padding:9px;border-radius:24px;font-size:.85rem;cursor:pointer}
+  .pack{background:var(--sage);color:#fff;border-radius:16px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .pack a{background:#fff;color:var(--ink);font-weight:800;padding:10px 20px;border-radius:24px}
+  footer{padding:30px 0;color:var(--muted);font-size:.82rem;text-align:center;border-top:1px solid var(--line);margin-top:10px}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <a class="logo" href="/app">Made Out of Clay<span> Library</span></a>
+  <nav class="menu"><a href="/app">Home</a><a href="/app#new">New this week</a><a class="on" href="/app/printables">Printables</a><a href="/app/account">Account</a></nav>
+  <div style="font-weight:700;font-size:.85rem">Lily, age 5</div>
+</div></header>
+
+<div class="wrap">
+  <div class="hero"><h1>🖍️ The Printables Hub</h1><p>A printable for every book — plus theme packs. Print it, do it, keep it.</p></div>
+
+  <div class="filters">
+    <span class="chip on">All</span>
+    <span class="chip">Big Feelings</span>
+    <span class="chip">Brave Girls</span>
+    <span class="chip">STEM / Maker</span>
+    <span class="chip">Curiosity</span>
+    <span class="chip">Calm / Bedtime</span>
+  </div>
+
+  <section>
+    <h2 class="row">⭐ Theme packs</h2>
+    <div class="pack"><div><b>Big Feelings Starter Pack</b> — feelings wheel, breathing cards, color-your-feeling pages</div><a>Download pack →</a></div>
+    <div class="pack" style="background:var(--plum)"><div><b>Brave Girl Badges</b> — printable "my brave thing today" badges + tracker</div><a>Download pack →</a></div>
+    <div class="pack" style="background:var(--denim)"><div><b>Maker Challenge Sheets</b> — build-along projects from Mira's lab</div><a>Download pack →</a></div>
+  </section>
+
+  <section>
+    <h2 class="row">Every book's activity</h2>
+    <div class="grid">
+      <div class="sheet"><div class="thumb c-feel">🌈</div><div class="m"><div class="t">Feelings Wheel</div><div class="s">Meet the Feelings Crew</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-feel">😤</div><div class="m"><div class="t">Ten-Breaths Card</div><div class="s">Tan Takes Ten Breaths</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-brave">⭐</div><div class="m"><div class="t">My Brave Thing Today</div><div class="s">Maya Goes First</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-stem">🤖</div><div class="m"><div class="t">Build-a-Robot Sheet</div><div class="s">Beep Won't Beep</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-affirm">💛</div><div class="m"><div class="t">My Happy Wiggles</div><div class="s">My Hands Have Happy Wiggles</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-curio">🌧️</div><div class="m"><div class="t">Water-Cycle Observe Sheet</div><div class="s">Where Does the Rain Go?</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-curio">🐝</div><div class="m"><div class="t">Find-It: Inside a Hive</div><div class="s">What's Inside a Beehive?</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+      <div class="sheet"><div class="thumb c-stem">🌉</div><div class="m"><div class="t">Bridge-Build Challenge</div><div class="s">Builds a Bridge for Bugs</div><span class="dl" onclick="dl()">Download PDF</span></div></div>
+    </div>
+  </section>
+</div>
+
+<footer>A new printable every week · no ads, no tracking of your kid · <a href="/app/account" style="color:var(--terracotta);font-weight:700">Manage plan</a></footer>
+<script>function dl(){alert("Printable download goes live once the activity PDFs are attached to each title.");}</script>
+</body>
+</html>
