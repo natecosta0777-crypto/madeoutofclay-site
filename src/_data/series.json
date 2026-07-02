@@ -8,7 +8,8 @@
     "metaTitle": "At Sunny's Table — A Sloth Family Picture Book Series | Made Out of Clay",
     "metaDescription": "Three gentle picture books about patience, quiet, and sibling love. By Isaiah Hartwell. On Amazon, $13.99.",
     "accent": "#e8a04b",
-    "accentSoft": "#fbeede"
+    "accentSoft": "#fbeede",
+    "accentText": "#9a6712"
   },
   {
     "slug": "just-the-way-you-are",
@@ -19,7 +20,8 @@
     "metaTitle": "Just the Way You Are — Neurodiversity Picture Books for Kids | Made Out of Clay",
     "metaDescription": "Inclusion and neurodiversity picture books for the kids who don't fit the mold — and the families raising them.",
     "accent": "#5b8def",
-    "accentSoft": "#e6eefc"
+    "accentSoft": "#e6eefc",
+    "accentText": "#3565cc"
   },
   {
     "slug": "kingdom-of-judea",
@@ -30,6 +32,7 @@
     "metaTitle": "The Kingdom of Judea — A Lion Adventure Picture Book Series | Made Out of Clay",
     "metaDescription": "Caleb and the Cubs: an epic lion-kingdom adventure about courage, home, and who you become.",
     "accent": "#c2562e",
-    "accentSoft": "#f7e3d8"
+    "accentSoft": "#f7e3d8",
+    "accentText": "#b04c26"
   }
 ]

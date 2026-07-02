@@ -3,12 +3,12 @@
    dead link. All buy links: target=_blank, rel="sponsored noopener", tagged. #}
 {% macro bookCard(book, site, seriesName) %}
 <article class="book-card">
-  <a class="book-card-cover" href="/books/#{{ book.slug }}">
+  <a class="book-card-cover" href="/book/{{ book.slug }}/">
     <img src="{{ book.cover }}" alt="{{ book.alt }}" width="300" height="300" loading="lazy">
   </a>
   <div class="book-card-body">
     {% if seriesName %}<p class="book-card-series">{{ seriesName }}</p>{% endif %}
-    <h3 class="book-card-title">{{ book.title }}</h3>
+    <h3 class="book-card-title"><a href="/book/{{ book.slug }}/" style="color:inherit;text-decoration:none;">{{ book.title }}</a></h3>
     {% if book.status == "live" and book.asin %}
     <a class="btn btn-primary btn-buy"
        href="{{ book.asin | amazonUrl(site.associateTag) }}"

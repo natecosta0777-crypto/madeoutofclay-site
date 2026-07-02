@@ -22,7 +22,7 @@ breadcrumbs:
       <article class="book-detail" id="{{ book.slug }}">
         <img src="{{ book.cover }}" alt="{{ book.alt }}" width="280" height="280" loading="lazy">
         <div>
-          <p class="book-card-series" style="color: {{ s.accent }}">{{ s.name }}{% if book.order %} · Book {{ book.order }}{% endif %}</p>
+          <p class="book-card-series" style="color: {{ s.accentText or s.accent }}">{{ s.name }}{% if book.order %} · Book {{ book.order }}{% endif %}</p>
           <h2>{{ book.title }}</h2>
           <p>{{ book.blurb }}</p>
           <div class="themes">

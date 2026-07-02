@@ -13,6 +13,9 @@ module.exports = function (eleventyConfig) {
   // Copy static assets straight through to the build output.
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
+  eleventyConfig.addPassthroughCopy({ "src/favicon-32.png": "favicon-32.png" });
+  eleventyConfig.addPassthroughCopy({ "src/favicon-192.png": "favicon-192.png" });
+  eleventyConfig.addPassthroughCopy({ "src/apple-touch-icon.png": "apple-touch-icon.png" });
 
   // --- Digital Book Club (static app) --------------------------------------
   // Self-contained HTML pages (own inline styles/JS) copied as-is to the

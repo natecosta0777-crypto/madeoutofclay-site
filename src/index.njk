@@ -35,7 +35,7 @@ schemaFaq: true
     <p class="section-intro">Every book stands on its own — pick the one that fits your kid today.</p>
     <div class="series-grid">
       {% for s in series %}
-      <div class="series-card" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }};">
+      <div class="series-card" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }}; --accent-text: {{ s.accentText or s.accent }};">
         <h3>{{ s.name }}</h3>
         <p class="series-tag">{{ s.tagline }}</p>
         <p>{{ s.blurb }}</p>

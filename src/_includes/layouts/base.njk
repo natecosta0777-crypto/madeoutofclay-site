@@ -29,6 +29,9 @@
   <meta name="twitter:image" content="{{ ogImg }}">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" as="style" href="/assets/css/styles.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
 
@@ -63,7 +66,7 @@
     "bookFormat": "https://schema.org/Hardcover",
     "inLanguage": "en",
     "image": b.cover | absoluteUrl(site.url),
-    "url": b.slug | absoluteUrl(site.url + "/books/#"),
+    "url": ("/book/" + b.slug + "/") | absoluteUrl(site.url),
     "sku": b.asin,
     "offers": {
       "@type": "Offer",
@@ -74,6 +77,31 @@
     }
   } | dump | safe }}</script>
     {%- endfor -%}
+  {%- endif -%}
+
+  {%- if schemaBook -%}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": book.title,
+    "description": book.blurb,
+    "author": { "@type": "Person", "name": site.authorPenName },
+    "publisher": { "@type": "Organization", "name": site.name },
+    "bookFormat": "https://schema.org/Hardcover",
+    "inLanguage": "en",
+    "typicalAgeRange": "2-7",
+    "image": book.cover | absoluteUrl(site.url),
+    "url": page.url | absoluteUrl(site.url),
+    "mainEntityOfPage": page.url | absoluteUrl(site.url),
+    "sku": book.asin,
+    "offers": {
+      "@type": "Offer",
+      "price": site.bookPrice,
+      "priceCurrency": site.currency,
+      "availability": ("https://schema.org/InStock" if book.status == "live" else "https://schema.org/PreOrder"),
+      "url": (book.asin | amazonUrl(site.associateTag)) if book.asin else (page.url | absoluteUrl(site.url))
+    }
+  } | dump | safe }}</script>
   {%- endif -%}
 
   {%- if schemaFaq -%}

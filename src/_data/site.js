@@ -19,7 +19,7 @@ module.exports = {
   // --- OPEN DECISION #1: Amazon Associates ---------------------------------
   // Provide your store ID (e.g. "madeoutofcl-20") to tag every buy link.
   // Leave "" to ship clean, untagged links (KDP royalty only).
-  associateTag: "",
+  associateTag: "madeoutofclay-20", // same store ID the-review-group.com uses live
 
   // --- OPEN DECISION #5: Analytics -----------------------------------------
   ga4Id: "", // "G-XXXXXXXXXX"  — leave "" to emit no GA4 tag

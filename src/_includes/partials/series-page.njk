@@ -3,7 +3,7 @@
 {%- set s = lookups.seriesBySlug[seriesSlug] -%}
 {%- set seriesBooks = lookups.booksBySeries[seriesSlug] -%}
 
-<section class="series-banner" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }};">
+<section class="series-banner" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }}; --accent-text: {{ s.accentText or s.accent }};">
   <div class="wrap">
     <p class="eyebrow">{{ s.subject }}</p>
     <h1>{{ s.name }}</h1>
@@ -24,7 +24,7 @@
 
 {% include "partials/reviews.njk" %}
 
-<section class="cta-band" style="background: {{ s.accent }};">
+<section class="cta-band" style="background: {{ s.accentText or s.accent }};">
   <div class="wrap wrap-narrow">
     <h2>Don't miss the next one</h2>
     <p>Join the family list for new {{ s.name }} releases and free printables.</p>

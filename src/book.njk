@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: books
+  size: 1
+  alias: book
+  addAllPagesToCollections: true
+permalink: "/book/{{ book.slug }}/"
+eleventyComputed:
+  title: "{{ book.title }} — Made Out of Clay Productions"
+  description: "{{ book.blurb }}"
+  ogImage: "{{ book.cover }}"
+  seriesSlug: "{{ book.series }}"
+schemaBook: true
+---
+{%- set s = lookups.seriesBySlug[book.series] -%}
+<section class="page-head">
+  <div class="wrap">
+    <p class="book-card-series" style="color: {{ s.accentText or s.accent }}">
+      <a href="/series/{{ s.slug }}/" style="color: inherit; text-decoration: none;">{{ s.name }}</a>{% if book.order %} · Book {{ book.order }}{% endif %}
+    </p>
+    <h1>{{ book.title }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <article class="book-detail">
+      <img src="{{ book.cover }}" alt="{{ book.alt }}" width="280" height="280">
+      <div>
+        <p>{{ book.blurb }}</p>
+        <div class="themes">
+          {% for t in book.themes %}<span class="theme-tag">{{ t }}</span>{% endfor %}
+        </div>
+        <p class="book-meta">Hardcover · 8.5×8.5 full color · ${{ site.bookPrice }} · Ages 2–7</p>
+        {% if book.status == "live" and book.asin %}
+        <a class="btn btn-primary"
+           href="{{ book.asin | amazonUrl(site.associateTag) }}"
+           target="_blank" rel="sponsored noopener"
+           data-track="buy_on_amazon_click"
+           data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">
+          Buy on Amazon — ${{ site.bookPrice }}
+        </a>
+        {% else %}
+        <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+        {% endif %}
+        <p style="margin-top: 16px;"><a href="/series/{{ s.slug }}/">More from {{ s.name }} →</a> · <a href="/books/">All books</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+{%- set seriesBooks = [] -%}
+{%- for b in books -%}
+  {%- if b.series == book.series and b.slug != book.slug -%}
+    {%- set seriesBooks = (seriesBooks.push(b), seriesBooks) -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if seriesBooks.length > 0 %}
+<section class="section" style="background: {{ s.accentSoft }};">
+  <div class="wrap">
+    <h2>More in this series</h2>
+    <div class="book-grid">
+      {%- for b in seriesBooks %}
+      <a class="book-card" href="/book/{{ b.slug }}/">
+        <img src="{{ b.cover }}" alt="{{ b.alt }}" width="220" height="220" loading="lazy">
+        <h3>{{ b.title }}</h3>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
