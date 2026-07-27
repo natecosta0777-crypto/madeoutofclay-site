@@ -11,12 +11,17 @@
       "destination": "https://madeoutofclayprod.com/$1",
       "permanent": true
     },
-    { "source": "/schools", "destination": "/library/schools/", "permanent": false },
-    { "source": "/printables", "destination": "/app/printables/", "permanent": false },
-    { "source": "/account", "destination": "/app/account/", "permanent": false },
-    { "source": "/free/confirm", "destination": "/free/", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/app/book/:slug", "destination": "/reader/?b=:slug" }
+    { "source": "/library{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/library/(.*)", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/free{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/free/(.*)", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/app{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/app/(.*)", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/reader{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/reader/(.*)", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/account{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/schools{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/schools.html{/}?", "destination": "https://club.madeoutofclayprod.com/", "permanent": true },
+    { "source": "/printables{/}?", "destination": "https://club.madeoutofclayprod.com/printables", "permanent": true }
   ]
 }
