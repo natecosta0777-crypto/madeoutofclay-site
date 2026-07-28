@@ -44,6 +44,12 @@ schemaBook: true
         {% else %}
         <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
         {% endif %}
+        {% if book.readUrl %}
+        <a class="btn btn-primary" href="{{ book.readUrl }}"
+           data-track="read_free_click" data-book-title="{{ book.title }}">
+          📖 Read it free
+        </a>
+        {% endif %}
         <p style="margin-top: 16px;"><a href="/series/{{ s.slug }}/">More from {{ s.name }} →</a> · <a href="/books/">All books</a></p>
       </div>
     </article>

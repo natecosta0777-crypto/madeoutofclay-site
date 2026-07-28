@@ -1,0 +1,84 @@
+---
+layout: layouts/base.njk
+permalink: /read/titus-and-the-lions/
+title: "Read Titus and the Lions — free sing-along Bible story | Made Out of Clay"
+description: "Read Titus and the Lions free, right here. A little lamb asks why Daniel kept praying — and comes back with a song your kids will sing all week."
+seriesSlug: titus-the-lamb
+breadcrumbs:
+  - { name: "Home", url: "/" }
+  - { name: "Titus the Lamb", url: "/series/titus-the-lamb/" }
+  - { name: "Read Titus and the Lions", url: "/read/titus-and-the-lions/" }
+---
+<section class="page-head">
+  <div class="wrap">
+    <p class="book-card-series" style="color: #b07d0a">
+      <a href="/series/titus-the-lamb/" style="color: inherit; text-decoration: none;">Titus the Lamb</a> · Book 1
+    </p>
+    <h1>{{ titusRead.title }}</h1>
+    <p class="lead">{{ titusRead.subtitle }} · by {{ titusRead.author }}</p>
+    <p>Read the whole story free, then sing it together. 🦁</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap wrap-narrow reader">
+    {% for page in titusRead.pages %}
+    <figure class="reader-page{% if page.isCover %} reader-cover{% endif %}">
+      <img src="{{ page.image }}" alt="{% if page.isCover %}Cover of {{ titusRead.title }}{% else %}Illustration from {{ titusRead.title }}{% endif %}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="1200">
+      {% if not page.isCover and page.text %}
+      <figcaption class="reader-text">{{ page.text | replace("\n", "<br>") | safe }}</figcaption>
+      {% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section-alt" id="read-along">
+  <div class="wrap wrap-narrow" style="text-align: center;">
+    <h2 class="section-title">🎧 Prefer to be read to?</h2>
+    <p>The whole book, read aloud with the words lighting up as they're spoken. Perfect for pre-readers and bedtime.</p>
+    <video controls preload="metadata" playsinline
+           poster="/assets/covers/titus-and-the-lions.jpg"
+           style="width: 100%; max-width: 720px; border-radius: 12px; margin-top: 16px;"
+           data-track="titus_readalong_play">
+      <source src="https://pub-a1fde819eeae4431a2e0c147bb4c10a9.r2.dev/titus/titus-and-the-lions-readalong.mp4" type="video/mp4">
+      Your browser doesn't support embedded video.
+    </video>
+  </div>
+</section>
+
+<section class="section" id="sing-along">
+  <div class="wrap wrap-narrow" style="text-align: center;">
+    <h2 class="section-title">🎵 Now sing it together</h2>
+    <p>"God Shut the Lions' Mouths!" — the song from the story. Fair warning: it will be stuck in your head by bedtime.</p>
+    <video controls preload="metadata" playsinline
+           poster="/assets/covers/titus-and-the-lions.jpg"
+           style="width: 100%; max-width: 720px; border-radius: 12px; margin-top: 16px;">
+      <source src="https://pub-a1fde819eeae4431a2e0c147bb4c10a9.r2.dev/titus/god-shut-the-lions-mouths.mp4" type="video/mp4">
+      Your browser doesn't support embedded video.
+    </video>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap wrap-narrow">
+    <h2>A new wondering question every week</h2>
+    <p>Titus opens the satchel, pulls out a question, and a Bible story answers it with a song. Join the family list and never miss one.</p>
+    {% set signupLocation = "titus-reader" %}
+    {% include "partials/newsletter.njk" %}
+  </div>
+</section>
+
+<style>
+  .reader-page { margin: 0 0 3rem; }
+  .reader-page img {
+    width: 100%; height: auto; border-radius: 14px;
+    box-shadow: 0 6px 28px rgba(0,0,0,.13);
+  }
+  .reader-text {
+    margin-top: 1.1rem; text-align: center;
+    font-size: 1.2rem; line-height: 1.85;
+  }
+  .reader-cover img { box-shadow: 0 10px 40px rgba(0,0,0,.2); }
+  @media (max-width: 640px) { .reader-text { font-size: 1.05rem; } }
+</style>
