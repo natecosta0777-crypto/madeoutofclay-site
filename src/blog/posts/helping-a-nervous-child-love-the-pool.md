@@ -3,6 +3,7 @@ title: "Helping a Nervous Child Love the Pool"
 description: "Gentle, no-pressure ways to help a water-anxious kid build confidence at the pool — at their own pace."
 date: 2026-05-20
 draft: false
+tag: "Big Feelings"
 ---
 
 Every summer it plays out at pools everywhere: a clump of kids cannonballing off the edge, and one child gripping the ladder rail, watching, not moving. If that's your kid, helping a nervous child love the pool can feel like a standoff — you want them to have fun, they want to stay exactly where it's safe, and nobody's budging.

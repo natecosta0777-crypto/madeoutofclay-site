@@ -11,6 +11,46 @@
   var cfg = window.MOC_CONFIG || {};
   var CONSENT_KEY = "moc_consent";
 
+  /* ---------- Confetti celebration (dependency-free canvas burst) ---------- */
+  function confetti() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var c = document.createElement("canvas");
+    c.style.cssText = "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";
+    c.width = window.innerWidth; c.height = window.innerHeight;
+    document.body.appendChild(c);
+    var ctx = c.getContext("2d");
+    var colors = ["#E8B84B", "#C9744D", "#8FAE8B", "#5E7FA3", "#7E5A78", "#f0c24b", "#fff"];
+    var pieces = [];
+    for (var i = 0; i < 150; i++) {
+      pieces.push({
+        x: c.width / 2 + (Math.random() - 0.5) * c.width * 0.5,
+        y: c.height * 0.35 - Math.random() * 40,
+        r: 6 + Math.random() * 8,
+        color: colors[i % colors.length],
+        vx: (Math.random() - 0.5) * 12,
+        vy: -6 - Math.random() * 8,
+        rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.4,
+        shape: Math.random() < 0.5 ? "rect" : "circ"
+      });
+    }
+    var start = Date.now();
+    (function frame() {
+      var t = Date.now() - start;
+      ctx.clearRect(0, 0, c.width, c.height);
+      for (var i = 0; i < pieces.length; i++) {
+        var p = pieces[i];
+        p.x += p.vx; p.y += p.vy; p.vy += 0.28; p.vx *= 0.99; p.rot += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, 1 - t / 2800);
+        if (p.shape === "rect") ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 0.6);
+        else { ctx.beginPath(); ctx.arc(0, 0, p.r / 2, 0, 6.28); ctx.fill(); }
+        ctx.restore();
+      }
+      if (t < 2800) requestAnimationFrame(frame); else c.remove();
+    })();
+  }
+  window.moocConfetti = confetti;
+
   /* ---------- Mobile nav ---------- */
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("nav-menu");
@@ -20,6 +60,37 @@
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
   }
+
+  /* ---------- Series nav dropdown (click-to-toggle; works on touch + trackpad) ---------- */
+  document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
+    var btn = dd.querySelector(".nav-dropdown-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    dd.addEventListener("focusout", function (e) {
+      if (dd.contains(e.relatedTarget)) return; // focus still inside the dropdown
+      dd.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+  document.addEventListener("click", function () {
+    document.querySelectorAll(".nav-dropdown.open").forEach(function (dd) {
+      dd.classList.remove("open");
+      var btn = dd.querySelector(".nav-dropdown-toggle");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll(".nav-dropdown.open").forEach(function (dd) {
+      dd.classList.remove("open");
+      var btn = dd.querySelector(".nav-dropdown-toggle");
+      if (btn) { btn.setAttribute("aria-expanded", "false"); btn.focus(); }
+    });
+  });
 
   /* ---------- Analytics loading (only after consent) ---------- */
   var analyticsLoaded = false;
@@ -51,6 +122,17 @@
       })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
       window.fbq("init", cfg.metaPixelId);
       window.fbq("track", "PageView");
+    }
+
+    // Metricool (web analytics for content planning) — same consent gate as GA4/Pixel
+    if (cfg.metricoolHash) {
+      var m = document.createElement("script");
+      m.async = true;
+      m.src = "https://tracker.metricool.com/resources/be.js";
+      m.onload = function () {
+        if (window.beTracker) window.beTracker.t({ hash: cfg.metricoolHash });
+      };
+      document.head.appendChild(m);
     }
   }
 
@@ -148,13 +230,14 @@
 
       // Progressive enhancement: try async POST so we can show inline success.
       e.preventDefault();
-      var data = new FormData(form);
+      var data = new URLSearchParams(new FormData(form));
       window.track(eventName, extraParams(form));
-      fetch(action, { method: "POST", body: data, headers: { Accept: "application/json" } })
+      fetch(action, { method: "POST", body: data, headers: { Accept: "application/json", "Content-Type": "application/x-www-form-urlencoded" } })
         .then(function (r) {
           if (r.ok) {
             form.reset();
             if (status) { status.textContent = successMsg(eventName); status.className = "form-status is-success"; }
+            if (eventName === "newsletter_signup") confetti();
           } else { throw new Error("bad status"); }
         })
         .catch(function () {
@@ -184,4 +267,12 @@
   if (document.body.getAttribute("data-series")) {
     window.track("series_view", { series: document.body.getAttribute("data-series") });
   }
+
+  /* ---------- animated wordmark: respect reduced motion, else ensure it runs ---------- */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("video.brand-video").forEach(function (v) {
+    if (reduceMotion) { v.pause(); return; }
+    // Some browsers ignore the autoplay attribute; nudge. Poster stays if this fails.
+    if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  });
 })();

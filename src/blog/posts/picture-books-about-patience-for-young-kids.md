@@ -3,6 +3,7 @@ title: "Picture Books About Patience and Waiting for Young Kids"
 description: "Why waiting is so hard for little kids — and the picture books that make patience feel possible."
 date: 2026-05-13
 draft: false
+tag: "Big Feelings"
 ---
 
 "Is it time yet?" For the fortieth time. Before 9 a.m. If you've ever counted down to a birthday, a holiday, or simply *the park later* with a small child, you know that waiting is one of the hardest things you can ask of them. Picture books about patience and waiting for young kids exist because this struggle is universal — and because stories happen to be one of the best ways through it.

@@ -4,6 +4,9 @@
   "outputDirectory": "_site",
   "cleanUrls": true,
   "trailingSlash": true,
+  "rewrites": [
+    { "source": "/api/subscribe/", "destination": "/api/subscribe" }
+  ],
   "redirects": [
     {
       "source": "/(.*)",

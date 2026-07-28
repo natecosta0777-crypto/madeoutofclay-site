@@ -3,6 +3,7 @@ title: "Bedtime Routine Picture Books That Actually Calm Kids Down"
 description: "The bedtime books — and the routine around them — that help wound-up kids actually settle for sleep."
 date: 2026-05-27
 draft: false
+tag: "Bedtime & Calm"
 ---
 
 There's a particular kind of betrayal in the 7 p.m. second wind. You've done the bath, the teeth, the pajamas. The lights are low. And somehow your child is now doing laps around the living room narrating a story about a shark. Bedtime routine picture books that actually calm kids down exist for exactly this moment — but only if you pick the right ones and use them the right way.

@@ -2,6 +2,7 @@
 title: "Best Picture Books for Neurodivergent Kids (A Parent's Guide)"
 description: "How to choose picture books that genuinely affirm neurodivergent kids — what to look for, what to avoid, and a few of our favorites for autistic, ADHD, and sensory-sensitive children."
 date: 2026-06-10
+tag: "Neurodivergent Kids"
 ---
 
 If you're raising a neurodivergent child, you already know the quiet ache of the bookshelf: shelves full of stories where the "good" kid sits still, makes eye contact, and never melts down at the grocery store. Picture books are where children first learn what "normal" looks like — and far too many of them quietly teach kids that the normal child is not them.

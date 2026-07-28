@@ -28,7 +28,7 @@
   <meta name="twitter:description" content="{{ description }}">
   <meta name="twitter:image" content="{{ ogImg }}">
 
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="The Clay Journal" href="/feed.xml">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -152,7 +152,8 @@
   <script>
     window.MOC_CONFIG = {
       ga4Id: {{ site.ga4Id | dump | safe }},
-      metaPixelId: {{ site.metaPixelId | dump | safe }}
+      metaPixelId: {{ site.metaPixelId | dump | safe }},
+      metricoolHash: {{ site.metricoolHash | dump | safe }}
     };
   </script>
   <script src="/assets/js/main.js" defer></script>

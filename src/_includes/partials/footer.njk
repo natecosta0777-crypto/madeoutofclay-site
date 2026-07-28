@@ -34,6 +34,41 @@
 
   <div class="wrap footer-bottom">
     <p>&copy; {{ site.buildYear }} {{ site.name }}. All rights reserved.</p>
-    <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    <p>
+      <a href="/privacy/">Privacy</a> ·
+      <a href="/terms/">Terms</a> ·
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </p>
   </div>
+
+  {# Penny's Highest Recommendation — reciprocal badge, links to the full review on The Review Group #}
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;margin:6px 0 28px;">
+    <div style="font-family:'Segoe UI',system-ui,sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#9a9a9a;margin-bottom:12px;">As Seen On</div>
+    <div class="penny-badge">
+      <div class="penny-badge-inner">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="badge-label">Penny's Highest Recommendation</div>
+        <div class="badge-title">Made Out of Clay Productions</div>
+        <div class="badge-score">94 / 100 — Worth It</div>
+        <p class="badge-quote">Neurodiversity-affirming books that meet kids where they are. In a category full of good intentions, these books deliver.</p>
+        <p class="badge-byline">— <strong>Penny</strong>, The Review Group</p>
+        <a href="https://the-review-group.com/pennys-consumer-reports/made-out-of-clay/" class="badge-link" target="_blank" rel="noopener">See the full review →</a>
+      </div>
+    </div>
+  </div>
+  <style>
+    .penny-badge { max-width: 300px; margin: 0 auto; }
+    .penny-badge-inner { background: #faf9f6; border: 2px solid #16213e; border-radius: 12px; padding: 20px; text-align: center; font-family: 'Segoe UI', system-ui, sans-serif; }
+    .penny-badge .stars { font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 6px; color: #d4a017; }
+    .penny-badge .badge-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: #e94560; font-weight: 700; margin-bottom: 8px; }
+    .penny-badge .badge-title { font-size: 0.95rem; font-weight: 700; color: #16213e; margin-bottom: 10px; line-height: 1.3; }
+    .penny-badge .badge-score { display: inline-block; background: #2a6f4e; color: #fff; font-weight: 700; font-size: 0.95rem; padding: 3px 12px; border-radius: 16px; margin-bottom: 10px; }
+    .penny-badge .badge-quote { font-size: 0.8rem; color: #555; font-style: italic; line-height: 1.5; margin-bottom: 12px; }
+    .penny-badge .badge-quote::before { content: "\201C"; }
+    .penny-badge .badge-quote::after { content: "\201D"; }
+    .penny-badge .badge-byline { font-size: 0.72rem; color: #888; }
+    .penny-badge .badge-byline strong { color: #16213e; }
+    .penny-badge .badge-link { display: inline-block; margin-top: 10px; font-size: 0.78rem; color: #e94560; font-weight: 600; text-decoration: none; }
+    .penny-badge .badge-link:hover { text-decoration: underline; }
+  </style>
 </footer>

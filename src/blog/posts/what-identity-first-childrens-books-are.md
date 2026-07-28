@@ -3,6 +3,7 @@ title: "What 'Identity-First' Children's Books Are — and Why They Matter"
 description: "Identity-first language is changing children's books for the better. Here's what it means and why it matters for the kids reading them."
 date: 2026-04-22
 draft: false
+tag: "Neurodivergent Kids"
 ---
 
 Read these two sentences out loud: "a child with autism" and "an autistic child." They describe the same kid. But they carry different messages — and once you hear the difference, you can't unhear it. Understanding what identity-first children's books are starts right here, with the quiet power of word order.

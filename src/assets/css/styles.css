@@ -81,9 +81,12 @@ img { max-width: 100%; height: auto; display: block; }
   backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid var(--line);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+/* Logo sits right beside the nav ("Books" first) instead of across the header. */
+.header-inner { display: flex; align-items: center; justify-content: flex-start; gap: 28px; min-height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 700; }
 .brand-mark { font-size: 1.4rem; }
+.brand-logo { width: 46px; height: 46px; object-fit: contain; display: block; }
+.brand-video { height: 56px; width: auto; display: block; border-radius: 8px; }
 .brand-text { font-family: var(--serif); font-size: 1.15rem; }
 .site-nav { display: flex; align-items: center; }
 .nav-menu { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; align-items: center; }
@@ -91,8 +94,25 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-menu a:hover { color: var(--clay-dark); }
 .nav-toggle { display: none; background: var(--cream-2); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-weight: 600; cursor: pointer; color: var(--ink); }
 
+/* Series dropdown — click-to-toggle (not hover-only: reliable on trackpads/touch). */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 4px; background: none; border: none; padding: 0; font: inherit; font-size: .98rem; font-weight: 500; color: var(--ink-soft); cursor: pointer; }
+.nav-dropdown-toggle:hover, .nav-dropdown.open .nav-dropdown-toggle { color: var(--clay-dark); }
+.nav-dropdown-toggle .caret { font-size: .75em; transition: transform .15s ease; }
+.nav-dropdown.open .nav-dropdown-toggle .caret { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow); padding: 8px; min-width: 220px; list-style: none; margin: 0; z-index: 50; }
+.nav-dropdown.open .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu li { width: auto; }
+.nav-dropdown-menu a { display: block; padding: 10px 12px; border-radius: 8px; white-space: nowrap; color: var(--ink); text-decoration: none; border-bottom: none; }
+.nav-dropdown-menu a:hover { background: var(--cream-2); }
+.nav-badge { display: inline-block; margin-left: 6px; font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; background: #f0b429; color: #8a5f06; padding: 2px 7px; border-radius: 20px; vertical-align: middle; }
+
 @media (max-width: 880px) {
+  /* Mobile keeps logo left / hamburger right. */
+  .header-inner { justify-content: space-between; }
   .nav-toggle { display: inline-block; }
+  .nav-dropdown-menu { position: static; transform: none; box-shadow: none; border: none; padding: 0 0 4px 16px; min-width: 0; }
+  .nav-dropdown-toggle { width: 100%; justify-content: space-between; padding: 12px 0; }
   .nav-menu {
     display: none; position: absolute; top: 68px; left: 0; right: 0;
     flex-direction: column; align-items: flex-start; gap: 0;
@@ -101,6 +121,8 @@ img { max-width: 100%; height: auto; display: block; }
   .nav-menu.open { display: flex; }
   .nav-menu li { width: 100%; }
   .nav-menu a { display: block; padding: 12px 0; width: 100%; border-bottom: 1px solid var(--line); }
+  .nav-dropdown-toggle { border-bottom: 1px solid var(--line); }
+  .nav-dropdown-menu a { border-bottom: none; padding: 10px 0; }
 }
 
 /* ---------- Hero ---------- */
@@ -116,6 +138,63 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 820px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-art { max-width: 420px; }
+}
+
+/* ---------- Digital Book Club banner ---------- */
+.club-banner {
+  background: linear-gradient(135deg, #fdeccf 0%, #f7d9a8 45%, #eaf1e6 100%);
+  border-top: 1px solid rgba(0,0,0,.05);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  padding: 30px 0;
+}
+.club-banner-inner {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 26px; flex-wrap: wrap;
+}
+.club-copy { flex: 1; min-width: 260px; }
+.club-kicker {
+  display: inline-block; background: var(--sage, #8FAE8B); color: #fff;
+  font-weight: 700; font-size: .74rem; letter-spacing: .04em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 999px; margin-bottom: 10px;
+}
+.club-copy h2 { font-size: clamp(1.4rem, 3.4vw, 1.95rem); margin: 0 0 6px; }
+.club-copy p { color: var(--ink-soft); max-width: 46ch; margin: 0; font-size: 1.02rem; }
+
+/* floating storybook bits */
+.club-float { position: absolute; font-size: 1.5rem; opacity: .8; pointer-events: none; animation: clubFloat 4.5s ease-in-out infinite; }
+.club-float-1 { top: -6px; right: 40%; animation-delay: 0s; }
+.club-float-2 { bottom: -4px; right: 30%; font-size: 1.2rem; animation-delay: .9s; }
+.club-float-3 { top: 8px; right: 12%; font-size: 1.1rem; animation-delay: 1.8s; }
+@keyframes clubFloat { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-10px) rotate(6deg); } }
+
+/* the standout, fun, animated button */
+.btn-club {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, var(--clay, #c2562e), var(--gold, #e8a04b));
+  color: #fff; font-weight: 800; font-size: 1.16rem;
+  font-family: var(--serif);
+  padding: 18px 34px; border-radius: 999px; text-decoration: none;
+  box-shadow: 0 8px 0 var(--clay-dark, #9e421f), 0 14px 26px rgba(158,66,31,.32);
+  animation: clubBob 2.6s ease-in-out infinite;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn-club:hover { filter: brightness(1.04); transform: translateY(-3px); box-shadow: 0 11px 0 var(--clay-dark, #9e421f), 0 18px 30px rgba(158,66,31,.36); }
+.btn-club:active { transform: translateY(5px); box-shadow: 0 3px 0 var(--clay-dark, #9e421f), 0 6px 14px rgba(158,66,31,.3); }
+.btn-club .btn-club-emoji { font-size: 1.4rem; animation: clubWiggle 2.6s ease-in-out infinite; }
+.btn-club .btn-club-arrow { transition: transform .2s ease; font-weight: 900; }
+.btn-club:hover .btn-club-arrow { transform: translateX(6px); }
+@keyframes clubBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes clubWiggle { 0%,100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+
+@media (max-width: 620px) {
+  .club-banner-inner { flex-direction: column; align-items: flex-start; }
+  .btn-club { width: 100%; justify-content: center; }
+  .club-float-1, .club-float-2 { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .club-float, .btn-club, .btn-club .btn-club-emoji { animation: none !important; }
 }
 
 /* ---------- Sections ---------- */
@@ -188,9 +267,12 @@ section { padding: 0; }
 .newsletter-form button { white-space: nowrap; padding: 13px 22px; border-radius: 999px; border: 0; background: var(--clay); color: #fff; font-weight: 600; cursor: pointer; }
 .newsletter-form button:hover { background: var(--clay-dark); }
 .form-fineprint, .form-status { font-size: .82rem; color: var(--ink-soft); margin: 8px 0 0; }
-.form-status.is-success { color: #1f7a3d; font-weight: 600; }
+.form-status.is-success { color: var(--clay-dark); font-weight: 700; }
+.newsletter-form .form-status.is-success { color: #fff; }
 .form-status.is-error { color: #b3261e; font-weight: 600; }
 .newsletter-soon { color: var(--ink-soft); font-size: .92rem; }
+.newsletter-embed iframe { width: 100%; max-width: 480px; height: 80px; border: 0; margin: 0; background: transparent; display: block; }
+.footer-signup .newsletter-embed iframe { max-width: 100%; }
 
 .contact-form { display: grid; gap: 16px; max-width: 620px; }
 .contact-form label { font-weight: 600; display: block; margin-bottom: 6px; }
@@ -250,3 +332,38 @@ section { padding: 0; }
 .post-card time { color: var(--ink-soft); font-size: .85rem; }
 .post-card a { text-decoration: none; }
 .post-meta { color: var(--ink-soft); font-size: .9rem; margin-bottom: 24px; }
+
+/* ---------- The Clay Journal (blog tiles) ---------- */
+.journal-head { background: linear-gradient(180deg, #fdf3df, var(--cream)); }
+.journal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+.journal-tile {
+  display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: var(--ink);
+  background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px 20px;
+  box-shadow: 0 3px 14px rgba(80,60,30,.06);
+  transition: transform .14s ease, box-shadow .14s ease;
+  position: relative; overflow: hidden;
+}
+.journal-tile:before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, var(--gold), var(--clay));
+  opacity: .85;
+}
+.journal-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(80,60,30,.14); }
+.journal-tile h3 { font-size: 1.18rem; line-height: 1.3; margin: 2px 0 0; }
+.journal-tile p { color: var(--ink-soft); font-size: .93rem; line-height: 1.55; flex: 1; margin: 0; }
+.jtag {
+  align-self: flex-start; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 999px; background: #f3ead9; color: var(--clay-dark);
+}
+.jtag-neurodivergent-kids { background: #e8eef7; color: #3c5f8f; }
+.jtag-big-feelings { background: #f7e6df; color: #a84828; }
+.jtag-faith-and-family, .jtag-faith-family { background: #efe7f0; color: #6d4a67; }
+.jtag-family-life { background: #e9f0e5; color: #4f7247; }
+.jtag-bedtime-and-calm, .jtag-bedtime-calm { background: #e7ebf3; color: #4a5f80; }
+.jtag-read-alouds { background: #f8eed8; color: #8a6512; }
+.jtag-cooking-and-home, .jtag-cooking { background: #f5e9dc; color: #8c5a2b; }
+.jfoot { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+.jfoot time { color: var(--ink-soft); font-size: .8rem; }
+.jread { color: var(--clay-dark); font-weight: 700; font-size: .88rem; }
+.journal-follow { background: linear-gradient(160deg, #fdf0d6, #f6ead8); border-radius: 24px; margin: 0 auto 40px; max-width: 1080px; }
+@media (max-width: 640px) { .journal-grid { grid-template-columns: 1fr; } }

@@ -2,8 +2,15 @@
    If no action is configured, renders a disabled "coming soon" note instead of
    a dead form. Fires newsletter_signup analytics event via data-track. #}
 {%- set signupLocation = signupLocation or "footer" -%}
-{%- if site.newsletterAction -%}
-<form class="newsletter-form" action="{{ site.newsletterAction }}" method="post" target="_blank"
+{%- if site.newsletterEmbed -%}
+{# Beehiiv embed (slim email+button). The direct POST method was deprecated by Beehiiv (405). #}
+<div class="newsletter-embed" data-location="{{ signupLocation }}">
+  <iframe src="{{ site.newsletterEmbed }}" title="Subscribe to the Made Out of Clay newsletter"
+          data-test-id="beehiiv-embed" frameborder="0" scrolling="no" loading="lazy"></iframe>
+  <p class="form-fineprint">No spam. Just new books and free printables now and then.</p>
+</div>
+{%- elif site.newsletterAction -%}
+<form class="newsletter-form" action="{{ site.newsletterAction }}" method="post"
       data-track="newsletter_signup" data-location="{{ signupLocation }}" novalidate>
   <label class="visually-hidden" for="nl-email-{{ signupLocation }}">Email address</label>
   <div class="field-row">

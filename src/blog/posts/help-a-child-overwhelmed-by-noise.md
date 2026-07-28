@@ -2,6 +2,7 @@
 title: "How to Help a Child Who Gets Overwhelmed by Noise"
 description: "Practical, gentle ways to support a child who finds the world too loud — from sensory tools to the words that help them ask for quiet without shame."
 date: 2026-06-03
+tag: "Neurodivergent Kids"
 ---
 
 Some kids hear the world louder than the rest of us. The hum of the grocery store, the echo of a gym, the layered chaos of a birthday party — for a noise-sensitive child, these aren't background. They're a flood. And when the flood gets too high, it comes out as tears, as a meltdown, as a desperate need to leave *right now.*

@@ -19,6 +19,9 @@ breadcrumbs:
     {% if site.contactAction %}
     <form class="contact-form" action="{{ site.contactAction }}" method="post"
           data-track="contact_submit" novalidate>
+      <input type="hidden" name="access_key" value="b36f5fb3-641f-4258-aa33-9ca185466fe2">
+      <input type="hidden" name="subject" value="New Made Out of Clay contact message">
+      <input type="hidden" name="from_name" value="Made Out of Clay website">
       <div>
         <label for="c-name">Name</label>
         <input id="c-name" type="text" name="name" required autocomplete="name">
