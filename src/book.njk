@@ -56,6 +56,22 @@ schemaBook: true
   </div>
 </section>
 
+{% if book.songVideo %}
+<section class="section section-alt" id="song">
+  <div class="wrap wrap-narrow" style="text-align: center;">
+    <h2 class="section-title">🎵 The song from this book</h2>
+    <p>"{{ book.songTitle }}" — sing it together. Fair warning: it will be stuck in your head by bedtime.</p>
+    <video controls preload="metadata" playsinline
+           poster="{{ book.cover }}"
+           style="width: 100%; max-width: 720px; border-radius: 12px; margin-top: 16px;"
+           data-track="song_video_play" data-book-title="{{ book.title }}">
+      <source src="{{ book.songVideo }}" type="video/mp4">
+      Your browser doesn't support embedded video.
+    </video>
+  </div>
+</section>
+{% endif %}
+
 {%- set seriesBooks = [] -%}
 {%- for b in books -%}
   {%- if b.series == book.series and b.slug != book.slug -%}
