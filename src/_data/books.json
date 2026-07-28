@@ -28,12 +28,12 @@
     "title": "Just Like My Brother",
     "series": "sunnys-table",
     "order": 3,
-    "asin": "",
-    "status": "coming-soon",
-    "blurb": "A tender story about looking up to a sibling and finding your own way. Coming soon to the At Sunny's Table series.",
+    "asin": "B0H7XRS8RN",
+    "status": "live",
+    "blurb": "A tender story about looking up to a big sibling — and discovering the wonderful things that make you exactly you. Book three in the At Sunny's Table series.",
     "themes": ["siblings", "belonging", "growing up"],
-    "cover": "/assets/covers/just-like-my-brother.svg",
-    "alt": "Cover of Just Like My Brother, an upcoming sloth picture book from At Sunny's Table"
+    "cover": "/assets/covers/just-like-my-brother.webp",
+    "alt": "Cover of Just Like My Brother, a sloth picture book from the At Sunny's Table series"
   },
   {
     "slug": "clay-has-amazing-powers",
@@ -70,6 +70,18 @@
     "themes": ["courage", "anxiety", "water", "trying new things"],
     "cover": "/assets/covers/hello-pool.jpg",
     "alt": "Cover of Hello, Pool, a picture book about courage from Just the Way You Are"
+  },
+  {
+    "slug": "titus-and-the-lions",
+    "title": "Titus and the Lions",
+    "series": "titus-the-lamb",
+    "order": 1,
+    "asin": "",
+    "status": "coming-soon",
+    "blurb": "Why did Daniel keep praying — even when the king said stop? Titus the little lamb peeks into the lions' den to find out, and comes back with a song you'll be singing all week: God shut the lions' mouths! (ROAR!)",
+    "themes": ["courage", "prayer", "faith", "sing-along"],
+    "cover": "/assets/covers/titus-and-the-lions.jpg",
+    "alt": "Cover of Titus and the Lions, a sing-along Bible picture book from the Titus the Lamb series"
   },
   {
     "slug": "calebs-homeland",
