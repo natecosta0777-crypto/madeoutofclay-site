@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
+(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('book-club.html');}}catch(e){}})();</script>
+<title>My Library — Made Out of Clay</title>
+<style>
+  :root{
+    --mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;
+    --denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  /* top bar */
+  header{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1120px;margin:0 auto;gap:16px}
+  .logo{font-weight:800;font-size:1.05rem}.logo span{color:var(--terracotta)}
+  nav.menu{display:flex;gap:6px;flex-wrap:wrap}
+  nav.menu a{padding:8px 14px;border-radius:30px;font-size:.9rem;font-weight:700;color:var(--muted)}
+  nav.menu a.on{background:var(--terracotta);color:#fff}
+  .profile{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--ink)}
+  .avatar{width:34px;height:34px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+  /* personalization banner */
+  .perso{background:linear-gradient(120deg,#fdeccf,#e9f0e6);border-bottom:1px solid var(--line)}
+  .perso .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;flex-wrap:wrap;gap:10px}
+  .perso b{color:var(--terracotta)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 14px;font-size:.84rem;font-weight:700;color:var(--ink);cursor:pointer}
+  .chip.on{background:var(--denim);color:#fff;border-color:var(--denim)}
+  /* sections */
+  section{padding:26px 0}
+  .row-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+  .row-head h2{font-size:1.3rem}
+  .row-head a{font-size:.85rem;font-weight:700;color:var(--terracotta)}
+  .shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(160px,1fr);gap:16px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+  .shelf.wrapgrid{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .book{scroll-snap-align:start;cursor:pointer}
+  .cover{position:relative;border-radius:14px;aspect-ratio:896/1200;display:flex;align-items:flex-end;padding:14px;color:#fff;border:1px solid rgba(0,0,0,.05);box-shadow:0 4px 12px rgba(80,60,30,.10);overflow:hidden;background-size:cover;background-position:center;background-color:#e7dcc8}
+  .cover h3{font-size:1.02rem;line-height:1.15;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .cover .ribbon{position:absolute;top:10px;right:-30px;background:var(--terracotta);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.05em;padding:4px 34px;transform:rotate(45deg)}
+  .cover .emoji{position:absolute;top:12px;left:12px;font-size:1.6rem}
+  .book .meta{padding:8px 2px 0}
+  .book .series{font-size:.76rem;color:var(--muted);font-weight:700}
+  .book .feat{font-size:.74rem;color:var(--sage);font-weight:700;margin-top:2px}
+  .progress{height:5px;background:var(--line);border-radius:5px;margin-top:8px;overflow:hidden}
+  .progress i{display:block;height:100%;background:var(--terracotta)}
+  /* covers palettes */
+  .c-affirm{background:linear-gradient(150deg,#E8B84B,#C9744D)}
+  .c-brave{background:linear-gradient(150deg,#C9744D,#7E5A78)}
+  .c-stem{background:linear-gradient(150deg,#5E7FA3,#8FAE8B)}
+  .c-feel{background:linear-gradient(150deg,#7E5A78,#5E7FA3)}
+  .c-curio{background:linear-gradient(150deg,#8FAE8B,#5E7FA3)}
+  .c-calm{background:linear-gradient(150deg,#5E7FA3,#2F2A24)}
+  /* printables cta */
+  .printcta{background:var(--sage);color:#fff;border-radius:18px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .printcta h2{font-size:1.4rem;margin-bottom:4px}
+  .printcta a{background:#fff;color:var(--ink);font-weight:800;padding:11px 22px;border-radius:30px}
+  footer{padding:30px 0;color:var(--muted);font-size:.82rem;text-align:center;border-top:1px solid var(--line);margin-top:20px}
+  @media(max-width:640px){nav.menu{display:none}}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header>
+  <div class="bar">
+    <a class="logo" href="clubhouse.html" aria-label="Made Out of Clay Library" style="display:inline-flex;align-items:center;gap:6px"><img class="club-static-logo" src="/assets/logo-header.webp" alt="" width="70" height="44"><span aria-hidden="true"> Library</span></a>
+    <nav class="menu">
+      <a class="on" href="app.html">Home</a>
+      <a href="#new">New this week</a>
+      <a href="/printables">Printables</a>
+      <a href="clubhouse.html">Clubhouse</a>
+    </nav>
+    <div class="profile"><span class="avatar" id="kidAvatar">☺</span> <span id="kidName">your reader</span></div>
+  </div>
+</header>
+<main id="main-content">
+
+<!-- PERSONALIZATION -->
+<div class="perso">
+  <div class="wrap">
+    <div>Showing picks for <b id="kidName2">your reader</b> — what do they need right now?</div>
+    <div class="chips">
+      <span class="chip on">Brave Girls</span>
+      <span class="chip">Affirming</span>
+      <span class="chip">Cozy &amp; Kind</span>
+      <span class="chip">Heart &amp; Home</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTINUE READING -->
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>Continue reading</h2></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=maya-goes-first">
+        <div class="cover" style="background-image:url('assets/covers/maya-goes-first.webp')"></div>
+        <div class="meta"><div class="series">Brave Like Me</div><div class="progress"><i style="width:45%"></i></div></div>
+      </a>
+      <a class="book" href="reader.html?book=clay-has-amazing-powers">
+        <div class="cover" style="background-image:url('assets/covers/clay-powers.webp')"></div>
+        <div class="meta"><div class="series">Just the Way You Are</div><div class="progress"><i style="width:30%"></i></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEW THIS WEEK (cadence/retention) -->
+<section id="new">
+  <div class="wrap">
+    <div class="row-head"><h2>✨ New this week</h2><a href="#">See all</a></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=asher-and-the-high-ridge"><div class="cover" style="background-image:url('assets/covers/asher-rock.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 Audio soon · 🖍️ Activity</div></div></a>
+      <a class="book" href="reader.html?book=just-like-my-brother"><div class="cover" style="background-image:url('assets/covers/just-like-brother.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 Audio soon · 🖍️ Activity</div></div></a>
+      <a class="book" href="reader.html?book=hello-pool"><div class="cover" style="background-image:url('assets/covers/hello-pool.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">Just the Way You Are</div><div class="feat">🎧 Audio soon · 🖍️ Activity</div></div></a>
+      <a class="book" href="reader.html?book=zoe-and-the-too-tall-slide"><div class="cover" style="background-image:url('assets/covers/zoe-slide.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 Audio soon · 🖍️ Activity</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOR LILY THIS WEEK (theme-led) -->
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>For <span id="kidName3">your reader</span> this week · Brave Girls</h2><a href="#">Browse theme</a></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=maya-goes-first"><div class="cover" style="background-image:url('assets/covers/maya-goes-first.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=lenas-first-sleepover"><div class="cover" style="background-image:url('assets/covers/lena-sleepover.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=the-day-nia-spoke-up"><div class="cover" style="background-image:url('assets/covers/nia-spoke-up.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=the-new-school-butterflies"><div class="cover" style="background-image:url('assets/covers/new-school.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- BROWSE BY SERIES -->
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>Brave Like Me</h2><a href="#">See series</a></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=maya-goes-first"><div class="cover" style="background-image:url('assets/covers/maya-goes-first.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=maya-and-the-lights-out-night"><div class="cover" style="background-image:url('assets/covers/maya-lights-out.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=maya-and-the-two-wheel-bike"><div class="cover" style="background-image:url('assets/covers/maya-two-wheel.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=maya-tries-out-for-the-team"><div class="cover" style="background-image:url('assets/covers/maya-team.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=brave-like-me-at-the-big-pool"><div class="cover" style="background-image:url('assets/covers/big-pool.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>Just the Way You Are</h2><a href="#">See series</a></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=clay-has-amazing-powers"><div class="cover" style="background-image:url('assets/covers/clay-powers.webp')"></div><div class="meta"><div class="series">Just the Way You Are</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=good-night-dinosaur"><div class="cover" style="background-image:url('assets/covers/goodnight-dino.webp')"></div><div class="meta"><div class="series">Just the Way You Are</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=hello-pool"><div class="cover" style="background-image:url('assets/covers/hello-pool.webp')"></div><div class="meta"><div class="series">Just the Way You Are</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>At Sunny’s Table · cozy &amp; bedtime</h2><a href="#">See series</a></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=scooter-cant-wait-for-spring"><div class="cover" style="background-image:url('assets/covers/scooter-spring.webp')"></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=scooter-needs-it-quiet"><div class="cover" style="background-image:url('assets/covers/scooter-quiet.webp')"></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=just-like-my-brother"><div class="cover" style="background-image:url('assets/covers/just-like-brother.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row-head"><h2>The Kingdom of Judea</h2><a href="#">See series</a></div>
+    <div class="shelf">
+      <a class="book" href="reader.html?book=calebs-homeland"><div class="cover" style="background-image:url('assets/covers/calebs-homeland.webp')"></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=the-long-walk"><div class="cover" style="background-image:url('assets/covers/long-walk.webp?v=2')"></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+      <a class="book" href="reader.html?book=asher-and-the-high-ridge"><div class="cover" style="background-image:url('assets/covers/asher-rock.webp')"></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 soon · 🖍️</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- PRINTABLES HUB -->
+<section>
+  <div class="wrap">
+    <div class="printcta">
+      <div>
+        <h2>🖍️ The Printables Hub</h2>
+        <div style="opacity:.95">Coloring pages, feelings wheels, brave-badges, build-along projects, and theme packs.</div>
+      </div>
+      <a href="/printables">Open Printables →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  Made Out of Clay Book Club · free membership · no behavioral ads or tracking of children · <a href="/" style="color:var(--terracotta);font-weight:700">Account</a>
+</footer>
+
+<script>
+(function(){
+  var name = '';
+  try{ name = localStorage.getItem('mooc_kid_name') || ''; }catch(e){}
+  if(!name) return;
+  var n1=document.getElementById('kidName'), n2=document.getElementById('kidName2'),
+      n3=document.getElementById('kidName3'), av=document.getElementById('kidAvatar');
+  if(n1) n1.textContent = name;
+  if(n2) n2.textContent = name;
+  if(n3) n3.textContent = name;
+  if(av) av.textContent = name.charAt(0).toUpperCase();
+})();
+</script>
+
+</body>
+</html>

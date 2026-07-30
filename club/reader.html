@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
+(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('book-club.html');}}catch(e){}})();</script>
+<title>The Reader · Made Out of Clay Book Club</title>
+<style>
+  :root{
+    --mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;
+    --denim:#5E7FA3;--ink:#2F2A24;--muted:#6F6657;--line:#E7DCC8;--white:#fff;--plum:#7E5A78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:#28231d;line-height:1.5}
+  a{text-decoration:none;color:inherit}
+  button{font-family:inherit}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#1f1b16;color:#f1e9da;gap:12px}
+  .topbar a.back{color:#f1d9a8;font-weight:700;font-size:.9rem;white-space:nowrap}
+  .topbar .title{font-weight:800;font-size:.98rem;text-align:center;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar .series{color:#b7ab97;font-weight:700;font-size:.82rem}
+  .jukebtn{background:var(--mustard);color:#3a2c12;border:none;border-radius:30px;font-weight:900;font-size:.9rem;padding:9px 16px;cursor:pointer;box-shadow:0 3px 0 #b8912f;white-space:nowrap}
+  .jukebtn:active{transform:translateY(2px);box-shadow:0 1px 0 #b8912f}
+
+  .stage{max-width:980px;margin:0 auto;padding:18px}
+  /* Open-book layout: art on the left page, words on the right page */
+  .spread{position:relative;display:flex;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4);background:#fbf6ec;transition:opacity .18s ease}
+  .spread.fading{opacity:.25}
+  .page-art{width:55%;aspect-ratio:896/1200;background:#3a342b;background-size:cover;background-position:center;flex:0 0 auto}
+  .page-words{flex:1;display:flex;align-items:center;justify-content:center;padding:30px 30px;position:relative;background:linear-gradient(90deg,#efe6d4 0,#fbf6ec 26px);overflow-y:auto}
+  .page-words:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#d9cdb4,#c9bda2,#d9cdb4)}
+  .spread .text{font-family:Georgia,'Iowan Old Style',serif;color:var(--ink);font-size:clamp(1rem,1.75vw,1.3rem);line-height:1.75;text-align:center;max-width:34ch}
+  .spread .text em{color:var(--terracotta);font-style:italic;font-weight:700}
+  /* books with text printed on the art (no separate words page) */
+  .spread.artonly{background:transparent;justify-content:center}
+  .spread.artonly .page-art{width:100%;max-width:620px}
+  .spread.artonly .page-words{display:none}
+  .tap{position:absolute;top:0;bottom:0;width:22%;z-index:3;cursor:pointer}
+  .tap.left{left:0}.tap.right{right:0}
+  @media(max-width:640px){
+    .spread{flex-direction:column}
+    .page-art{width:100%}
+    .page-words{padding:22px 20px;background:linear-gradient(180deg,#efe6d4 0,#fbf6ec 22px)}
+    .page-words:before{left:0;right:0;top:0;bottom:auto;width:auto;height:3px;background:linear-gradient(90deg,#d9cdb4,#c9bda2,#d9cdb4)}
+  }
+
+  /* PDF books share the stage */
+  .pdfwrap{display:none;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4);height:78vh;background:#3a342b}
+  .pdfwrap iframe{width:100%;height:100%;border:0}
+  .pdfbar{display:none;justify-content:center;gap:12px;margin-top:12px}
+  .pdfbar a{background:#1f1b16;color:#f1d9a8;font-weight:800;font-size:.85rem;padding:9px 16px;border-radius:30px}
+
+  /* coming-soon state */
+  .sooncard{display:none;text-align:center;background:#1f1b16;border-radius:16px;padding:44px 24px;color:#f1e9da;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+  .sooncard img{width:150px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.5);margin-bottom:14px}
+  .sooncard h2{margin-bottom:6px}
+  .sooncard p{color:#b7ab97;font-weight:700;max-width:400px;margin:0 auto 18px}
+  .sooncard button{background:var(--terracotta);color:#fff;border:none;border-radius:30px;font-weight:900;font-size:1rem;padding:13px 26px;cursor:pointer;box-shadow:0 4px 0 #a85c3b}
+
+  .player{max-width:760px;margin:0 auto;padding:0 18px 24px}
+  .progressbar{height:6px;background:#3a342b;border-radius:6px;overflow:hidden;margin:14px 0}
+  .progressbar i{display:block;height:100%;width:0;background:var(--mustard);transition:width .3s linear}
+  .controls{display:flex;align-items:center;justify-content:center;gap:18px;color:#f1e9da}
+  .controls button{background:none;border:none;color:#f1e9da;font-size:1.5rem;cursor:pointer;padding:8px}
+  .play{width:64px;height:64px;border-radius:50%;background:var(--terracotta)!important;color:#fff!important;font-size:1.6rem!important;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #a85c3b}
+  .pagecount{color:#b7ab97;font-weight:700;font-size:.9rem;text-align:center;margin-top:8px}
+  .mode{display:flex;justify-content:center;gap:0;margin:16px auto 0;background:#1f1b16;border-radius:30px;padding:4px;width:max-content}
+  .mode button{background:none;border:none;color:#b7ab97;font-weight:700;font-size:.85rem;padding:8px 18px;border-radius:30px;cursor:pointer}
+  .mode button.on{background:var(--sage);color:#fff}
+  #soonNote{text-align:center;color:#b7ab97;font-size:.82rem;font-weight:700;margin-top:10px;max-width:520px;margin-left:auto;margin-right:auto}
+
+  .belowdock{background:var(--cream);color:var(--ink);border-radius:20px 20px 0 0;margin-top:18px;padding:24px 0 36px}
+  .belowdock .in{max-width:760px;margin:0 auto;padding:0 20px}
+  .actbtn{display:inline-flex;align-items:center;gap:8px;background:var(--terracotta);color:#fff;font-weight:800;padding:13px 22px;border-radius:30px}
+  .actbtn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  h2.more{font-size:1.2rem;margin-bottom:14px}
+  .shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(120px,1fr);gap:14px;overflow-x:auto;padding-bottom:6px}
+  .book{cursor:pointer}
+  .book .cover{border-radius:12px;aspect-ratio:1;background-size:cover;background-position:center;box-shadow:0 4px 12px rgba(80,60,30,.18)}
+  .book .s{font-size:.8rem;color:var(--ink);font-weight:700;padding-top:6px;line-height:1.2}
+  .book .s span{color:var(--muted);font-weight:600;display:block;font-size:.72rem}
+  .nextup{background:var(--sage);color:#fff;border-radius:14px;padding:16px 18px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .nextup button{background:#fff;color:var(--ink);border:none;font-weight:800;padding:9px 18px;border-radius:30px;cursor:pointer;font-size:.9rem}
+  .endcard{display:none;text-align:center;background:rgba(232,184,75,.16);border:1px solid rgba(232,184,75,.4);border-radius:14px;padding:16px;margin-bottom:22px;color:#f1e9da}
+  .endcard.show{display:block}
+  .endcard button{background:var(--mustard);color:#3a2c12;border:none;border-radius:30px;font-weight:900;padding:10px 20px;margin-top:10px;cursor:pointer;box-shadow:0 3px 0 #b8912f}
+
+  /* ---------- THE JUKEBOX (book picker drawer) ---------- */
+  .jbov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s ease}
+  .jbov.open{opacity:1;pointer-events:auto}
+  .jukebox{position:fixed;left:0;right:0;bottom:0;z-index:61;background:var(--cream);border-radius:22px 22px 0 0;max-height:82vh;transform:translateY(105%);transition:transform .32s cubic-bezier(.2,.9,.3,1);display:flex;flex-direction:column;box-shadow:0 -14px 50px rgba(0,0,0,.45)}
+  .jukebox.open{transform:translateY(0)}
+  .jbhead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px 10px}
+  .jbhead h2{font-size:1.25rem}
+  .jbhead p{color:var(--muted);font-weight:600;font-size:.85rem}
+  .jbclose{background:#fff;border:1.5px solid var(--line);border-radius:30px;font-weight:800;padding:8px 16px;cursor:pointer}
+  .jbscroll{overflow-y:auto;padding:4px 22px 26px}
+  .jbseries{margin-top:12px}
+  .jbseries h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:var(--terracotta);margin-bottom:8px}
+  .jbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:12px}
+  .jb{border:none;background:none;text-align:left;cursor:pointer;padding:0;position:relative}
+  .jb .cv{border-radius:10px;aspect-ratio:1;background-size:cover;background-position:center;box-shadow:0 4px 12px rgba(80,60,30,.2);transition:transform .12s ease}
+  .jb:hover .cv{transform:translateY(-3px) scale(1.02)}
+  .jb.now .cv{outline:3px solid var(--mustard);outline-offset:2px}
+  .jb .t{font-size:.74rem;font-weight:700;color:var(--ink);padding-top:5px;line-height:1.2}
+  .jb .badge{position:absolute;top:6px;left:6px;background:var(--mustard);color:#3a2c12;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em;padding:3px 7px;border-radius:20px}
+  .jb .badge.pdf{background:var(--denim);color:#fff}
+  .jb .badge.soon{background:#cfc6b4;color:#5c5343}
+  .jb.soon .cv{filter:saturate(.55) brightness(.92)}
+
+  @media(prefers-reduced-motion:reduce){.jukebox,.jbov,.spread{transition:none}}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="topbar">
+  <a class="back" href="clubhouse.html">‹ Clubhouse</a>
+  <div class="title" id="tbTitle">The Reader</div>
+  <button type="button" class="jukebtn" onclick="openJuke()">📚 Books</button>
+</div>
+
+<!-- READER STAGE -->
+<div class="stage">
+  <div class="spread" id="spread">
+    <button type="button" class="tap left" onclick="turn(-1)" aria-label="Previous page"></button>
+    <button type="button" class="tap right" onclick="turn(1)" aria-label="Next page"></button>
+    <div class="page-art" id="pageart"></div>
+    <div class="page-words"><div class="text" id="pagetext"></div></div>
+  </div>
+  <div class="pdfwrap" id="pdfwrap"><iframe id="pdfframe" title="Book"></iframe></div>
+  <div class="pdfbar" id="pdfbar"><a id="pdfdl" href="#" download>⬇ Download the book</a></div>
+  <div class="sooncard" id="sooncard">
+    <img id="soonCover" src="/assets/logo-header.webp" alt="" width="1200" height="1200">
+    <h2 id="soonTitle">Book coming soon</h2>
+    <p>This one is coming to the reader very soon! Meanwhile, the jukebox is full of stories ready to go.</p>
+    <button type="button" onclick="openJuke()">📚 Pick another book</button>
+  </div>
+</div>
+
+<!-- PLAYER -->
+<div class="player" id="player">
+  <div class="progressbar"><i id="prog"></i></div>
+  <div class="controls">
+    <button type="button" onclick="turn(-1)" aria-label="Previous page">⏮</button>
+    <button type="button" class="play" id="playbtn" onclick="togglePlay()" aria-label="Play read-along">▶</button>
+    <button type="button" onclick="turn(1)" aria-label="Next page">⏭</button>
+  </div>
+  <div class="pagecount">Page <span id="pnum">1</span> of <span id="ptot">–</span></div>
+  <div class="mode">
+    <button type="button" id="m-tome" onclick="setMode('tome')">🎧 Read to me · soon</button>
+    <button type="button" id="m-myself" class="on" onclick="setMode('myself')">📖 Read myself</button>
+  </div>
+  <div id="soonNote">🎧 Narrated read-alongs are coming soon — for now, press play to auto-turn the pages, or read along together.</div>
+</div>
+
+<!-- BELOW THE FOLD -->
+<div class="belowdock">
+  <div class="in">
+    <div class="endcard" id="endcard">🌟 <b>The End!</b> <span id="endline"></span><br>
+      <button type="button" onclick="openJuke()">📚 Pick your next book</button>
+    </div>
+    <div class="nextup" id="nextup">
+      <div id="nextupText"><b>Up next:</b></div>
+      <button type="button" id="nextupBtn">Read next →</button>
+    </div>
+    <div class="actions">
+      <a class="actbtn" href="/printables">🖍️ Grab a printable</a>
+      <a class="actbtn alt" href="/characters">✉️ Write to a character</a>
+    </div>
+    <h2 class="more" id="moreTitle">More books</h2>
+    <div class="shelf" id="shelf"></div>
+  </div>
+</div>
+
+<!-- THE JUKEBOX -->
+<div class="jbov" id="jbov" onclick="closeJuke()"></div>
+<div class="jukebox" id="jukebox" role="dialog" aria-modal="true" aria-label="Pick a book">
+  <div class="jbhead">
+    <div>
+      <h2>📚 The Book Jukebox</h2>
+      <p>Tap a cover and it pops right into the reader.</p>
+    </div>
+    <button type="button" class="jbclose" onclick="closeJuke()">Close ✕</button>
+  </div>
+  <div class="jbscroll" id="jbscroll"></div>
+</div>
+
+<!-- bump ?v= whenever club-books.js changes so returning members see new books immediately -->
+<script src="assets/js/club-books.js?v=20260722a"></script>
+<script>
+  /* ============ THE JUKEBOX READER ============
+     One reader, every book. Books come from window.CLUB_BOOKS (assets/js/club-books.js):
+     type 'spreads' = art+text pages · 'pdf' = full-book PDF · 'soon' = teaser. */
+
+  var BOOKS = window.CLUB_BOOKS || [];
+  var bySlug = {}; BOOKS.forEach(function(b){ bySlug[b.slug]=b; });
+
+  var cur=null, i=0, playing=false, timer=null, perPage=5200;
+  var spread=document.getElementById('spread'), ptext=document.getElementById('pagetext'),
+      pageart=document.getElementById('pageart'),
+      prog=document.getElementById('prog'), pnum=document.getElementById('pnum'),
+      ptot=document.getElementById('ptot'), playbtn=document.getElementById('playbtn'),
+      endcard=document.getElementById('endcard'), player=document.getElementById('player'),
+      pdfwrap=document.getElementById('pdfwrap'), pdfbar=document.getElementById('pdfbar'),
+      sooncard=document.getElementById('sooncard');
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmt(s){ // manuscript text → HTML: escape, *emphasis* → <em>, newlines → <br>
+    return esc(s).replace(/\*([^*\n]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>');
+  }
+
+  function show(which){ // 'spreads' | 'pdf' | 'soon'
+    spread.style.display = which==='spreads' ? 'flex' : 'none';
+    player.style.display = which==='spreads' ? 'block' : 'none';
+    pdfwrap.style.display = which==='pdf' ? 'block' : 'none';
+    pdfbar.style.display = which==='pdf' ? 'flex' : 'none';
+    sooncard.style.display = which==='soon' ? 'block' : 'none';
+    document.getElementById('nextup').style.display = which==='spreads' ? 'flex' : 'none';
+  }
+
+  function loadBook(slug, push){
+    var b = bySlug[slug]; if(!b) b = BOOKS[0];
+    cur=b; i=0; stop();
+    document.getElementById('tbTitle').innerHTML = esc(b.title)+' <span class="series">· '+esc(b.series)+'</span>';
+    document.title = b.title+' · Made Out of Clay Book Club';
+    try{ localStorage.setItem('mooc_last_book', b.slug); }catch(e){}
+    if(push!==false){ try{ history.pushState({book:b.slug},'','reader.html?book='+encodeURIComponent(b.slug)); }catch(e){} }
+
+    if(b.type==='spreads'){
+      show('spreads');
+      // per-book page shape (square print books vs portrait spreads)
+      pageart.style.aspectRatio = b.ratio || '896/1200';
+      // books with text printed on the art get the whole stage; others open like a book
+      spread.classList.toggle('artonly', !b.pages.some(function(p){return p.text;}));
+      ptot.textContent=b.pages.length;
+      b.pages.forEach(function(p){ var im=new Image(); im.src=b.base+p.img; }); // preload
+      document.getElementById('endline').textContent='Another brave story for the shelf.';
+      render();
+    } else if(b.type==='pdf'){
+      show('pdf');
+      document.getElementById('pdfframe').src=b.pdf+'#view=FitH';
+      document.getElementById('pdfdl').href=b.pdf;
+    } else {
+      show('soon');
+      document.getElementById('soonCover').src=b.cover;
+      document.getElementById('soonTitle').textContent=b.title;
+    }
+    buildShelf(b); buildNextup(b); buildJuke();
+  }
+
+  /* ---------- spreads flow ---------- */
+  function render(){
+    var p=cur.pages[i];
+    spread.classList.add('fading');
+    setTimeout(function(){
+      pageart.style.backgroundImage="url('"+cur.base+p.img+"')";
+      ptext.innerHTML=fmt(p.text);
+      spread.classList.remove('fading');
+    },120);
+    pnum.textContent=i+1;
+    prog.style.width=((i)/(cur.pages.length-1)*100)+'%';
+    endcard.classList.toggle('show', i===cur.pages.length-1);
+  }
+  function turn(d){
+    if(!cur||cur.type!=='spreads') return;
+    i=Math.max(0,Math.min(cur.pages.length-1,i+d));
+    render();
+    if(playing){clearTimeout(timer); if(i<cur.pages.length-1) timer=setTimeout(function(){turn(1)},perPage); else stop();}
+  }
+  function togglePlay(){ playing?stop():start(); }
+  function start(){
+    if(!cur||cur.type!=='spreads') return;
+    playing=true; playbtn.textContent='⏸';
+    if(i>=cur.pages.length-1){ i=0; render(); }
+    timer=setTimeout(function(){turn(1)},perPage);
+  }
+  function stop(){ playing=false; if(playbtn) playbtn.textContent='▶'; clearTimeout(timer); }
+  function setMode(m){
+    document.getElementById('m-tome').classList.toggle('on',m==='tome');
+    document.getElementById('m-myself').classList.toggle('on',m==='myself');
+    if(m==='myself') stop();
+  }
+  document.addEventListener('keydown',function(e){
+    if(document.getElementById('jukebox').classList.contains('open')){ if(e.key==='Escape') closeJuke(); return; }
+    if(e.key==='ArrowRight') turn(1);
+    if(e.key==='ArrowLeft') turn(-1);
+    if(e.key===' ' && cur && cur.type==='spreads'){ e.preventDefault(); togglePlay(); }
+  });
+
+  /* ---------- jukebox ---------- */
+  function openJuke(){ document.getElementById('jukebox').classList.add('open'); document.getElementById('jbov').classList.add('open'); }
+  function closeJuke(){ document.getElementById('jukebox').classList.remove('open'); document.getElementById('jbov').classList.remove('open'); }
+  function pick(slug){
+    var b=bySlug[slug];
+    closeJuke();
+    loadBook(slug);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function badge(b){
+    if(b.type==='spreads') return '<span class="badge">Read</span>';
+    if(b.type==='pdf') return '<span class="badge pdf">Book</span>';
+    return '<span class="badge soon">Soon</span>';
+  }
+  function buildJuke(){
+    var order=['Brave Like Me','The Kingdom of Judea',"At Sunny's Table",'Just the Way You Are'];
+    var html='';
+    order.forEach(function(s){
+      var list=BOOKS.filter(function(b){return b.series===s;});
+      if(!list.length) return;
+      html+='<div class="jbseries"><h3>'+esc(s)+'</h3><div class="jbgrid">';
+      list.forEach(function(b){
+        html+='<button class="jb '+(b.type==='soon'?'soon':'')+(cur&&cur.slug===b.slug?' now':'')+'" onclick="pick(\''+b.slug+'\')">'+
+          badge(b)+'<div class="cv" style="background-image:url(\''+b.cover+'\')"></div>'+
+          '<div class="t">'+esc(b.title)+'</div></button>';
+      });
+      html+='</div></div>';
+    });
+    document.getElementById('jbscroll').innerHTML=html;
+  }
+
+  /* ---------- shelves ---------- */
+  function buildShelf(b){
+    var same=BOOKS.filter(function(x){return x.series===b.series && x.slug!==b.slug;});
+    var rest=BOOKS.filter(function(x){return x.series!==b.series;});
+    var list=same.concat(rest).slice(0,8);
+    document.getElementById('moreTitle').textContent='More from the jukebox';
+    document.getElementById('shelf').innerHTML=list.map(function(x){
+      var tag = x.type==='soon' ? 'coming soon' : (x.type==='pdf' ? 'full book' : 'read together');
+      return '<div class="book" onclick="pick(\''+x.slug+'\')"><div class="cover" style="background-image:url(\''+x.cover+'\')"></div><div class="s">'+esc(x.title)+'<span>'+esc(x.series)+' · '+tag+'</span></div></div>';
+    }).join('');
+  }
+  function buildNextup(b){
+    if(b.type!=='spreads') return;
+    var same=BOOKS.filter(function(x){return x.series===b.series && x.type==='spreads';});
+    var idx=same.findIndex(function(x){return x.slug===b.slug;});
+    var next=same[(idx+1)%same.length];
+    document.getElementById('nextupText').innerHTML='<b>Up next in '+esc(b.series)+':</b> '+esc(next.title);
+    document.getElementById('nextupBtn').onclick=function(){ pick(next.slug); };
+  }
+
+  /* ---------- boot ---------- */
+  window.addEventListener('popstate',function(e){
+    var slug=(e.state&&e.state.book)||new URLSearchParams(location.search).get('book');
+    if(slug&&bySlug[slug]) loadBook(slug,false);
+  });
+  (function(){
+    var slug=new URLSearchParams(location.search).get('book');
+    if(!slug){ try{ slug=localStorage.getItem('mooc_last_book'); }catch(e){} }
+    if(!slug||!bySlug[slug]) slug='maya-goes-first';
+    loadBook(slug,false);
+  })();
+</script>
+</body>
+</html>

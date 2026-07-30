@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Decor · Made Out of Clay Book Club</title>
+<link rel="stylesheet" href="print.css">
+<style>
+  .poster{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .poster .big{font-weight:900;font-size:3.6rem;line-height:1.05;letter-spacing:-.01em;color:var(--ink)}
+  .poster .big.tint{color:var(--terracotta)}
+  .poster .sub{font-weight:700;font-size:1.25rem;color:var(--muted);margin-top:10px;max-width:6.5in}
+  .banner{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .pennant{width:1.35in;text-align:center}
+  .pennant svg{width:100%}
+  .pennant .lt{font-weight:900;font-size:1.6rem;fill:none;stroke:#1a1712;stroke-width:1.2}
+  .emoposter .face{width:2.1in;height:2.1in}
+  .ln{fill:none;stroke:#1a1712;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .eye{fill:#1a1712}
+  .alpha{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;width:100%}
+  .acell{border:2px solid var(--line);border-radius:12px;padding:8px 4px;text-align:center}
+  .acell .L{font-weight:900;font-size:1.6rem;color:var(--terracotta)}
+  .acell .w{font-weight:700;font-size:.78rem;color:var(--muted)}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="toolbar noprint">
+  <div class="t-title">Classroom Decor <small>Made Out of Clay · 4 pages</small></div>
+  <span class="hint">Sized for walls — print on card stock or laminate</span>
+  <a class="ghost" href="/printables">← All printables</a>
+  <button type="button" onclick="window.print()">🖨️ Print / Save PDF</button>
+</div>
+
+<!-- PAGE 1 — You Belong Here poster -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Wall poster</div></div>
+  <div class="poster">
+    <div class="big">You Belong<br><span class="tint">Here.</span></div>
+    <div class="sub">Exactly as you are — today and every day.</div>
+    <svg width="360" height="120" viewBox="0 0 360 120" style="margin-top:24px">
+      <path class="ln" style="stroke-width:4" d="M40 60 q60 -50 120 0 t120 0 t120 0" opacity=".5"/>
+      <path class="ln" style="stroke:#C9744D;stroke-width:4" d="M180 96 q-26 -20 -26 -40 q0 -16 16 -16 q8 0 10 10 q2 -10 10 -10 q16 0 16 16 q0 20 -26 40 z"/>
+    </svg>
+  </div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>A neurodiversity-affirming space.</span></div>
+</div>
+
+<!-- PAGE 2 — Emotion posters (2 up, big) -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Emotion posters</div></div>
+  <h2 class="page-title">All Feelings Are Okay</h2>
+  <p class="page-sub">Post these at kid-height. Point, name, and breathe together.</p>
+  <div class="emoposter" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px" id="emo"></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Naming it helps us tame it.</span></div>
+</div>
+
+<!-- PAGE 3 — READ pennant banner -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Bunting banner · cut &amp; string</div></div>
+  <h2 class="page-title">“R · E · A · D” Banner</h2>
+  <p class="page-sub">Color each pennant, cut them out, and string them across your reading corner.</p>
+  <div class="banner" id="banner"></div>
+  <p class="page-sub" style="margin-top:20px">More letters? Print again — spell BRAVE, KIND, or a child’s name.</p>
+  <div class="banner" id="banner2"></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Punch a hole in each top corner and thread yarn through.</span></div>
+</div>
+
+<!-- PAGE 4 — Affirmation alphabet -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Affirmation ABCs</div></div>
+  <h2 class="page-title">The Affirmation Alphabet</h2>
+  <p class="page-sub">A word for every letter — every one of them is you.</p>
+  <div class="alpha" id="alpha"></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>A to Z, you are enough.</span></div>
+</div>
+
+<script>
+  function face(inner){return '<svg class="face" viewBox="0 0 120 120"><circle class="ln" style="stroke-width:5" cx="60" cy="60" r="48" fill="#fff"/>'+inner+'</svg>';}
+  var EMO=[
+    ['HAPPY', face('<circle class="eye" cx="44" cy="52" r="4"/><circle class="eye" cx="76" cy="52" r="4"/><path class="ln" style="stroke-width:5" d="M40 72 Q60 92 80 72"/>')],
+    ['SAD', face('<circle class="eye" cx="44" cy="54" r="4"/><circle class="eye" cx="76" cy="54" r="4"/><path class="ln" style="stroke-width:5" d="M42 82 Q60 66 78 82"/>')],
+    ['ANGRY', face('<path class="ln" style="stroke-width:4" d="M36 46 L54 54 M84 46 L66 54"/><circle class="eye" cx="46" cy="60" r="4"/><circle class="eye" cx="74" cy="60" r="4"/><path class="ln" style="stroke-width:5" d="M44 84 Q60 74 76 84"/>')],
+    ['CALM', face('<path class="ln" style="stroke-width:4" d="M38 54 Q46 48 54 54 M66 54 Q74 48 82 54"/><path class="ln" style="stroke-width:5" d="M44 76 Q60 86 76 76"/>')]
+  ];
+  document.getElementById('emo').innerHTML=EMO.map(function(e){
+    return '<div style="border:2.5px solid var(--line);border-radius:16px;padding:14px;text-align:center">'+e[1]+'<div style="font-weight:900;font-size:1.3rem;margin-top:6px;letter-spacing:.04em">'+e[0]+'</div></div>';
+  }).join('');
+
+  function pennant(letter){
+    return '<div class="pennant"><svg viewBox="0 0 130 160">'+
+      '<path class="ln" style="stroke-width:4" d="M10 12 L120 12 L120 90 L65 148 L10 90 Z" fill="#fff"/>'+
+      '<circle class="ln" style="stroke-width:2" cx="24" cy="24" r="5" fill="#fff"/>'+
+      '<circle class="ln" style="stroke-width:2" cx="106" cy="24" r="5" fill="#fff"/>'+
+      '<text class="lt" x="65" y="86" text-anchor="middle">'+letter+'</text></svg></div>';
+  }
+  document.getElementById('banner').innerHTML=['R','E','A','D'].map(pennant).join('');
+  document.getElementById('banner2').innerHTML=['B','R','A','V','E'].map(pennant).join('');
+
+  var ABC={A:'Amazing',B:'Brave',C:'Curious',D:'Determined',E:'Enough',F:'Friendly',G:'Growing',H:'Helpful',I:'Important',J:'Joyful',K:'Kind',L:'Loved',M:'Mighty',N:'Needed',O:'Open',P:'Patient',Q:'Quirky',R:'Ready',S:'Strong',T:'Thoughtful',U:'Unique',V:'Valued',W:'Wonderful',X:'eXtraordinary',Y:'You',Z:'Zealous'};
+  document.getElementById('alpha').innerHTML=Object.keys(ABC).map(function(k){
+    return '<div class="acell"><div class="L">'+k+'</div><div class="w">'+ABC[k]+'</div></div>';
+  }).join('');
+</script>
+</body>
+</html>

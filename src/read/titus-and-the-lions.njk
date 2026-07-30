@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 permalink: /read/titus-and-the-lions/
 title: "Read Titus and the Lions — free sing-along Bible story | Made Out of Clay"
+metaTitle: "Read Titus and the Lions Free | Made Out of Clay"
 description: "Read Titus and the Lions free, right here. A little lamb asks why Daniel kept praying — and comes back with a song your kids will sing all week."
 seriesSlug: titus-the-lamb
 breadcrumbs:
@@ -11,7 +12,7 @@ breadcrumbs:
 ---
 <section class="page-head">
   <div class="wrap">
-    <p class="book-card-series" style="color: #b07d0a">
+    <p class="book-card-series" style="color: #765000">
       <a href="/series/titus-the-lamb/" style="color: inherit; text-decoration: none;">Titus the Lamb</a> · Book 1
     </p>
     <h1>{{ titusRead.title }}</h1>
@@ -24,7 +25,15 @@ breadcrumbs:
   <div class="wrap wrap-narrow reader">
     {% for page in titusRead.pages %}
     <figure class="reader-page{% if page.isCover %} reader-cover{% endif %}">
-      <img src="{{ page.image }}" alt="{% if page.isCover %}Cover of {{ titusRead.title }}{% else %}Illustration from {{ titusRead.title }}{% endif %}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" width="1200">
+      <picture>
+        <source srcset="{{ page.image | replace('.jpg', '.avif') }}" type="image/avif">
+        <source srcset="{{ page.image | replace('.jpg', '.webp') }}" type="image/webp">
+        <img src="{{ page.image }}" alt="{% if page.isCover %}Cover of {{ titusRead.title }}{% else %}Illustration from {{ titusRead.title }}{% endif %}"
+             loading="{% if loop.first %}eager{% else %}lazy{% endif %}"
+             {% if loop.first %}fetchpriority="high"{% endif %}
+             decoding="async" width="1200"
+             height="{% if page.id == 'cover' %}896{% elseif page.id == 'spread04' or page.id == 'spread05' %}670{% else %}1200{% endif %}">
+      </picture>
       {% if not page.isCover and page.text %}
       <figcaption class="reader-text">{{ page.text | replace("\n", "<br>") | safe }}</figcaption>
       {% endif %}
@@ -37,8 +46,8 @@ breadcrumbs:
   <div class="wrap wrap-narrow" style="text-align: center;">
     <h2 class="section-title">🎧 Prefer to be read to?</h2>
     <p>The whole book, read aloud with the words lighting up as they're spoken. Perfect for pre-readers and bedtime.</p>
-    <video controls preload="metadata" playsinline
-           poster="/assets/covers/titus-and-the-lions.jpg"
+    <video controls preload="none" playsinline
+           poster="/assets/covers/titus-and-the-lions.webp"
            style="width: 100%; max-width: 720px; border-radius: 12px; margin-top: 16px;"
            data-track="titus_readalong_play">
       <source src="https://pub-a1fde819eeae4431a2e0c147bb4c10a9.r2.dev/titus/titus-and-the-lions-readalong.mp4" type="video/mp4">
@@ -51,8 +60,8 @@ breadcrumbs:
   <div class="wrap wrap-narrow" style="text-align: center;">
     <h2 class="section-title">🎵 Now sing it together</h2>
     <p>"God Shut the Lions' Mouths!" — the song from the story. Fair warning: it will be stuck in your head by bedtime.</p>
-    <video controls preload="metadata" playsinline
-           poster="/assets/covers/titus-and-the-lions.jpg"
+    <video controls preload="none" playsinline
+           poster="/assets/covers/titus-and-the-lions.webp"
            style="width: 100%; max-width: 720px; border-radius: 12px; margin-top: 16px;">
       <source src="https://pub-a1fde819eeae4431a2e0c147bb4c10a9.r2.dev/titus/god-shut-the-lions-mouths.mp4" type="video/mp4">
       Your browser doesn't support embedded video.

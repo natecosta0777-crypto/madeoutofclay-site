@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coloring Bookmarks · Made Out of Clay Book Club</title>
+<link rel="stylesheet" href="print.css">
+<style>
+  .strip{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .bm{width:2in;border:2px dashed #b9ad97;border-radius:14px;padding:12px 10px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .bm svg{width:100%;height:auto}
+  .bm .cap{font-weight:800;font-size:.78rem;letter-spacing:.03em;margin-top:6px;line-height:1.25}
+  .bm .cap small{display:block;font-weight:600;color:var(--muted);font-size:.66rem;margin-top:2px}
+  .ln{fill:none;stroke:#1a1712;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .ln.thin{stroke-width:3}
+  .cuthint{text-align:center;color:var(--muted);font-size:.78rem;font-weight:600;margin-top:16px}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="toolbar noprint">
+  <div class="t-title">Coloring Bookmarks <small>Made Out of Clay · 2 pages</small></div>
+  <span class="hint">Color, cut along the dashes, and start reading</span>
+  <a class="ghost" href="/printables">← All printables</a>
+  <button type="button" onclick="window.print()">🖨️ Print / Save PDF</button>
+</div>
+
+<!-- PAGE 1 — 4 affirmation bookmarks -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Bookmarks · color &amp; cut</div></div>
+  <h2 class="page-title">Brave Like Me Bookmarks</h2>
+  <p class="page-sub">Color each one, then cut it out. Punch a hole at the top for a ribbon!</p>
+  <div class="strip" id="set1"></div>
+  <p class="cuthint">✂️ Cut along the dashed lines · card stock works best</p>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Keep your place, keep your courage.</span></div>
+</div>
+
+<!-- PAGE 2 — 3 characters + 1 design-your-own -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Bookmarks · color &amp; cut</div></div>
+  <h2 class="page-title">Club Friends Bookmarks</h2>
+  <p class="page-sub">Meet the pride — plus a blank one to make your very own.</p>
+  <div class="strip" id="set2"></div>
+  <p class="cuthint">✂️ Cut along the dashed lines · design the blank one however you like</p>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>You belong on every page.</span></div>
+</div>
+
+<script>
+  var HOLE='<circle class="ln thin" cx="72" cy="16" r="7" fill="#fff"/>';
+  function bm(art,cap,sub){
+    return '<div class="bm"><svg viewBox="0 0 144 300">'+
+      '<rect x="6" y="6" width="132" height="288" rx="16" class="ln"/>'+HOLE+art+'</svg>'+
+      '<div class="cap">'+cap+(sub?'<small>'+sub+'</small>':'')+'</div></div>';
+  }
+  // affirmation art blocks
+  var star='<path class="ln thin" d="M72 70 l9 20 22 2 -16 15 4 22 -19 -11 -19 11 4 -22 -16 -15 22 -2 z"/>';
+  var heart='<path class="ln" style="stroke:#C9744D" d="M72 158 q-30 -24 -30 -46 q0 -18 18 -18 q10 0 12 12 q2 -12 12 -12 q18 0 18 18 q0 22 -30 46 z"/>';
+  var sun='<circle class="ln thin" cx="72" cy="120" r="24"/><g class="ln thin"><path d="M72 84 L72 70 M72 156 L72 170 M36 120 L22 120 M108 120 L122 120 M47 95 L37 85 M97 95 L107 85 M47 145 L37 155 M97 145 L107 155"/></g>';
+  var wave='<path class="ln thin" d="M20 200 q18 -20 36 0 t36 0 t36 0"/><path class="ln thin" d="M20 230 q18 -20 36 0 t36 0 t36 0"/>';
+
+  document.getElementById('set1').innerHTML=[
+    bm(star+'<text x="72" y="150" text-anchor="middle" style="font:800 18px sans-serif;fill:none;stroke:#1a1712;stroke-width:1">I AM</text><text x="72" y="176" text-anchor="middle" style="font:900 22px sans-serif;fill:none;stroke:#1a1712;stroke-width:1.2">BRAVE</text>','Brave'),
+    bm(heart+'<text x="72" y="210" text-anchor="middle" style="font:800 16px sans-serif;fill:none;stroke:#1a1712;stroke-width:1">I AM KIND</text>','Kind'),
+    bm(sun+'<text x="72" y="210" text-anchor="middle" style="font:800 15px sans-serif;fill:none;stroke:#1a1712;stroke-width:1">I CAN GROW</text>','Grow'),
+    bm(wave+'<text x="72" y="150" text-anchor="middle" style="font:800 16px sans-serif;fill:none;stroke:#1a1712;stroke-width:1">STAY</text><text x="72" y="172" text-anchor="middle" style="font:900 20px sans-serif;fill:none;stroke:#1a1712;stroke-width:1.2">CALM</text>','Calm')
+  ].join('');
+
+  // character bookmarks (simple line critters)
+  var lion='<g transform="translate(72,150)"><path class="ln" d="M0 -54 C24 -54 30 -36 44 -40 C40 -22 52 -14 44 0 C52 14 40 22 44 40 C30 36 24 54 0 54 C-24 54 -30 36 -44 40 C-52 22 -40 14 -48 0 C-40 -14 -52 -22 -44 -40 C-30 -36 -24 -54 0 -54 Z"/><circle class="ln thin" cx="0" cy="0" r="34"/><circle cx="-12" cy="-6" r="3" fill="#1a1712"/><circle cx="12" cy="-6" r="3" fill="#1a1712"/><path class="ln thin" d="M0 4 L0 14 M-8 16 Q0 24 8 16"/></g>';
+  var star2='<path class="ln thin" d="M72 150 l10 22 24 2 -17 16 4 24 -21 -12 -21 12 4 -24 -17 -16 24 -2 z"/>';
+  var book='<g transform="translate(72,150)"><path class="ln" d="M-34 -26 L0 -34 L34 -26 L34 30 L0 22 L-34 30 Z"/><path class="ln thin" d="M0 -34 L0 22"/></g>';
+
+  document.getElementById('set2').innerHTML=[
+    bm(lion,'The Brave Lion','from the pride'),
+    bm(star2,'Little Star','shine your way'),
+    bm(book,'Story Friend','one more chapter'),
+    bm('<text x="72" y="150" text-anchor="middle" style="font:800 14px sans-serif;fill:#b9ad97">draw your</text><text x="72" y="170" text-anchor="middle" style="font:800 14px sans-serif;fill:#b9ad97">own here!</text><rect x="30" y="185" width="84" height="70" rx="8" class="ln thin"/>','Make Your Own','')
+  ].join('');
+</script>
+</body>
+</html>

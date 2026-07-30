@@ -60,6 +60,16 @@ module.exports = function (eleventyConfig) {
     return String(str || "").replace(/<[^>]*>/g, "");
   });
 
+  eleventyConfig.addFilter("metaDescription", function (str, max = 155) {
+    const value = String(str || "");
+    if (value.length <= max) return value;
+    return value.slice(0, max - 1).replace(/\s+\S*$/, "") + "…";
+  });
+
+  eleventyConfig.addFilter("assetVariant", function (assetPath, extension) {
+    return String(assetPath || "").replace(/\.[^.]+$/, `.${extension}`);
+  });
+
   // Human date for blog posts.
   eleventyConfig.addFilter("readableDate", function (date) {
     return new Date(date).toLocaleDateString("en-US", {

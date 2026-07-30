@@ -19,6 +19,8 @@ For many children — especially autistic and sensory-sensitive kids — the bra
 
 **Offer a sensory exit.** Noise-canceling headphones, ear defenders, or even a hood can take the volume from a 10 to a 6 — often enough to keep a child regulated through a loud errand.
 
+Choose hearing protection that fits correctly and still lets an adult supervise the child safely. Persistent pain, hearing concerns, or responses that interfere with daily life are reasons to talk with the child's pediatrician or another qualified professional.
+
 **Name it calmly.** "It's really loud in here. Your ears are working hard. Let's find somewhere quieter." You're modeling that the feeling is real and that there's something to do about it.
 
 ## What helps over time
@@ -40,3 +42,10 @@ It lives in our **[At Sunny's Table](/series/sunnys-table/)** series, alongside 
 The most powerful thing you can teach a noise-sensitive child is this: *your needs are not too much.* A child who learns to ask for quiet without shame grows into an adult who knows how to take care of themselves. That starts now — with headphones in the diaper bag, a quiet signal you both know, and a bedtime story that says: you're okay, exactly as you are.
 
 *Explore more gentle reads in the [At Sunny's Table series](/series/sunnys-table/) or browse [all our books](/books/).*
+
+## Sources and further reading
+
+- [How Noise Affects Children — HealthyChildren.org, American Academy of Pediatrics](https://www.healthychildren.org/English/safety-prevention/all-around/Pages/how-noise-affects-your-child.aspx)
+- [Signs and Symptoms of Autism Spectrum Disorder — CDC](https://www.cdc.gov/autism/signs-symptoms/index.html)
+
+This article offers general family ideas, not medical or hearing advice.

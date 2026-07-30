@@ -8,6 +8,7 @@ pagination:
 permalink: "/book/{{ book.slug }}/"
 eleventyComputed:
   title: "{{ book.title }} — Made Out of Clay Productions"
+  metaTitle: "{{ book.title }} | Made Out of Clay"
   description: "{{ book.blurb }}"
   ogImage: "{{ book.cover }}"
   seriesSlug: "{{ book.series }}"
@@ -26,7 +27,11 @@ schemaBook: true
 <section class="section">
   <div class="wrap">
     <article class="book-detail">
-      <img src="{{ book.cover }}" alt="{{ book.alt }}" width="280" height="280">
+      <picture>
+        <source srcset="{{ book.cover | assetVariant('avif') }}" type="image/avif">
+        <source srcset="{{ book.cover | assetVariant('webp') }}" type="image/webp">
+        <img src="{{ book.cover }}" alt="{{ book.alt }}" width="280" height="280" decoding="async">
+      </picture>
       <div>
         <p>{{ book.blurb }}</p>
         <div class="themes">
@@ -41,6 +46,7 @@ schemaBook: true
            data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">
           Buy on Amazon — ${{ site.bookPrice }}
         </a>
+        <p class="affiliate-note">As an Amazon Associate I earn from qualifying purchases.</p>
         {% else %}
         <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
         {% endif %}
@@ -53,6 +59,34 @@ schemaBook: true
         <p style="margin-top: 16px;"><a href="/series/{{ s.slug }}/">More from {{ s.name }} →</a> · <a href="/books/">All books</a></p>
       </div>
     </article>
+
+    <div class="book-guide-grid">
+      <section class="content-panel">
+        <h2>What families will find</h2>
+        <p><em>{{ book.title }}</em> is a picture-book story for ages 2–7 built around
+          {% for theme in book.themes %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{{ theme }}{% endfor %}.
+          It works as a shared read-aloud, and it can be read on its own even when it belongs to a series.</p>
+        <p>Use the story as an opening for a gentle conversation, then let the child decide how much they want to say. There is no single “right” response to a picture book.</p>
+      </section>
+      <section class="content-panel">
+        <h2>Before you choose</h2>
+        <dl class="book-facts">
+          <div><dt>Suggested audience</dt><dd>Ages 2–7 with an adult reader</dd></div>
+          <div><dt>Edition</dt><dd>{% if book.status == "live" %}Hardcover, 8.5×8.5, full color{% else %}Coming soon; free online preview available{% endif %}</dd></div>
+          <div><dt>Series</dt><dd><a href="/series/{{ s.slug }}/">{{ s.name }}</a>{% if book.order %}, Book {{ book.order }}{% endif %}</dd></div>
+          <div><dt>Author</dt><dd><a href="/author/" rel="author">{{ site.authorPenName }}</a></dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <section class="content-panel reading-prompts">
+      <h2>Questions to ask after reading</h2>
+      <ul>
+        <li>Which moment in the story felt most important to you?</li>
+        <li>How did the character's choices connect with {% for theme in book.themes %}{% if loop.index <= 2 %}{% if loop.index == 2 %} and {% endif %}{{ theme }}{% endif %}{% endfor %}?</li>
+        <li>What would you want to say or do if you were part of this story?</li>
+      </ul>
+    </section>
   </div>
 </section>
 
@@ -61,8 +95,8 @@ schemaBook: true
   <div class="wrap wrap-narrow" style="text-align: center;">
     <h2 class="section-title">🎵 The song from this book</h2>
     <p>"{{ book.songTitle }}" — sing it together. Fair warning: it will be stuck in your head by bedtime.</p>
-    <video controls preload="metadata" playsinline
-           poster="{{ book.cover }}"
+    <video controls preload="none" playsinline
+           poster="{{ book.cover | assetVariant('webp') }}"
            style="width: 100%; max-width: 720px; border-radius: 12px; margin-top: 16px;"
            data-track="song_video_play" data-book-title="{{ book.title }}">
       <source src="{{ book.songVideo }}" type="video/mp4">
@@ -85,7 +119,11 @@ schemaBook: true
     <div class="book-grid">
       {%- for b in seriesBooks %}
       <a class="book-card" href="/book/{{ b.slug }}/">
-        <img src="{{ b.cover }}" alt="{{ b.alt }}" width="220" height="220" loading="lazy">
+        <picture>
+          <source srcset="{{ b.cover | assetVariant('avif') }}" type="image/avif">
+          <source srcset="{{ b.cover | assetVariant('webp') }}" type="image/webp">
+          <img src="{{ b.cover }}" alt="{{ b.alt }}" width="220" height="220" loading="lazy" decoding="async">
+        </picture>
         <h3>{{ b.title }}</h3>
       </a>
       {%- endfor %}

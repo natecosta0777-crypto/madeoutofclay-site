@@ -4,7 +4,11 @@
 {% macro bookCard(book, site, seriesName) %}
 <article class="book-card">
   <a class="book-card-cover" href="/book/{{ book.slug }}/">
-    <img src="{{ book.cover }}" alt="{{ book.alt }}" width="300" height="300" loading="lazy">
+    <picture>
+      <source srcset="{{ book.cover | assetVariant('avif') }}" type="image/avif">
+      <source srcset="{{ book.cover | assetVariant('webp') }}" type="image/webp">
+      <img src="{{ book.cover }}" alt="{{ book.alt }}" width="300" height="300" loading="lazy" decoding="async">
+    </picture>
   </a>
   <div class="book-card-body">
     {% if seriesName %}<p class="book-card-series">{{ seriesName }}</p>{% endif %}
@@ -18,8 +22,10 @@
       Buy on Amazon
     </a>
     <p class="book-card-price">${{ site.bookPrice }} · 8.5×8.5 full color</p>
+    <p class="affiliate-note">As an Amazon Associate I earn from qualifying purchases.</p>
     {% else %}
     <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+    {% if book.readUrl %}<a class="text-link" href="{{ book.readUrl }}">Read the free preview</a>{% endif %}
     {% endif %}
   </div>
 </article>

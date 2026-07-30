@@ -6,9 +6,13 @@ schemaArticle: true
   <div class="wrap prose">
     <p class="post-meta"><a href="/blog/">&larr; All posts</a></p>
     <h1>{{ title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> · By {{ site.authorPenName }}</p>
+    <p class="post-meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> · By <a href="/author/" rel="author">{{ site.authorPenName }}</a></p>
     {{ content | safe }}
     <hr>
+    <aside class="editorial-note">
+      <h2>About our guidance</h2>
+      <p>Made Out of Clay shares general reading and family ideas, not medical advice. Children differ; use your judgment and ask a qualified health professional about individual sensory, developmental, or safety concerns.</p>
+    </aside>
     <p><a class="btn btn-primary" href="/books/">Browse the books</a></p>
   </div>
 </article>

@@ -14,7 +14,8 @@ module.exports = {
   authorPenName: "Isaiah Hartwell",
   tagline: "Premium full-color picture books for the kids who feel things deeply.",
   description:
-    "An independent children's picture-book imprint. Nine premium full-color picture books across three series, by Isaiah Hartwell.",
+    "An independent children's picture-book imprint with ten full-color picture books across four series, by Isaiah Hartwell.",
+  authorUrl: "https://madeoutofclayprod.com/author/",
 
   // --- OPEN DECISION #1: Amazon Associates ---------------------------------
   // Provide your store ID (e.g. "madeoutofcl-20") to tag every buy link.
@@ -51,6 +52,9 @@ module.exports = {
   currency: "USD",
   format: "Hardcover", // 8.5x8.5 premium full color
   language: "en",
+  catalogTitleCount: 10,
+  availableTitleCount: 9,
+  seriesCount: 4,
 
   // Build stamp surfaced in footer / sitemap
   buildYear: new Date().getFullYear(),

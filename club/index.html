@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="canonical" href="https://club.madeoutofclayprod.com/">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Kids' Book Club | Made Out of Clay Library</title>
+<meta name="description" content="A free curated children's book club with affirming stories, printable activities, and narrated read-alongs coming soon. No card required.">
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Made Out of Clay Library">
+<meta property="og:title" content="Made Out of Clay Library — Affirming Kids' Books, Read-Alongs &amp; Printables">
+<meta property="og:description" content="Free curated, affirming children's books with printable activities and narrated read-alongs coming soon. No card required.">
+<meta property="og:url" content="https://club.madeoutofclayprod.com/">
+<meta property="og:image" content="https://club.madeoutofclayprod.com/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Made Out of Clay Library — Affirming Kids' Books &amp; Read-Alongs">
+<meta name="twitter:description" content="Free curated, affirming children's books with printable activities and narrated read-alongs coming soon.">
+<!-- Analytics and advertising stubs -->
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"Made Out of Clay Library",
+  "description":"A free curated children's book library with affirming stories and printable activities. Narrated read-alongs are coming soon.",
+  "provider":{"@type":"Organization","name":"Made Out of Clay Productions","url":"https://madeoutofclayprod.com/"},
+  "offers":{"@type":"Offer","name":"Free Library Membership","price":"0","priceCurrency":"USD","url":"https://club.madeoutofclayprod.com/#join"}
+}
+</script>
+
+<style>
+  #consent-banner{box-shadow:0 -6px 24px rgba(80,60,30,.08)}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is the Made Out of Clay Book Club?","acceptedAnswer":{"@type":"Answer","text":"A curated children's book club focused on affirming, social-emotional and brave-girl stories. Every book comes with a printable activity and new books are added weekly. Narrated read-along audio is coming soon."}},
+    {"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Library membership is free. It includes the current digital library and printable activities, with no card required. Supporter payments are not currently available."}},
+    {"@type":"Question","name":"What ages is it for?","acceptedAnswer":{"@type":"Answer","text":"Best for kids ages 3 to 9. Read-alongs serve pre-readers and new readers; longer early-reader titles suit older kids."}},
+    {"@type":"Question","name":"Can I unsubscribe anytime?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every club email includes an unsubscribe option, and you can ask us to close your access at any time."}}
+  ]
+}
+</script>
+<style>
+  :root{
+    --mustard:#E8B84B; --sage:#8FAE8B; --terracotta:#C9744D; --cream:#FBF6EC;
+    --denim:#5E7FA3; --ink:#2F2A24; --muted:#6F6657; --line:#E7Dcc8; --white:#fff;
+    --plum:#7E5A78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Georgia','Iowan Old Style',serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .sans{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  a{color:var(--terracotta)}
+  h1,h2,h3{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;line-height:1.2;letter-spacing:-.01em}
+  /* header */
+  header.site{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1080px;margin:0 auto}
+  .logo{font-family:'Trebuchet MS',sans-serif;font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--terracotta)}
+  .nav .cta{background:var(--terracotta);color:#fff;text-decoration:none;font-family:'Trebuchet MS',sans-serif;font-weight:700;font-size:.92rem;padding:10px 18px;border-radius:40px}
+  /* hero */
+  .hero{padding:64px 0 40px;text-align:center;background:radial-gradient(900px 400px at 50% -10%,#fdf0d6 0%,var(--cream) 60%)}
+  .pill{display:inline-block;background:rgba(201,116,77,.12);color:var(--terracotta);font-family:'Trebuchet MS',sans-serif;font-weight:800;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:6px 14px;border-radius:30px;margin-bottom:18px}
+  .hero h1{font-size:2.7rem;max-width:760px;margin:0 auto 16px}
+  .hero h1 em{color:var(--terracotta);font-style:normal}
+  .hero p.sub{font-size:1.2rem;color:var(--muted);max-width:600px;margin:0 auto 28px}
+  .btn{display:inline-block;font-family:'Trebuchet MS',sans-serif;font-weight:800;text-decoration:none;border:none;cursor:pointer;border-radius:46px;transition:transform .08s ease}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--terracotta);color:#fff;font-size:1.1rem;padding:16px 38px;box-shadow:0 6px 0 #a85c3b}
+  .btn-primary:hover{background:#bd6845}
+  .hero .micro{display:block;margin-top:14px;font-family:'Trebuchet MS',sans-serif;font-size:.86rem;color:var(--muted)}
+  /* trust strip */
+  .trust{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white)}
+  .trust div{font-family:'Trebuchet MS',sans-serif;font-size:.95rem;color:var(--ink);font-weight:600}
+  .trust span{color:var(--terracotta)}
+  section{padding:58px 0}
+  .eyebrow{font-family:'Trebuchet MS',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;font-weight:700;color:var(--terracotta);text-align:center;margin-bottom:10px}
+  .h2{font-size:2rem;text-align:center;max-width:640px;margin:0 auto 12px}
+  .lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 38px;font-size:1.08rem}
+  /* series cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 4px 14px rgba(80,60,30,.05)}
+  .card .tag{display:inline-block;font-family:'Trebuchet MS',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border-radius:20px;margin-bottom:12px;color:#fff}
+  .t-girl{background:var(--plum)} .t-uni{background:var(--denim)} .t-anchor{background:var(--terracotta)}
+  .card h3{font-size:1.25rem;margin-bottom:8px}
+  .card p{font-size:.97rem;color:var(--muted)}
+  /* feature rows */
+  .feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:46px}
+  .feature:last-child{margin-bottom:0}
+  .feature .art{background:linear-gradient(135deg,#fdeccf,#e9f0e6);border-radius:20px;min-height:230px;display:flex;align-items:center;justify-content:center;font-size:4rem;border:1px solid var(--line)}
+  .feature h3{font-size:1.5rem;margin-bottom:10px}
+  .feature p{color:var(--muted)}
+  /* pricing */
+  .pricing{background:var(--white);border-top:1px solid var(--line)}
+  .plans{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .plan{position:relative;background:var(--cream);border:2px solid var(--line);border-radius:20px;padding:30px 28px;width:320px;max-width:100%}
+  .plan.best{border-color:var(--terracotta);background:#fff;box-shadow:0 10px 30px rgba(201,116,77,.16)}
+  .plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--terracotta);color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:.74rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+  .plan h3{font-size:1.15rem;margin-bottom:6px}
+  .plan .price{font-size:2.6rem;font-family:'Trebuchet MS',sans-serif;font-weight:800;color:var(--ink)}
+  .plan .price small{font-size:1rem;color:var(--muted);font-weight:600}
+  .plan .save{font-family:'Trebuchet MS',sans-serif;font-size:.9rem;color:var(--sage);font-weight:700;margin:6px 0 16px}
+  .plan ul{list-style:none;margin:14px 0 22px;text-align:left}
+  .plan li{font-size:.95rem;padding:6px 0 6px 26px;position:relative;color:var(--ink)}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--sage);font-weight:800}
+  .plan .btn-plan{display:block;width:100%;text-align:center;padding:14px;border-radius:40px;font-family:'Trebuchet MS',sans-serif;font-weight:800;cursor:pointer;border:none;font-size:1rem}
+  .plan.best .btn-plan{background:var(--terracotta);color:#fff;box-shadow:0 5px 0 #a85c3b}
+  .plan .btn-plan.alt{background:transparent;color:var(--muted);border:2px solid var(--line)}
+  .guarantee{text-align:center;color:var(--muted);font-family:'Trebuchet MS',sans-serif;font-size:.9rem;margin-top:24px}
+  /* supporter updates */
+  .support-card{background:var(--white);border:2px solid var(--mustard);border-radius:20px;padding:30px 28px;max-width:520px;margin:30px auto 0;box-shadow:0 10px 30px rgba(232,184,75,.18);text-align:center}
+  .btn-donate{display:block;width:100%;padding:15px;border:none;border-radius:40px;background:var(--terracotta);color:#fff;font-family:'Trebuchet MS',sans-serif;font-weight:800;font-size:1.05rem;box-shadow:0 5px 0 #a85c3b}
+  .support-note{margin-top:14px;font-family:'Trebuchet MS',sans-serif;font-size:.82rem;color:var(--muted)}
+  /* faq */
+  .faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:12px}
+  .faq-item h3{font-size:1.1rem;margin-bottom:6px}
+  .faq-item p{color:var(--muted);font-size:.98rem}
+  /* schools */
+  .schools{background:var(--sage);color:#fff;border-radius:22px;padding:40px;text-align:center;margin-top:10px}
+  .schools h2{font-size:1.7rem;margin-bottom:10px}
+  .schools p{max-width:560px;margin:0 auto 20px;opacity:.95}
+  .schools a{display:inline-block;background:#fff;color:var(--ink);text-decoration:none;font-family:'Trebuchet MS',sans-serif;font-weight:800;padding:13px 28px;border-radius:40px}
+  /* footer */
+  footer{background:var(--ink);color:#d9d0c2;padding:40px 0 30px;font-family:'Trebuchet MS',sans-serif;font-size:.9rem}
+  footer .links{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;margin-bottom:16px}
+  footer a{color:#f1d9a8;text-decoration:none}
+  footer .disc{text-align:center;max-width:680px;margin:0 auto;opacity:.7;font-size:.82rem;line-height:1.5}
+  @media(max-width:720px){
+    .hero h1{font-size:2.05rem}.feature{grid-template-columns:1fr;gap:18px}
+    .nav .links-hide{display:none}
+  }
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site">
+  <div class="nav">
+    <div style="display:flex;align-items:center;gap:16px">
+      <a class="logo" href="/" aria-label="Made Out of Clay Library" style="display:inline-flex;align-items:center;gap:6px"><img class="club-static-logo" src="/assets/logo-header.webp" alt="" width="70" height="44"><span aria-hidden="true"> Library</span></a>
+      <a href="/book-club" style="font-family:'Trebuchet MS',sans-serif;font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none">📖 Book Club</a>
+    </div>
+    <a class="cta" href="#join">Join free</a>
+  </div>
+</header>
+<main id="main-content">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="pill">🎉 Founding membership is free</span>
+    <h1>The kids' book club for <em>big feelings</em>, brave girls, and curious minds.</h1>
+    <p class="sub">Curated, affirming picture books with printable activities. The current library is free to join, with narrated read-alongs coming soon.</p>
+    <a class="btn btn-primary" href="#join">Join the free library</a>
+    <span class="micro">Free membership · your email is your membership · no card required</span>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div><span>★</span> Narrated read-alongs <em style="color:var(--muted);font-style:normal;font-weight:700">(coming soon)</em></div>
+  <div><span>★</span> A printable activity with each title</div>
+  <div><span>★</span> Affirming &amp; identity-first</div>
+  <div><span>★</span> New every week</div>
+</div>
+
+<!-- JOIN THE FREE BOOK CLUB (lead capture) -->
+<section id="join" style="background:linear-gradient(160deg,#fdeccf,#f8ede0);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="max-width:720px;text-align:center">
+    <div class="eyebrow">Free founding membership</div>
+    <h2 class="h2">Open the whole current library</h2>
+    <p class="lead">Your free membership includes every digital book currently in the club and its printable activities. No countdown, no unverified availability claim, and no card required.</p>
+
+    <form id="joinForm" style="background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 24px;box-shadow:0 10px 30px rgba(80,60,30,.08);max-width:520px;margin:0 auto">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <input id="joinEmail" type="email" required placeholder="you@email.com" aria-label="Your email"
+          style="flex:1;min-width:200px;border:2px solid var(--line);border-radius:40px;padding:14px 18px;font-family:'Trebuchet MS',sans-serif;font-size:1rem;font-weight:600;color:var(--ink)">
+        <button type="submit" class="btn btn-primary" style="font-size:1rem;padding:14px 26px;box-shadow:0 5px 0 #a85c3b">Join free</button>
+      </div>
+      <p class="micro" style="margin-top:12px;color:var(--muted);font-family:'Trebuchet MS',sans-serif;font-size:.82rem">One friendly note a week. Unsubscribe anytime. We never sell your info or track your kid.</p>
+    </form>
+
+    <!-- success state -->
+    <div id="joinDone" style="display:none;background:#fff;border:2px solid var(--sage);border-radius:22px;padding:30px 26px;max-width:520px;margin:0 auto;box-shadow:0 10px 30px rgba(80,60,30,.10)">
+      <div style="font-size:2.6rem;line-height:1">🎉</div>
+      <h3 style="font-size:1.5rem;margin:8px 0 6px">You're a founding member!</h3>
+      <p style="color:var(--muted);font-family:'Trebuchet MS',sans-serif">Your membership is free — no password and no card. We sent a welcome note to <b id="joinEmailEcho">your inbox</b>, and you can walk right in now:</p>
+      <a class="btn btn-primary" id="joinEnter" href="/book-club" style="font-size:1.05rem;padding:15px 34px;box-shadow:0 5px 0 #a85c3b;margin-top:6px">Enter the Book Club →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Four worlds, one book club</div>
+    <h2 class="h2">Stories with a point of view</h2>
+    <p class="lead">A small, curated shelf — chosen, not dumped. Every series is built around something your child actually needs.</p>
+    <div class="grid">
+      <div class="card"><span class="tag t-anchor">Affirming</span><h3>Just the Way You Are</h3><p>Neurodiversity-affirming stories starring Clay — differences as strengths, never problems to fix.</p></div>
+      <div class="card"><span class="tag t-girl">Brave Girls</span><h3>Brave Like Me</h3><p>Everyday-brave heroines — Maya, Lena, Nia and Zoe — who try, fail, and try again at the things that actually scare a kid.</p></div>
+      <div class="card"><span class="tag t-anchor">Cozy &amp; Kind</span><h3>At Sunny’s Table</h3><p>Scooter and his sloth family — gentle stories about patience, quiet, and belonging, warm enough for bedtime.</p></div>
+      <div class="card"><span class="tag t-uni">Heart &amp; Home</span><h3>The Kingdom of Judea</h3><p>Caleb the lion and his cubs on the savanna — family, courage, and finding your way home.</p></div>
+      <div class="card" style="display:flex;align-items:center;justify-content:center;background:#fdeccf"><p style="text-align:center;font-family:'Trebuchet MS',sans-serif;font-weight:700;color:var(--terracotta)">+ a fresh title every week, and more series on the way →</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="feature">
+      <div class="art" style="position:relative">🎧<span style="position:absolute;top:14px;right:14px;background:var(--denim);color:#fff;font-family:'Trebuchet MS',sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px;border-radius:20px">Coming soon</span></div>
+      <div>
+        <h3>Every book will read itself <span style="color:var(--denim);font-size:1rem">· coming soon</span></h3>
+        <p>Warm narrated read-alongs are in the studio now — tap "read to me" and a narrator will read along, pages turning in time. Great audio takes real editing, so we're getting it right. For now, "read myself" mode is live for bedtime together.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="art" style="background:linear-gradient(135deg,#e9f0e6,#fdeccf)">🖍️</div>
+      <div>
+        <h3>A printable with every story</h3>
+        <p>Coloring pages, feelings wheels, brave-badges, build-along projects. Print it, do it, keep it. The part kids ask to do again — and the reason families stay.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="art">📅</div>
+      <div>
+        <h3>New every single week</h3>
+        <p>A fresh book and a new activity land every week, so the library is always growing. It never goes stale — there's always something new for your kid to discover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Clear membership terms</div>
+    <h2 class="h2">The library is free. No card required.</h2>
+    <p class="lead">A free membership opens the current digital library and printables. We are considering optional ways for readers to support future work, but payment checkout is not open today.</p>
+    <div class="plans">
+      <div class="plan best">
+        <span class="badge">No card required</span>
+        <h3>Founding Member</h3>
+        <div class="price">$0<small>/membership</small></div>
+        <div class="save">Full current library access</div>
+        <ul>
+          <li>Every digital book + new ones weekly</li>
+          <li>Every printable activity</li>
+          <li>Narrated read-alongs when they launch</li>
+          <li>No card and no paid-access gate</li>
+        </ul>
+        <a class="btn-plan" href="#join" style="display:block;text-align:center;text-decoration:none;background:var(--terracotta);color:#fff;box-shadow:0 5px 0 #a85c3b">Join the library →</a>
+      </div>
+      <div class="plan">
+        <h3>Planned supporter option</h3>
+        <div class="price" style="color:var(--muted)">Not live</div>
+        <div class="save" style="color:var(--muted)">No payments are collected today</div>
+        <ul>
+          <li>The same free library access</li>
+          <li>Would help fund stories and narration</li>
+          <li>Will always be optional</li>
+          <li>Will never be required to read</li>
+        </ul>
+        <a class="btn-plan alt" href="mailto:clay@madeoutofclayprod.com?subject=Supporter%20updates" style="display:block;text-align:center;text-decoration:none">Ask for supporter updates</a>
+      </div>
+    </div>
+    <p class="guarantee">No behavioral ads. No tracking of children. Optional analytics for adults require consent.</p>
+  </div>
+</section>
+
+<!-- SUPPORT INTEREST -->
+<section id="support">
+  <div class="wrap" style="max-width:760px">
+    <div class="eyebrow">Supporter updates 💛</div>
+    <h2 class="h2">Optional support is still being prepared.</h2>
+    <p class="lead">We are not accepting payments on this site today. If you want to hear when an optional supporter program opens, send us a note. Free library access will not depend on payment.</p>
+    <div class="support-card">
+      <p><strong>No payment is collected here.</strong></p>
+      <p class="support-note">We will publish clear pricing and terms before any supporter checkout becomes available.</p>
+      <a class="btn-donate" href="mailto:clay@madeoutofclayprod.com?subject=Supporter%20updates" style="text-align:center;text-decoration:none;margin-top:18px">Email me when support opens</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap" style="max-width:760px">
+    <div class="eyebrow">Good to know</div>
+    <h2 class="h2">Questions, answered</h2>
+    <div style="margin-top:30px">
+      <div class="faq-item"><h3>Is it really free?</h3><p>Yes. Free membership includes every digital book currently in the club and its printable activities, with no card required. Supporter payments are not currently available.</p></div>
+      <div class="faq-item"><h3>What ages is it for?</h3><p>Best for ages 3–9. The stories serve pre-readers and new readers; longer early-reader titles suit older kids.</p></div>
+      <div class="faq-item"><h3>What makes this different from Epic! or Amazon Kids+?</h3><p>We're not trying to be a warehouse of 40,000 books. We're a small, curated shelf with a point of view — affirming, social-emotional and brave-girl stories — each with a printable activity. Quality and values over volume.</p></div>
+      <div class="faq-item"><h3>What about the read-alongs? Where's the audio?</h3><p>Narrated read-alongs are coming soon — they're being recorded and edited now, and good audio takes real work to get right. Every digital book and printable is available today, and narration will roll out to titles as it's ready.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOLS / B2B -->
+<section>
+  <div class="wrap">
+    <div class="schools">
+      <h2>For classrooms, libraries &amp; therapists</h2>
+      <p>Curated sets built for the way you already buy — SEL big-feelings, neurodiversity-affirming and brave-girl collections, with printables included (narrated read-alongs coming soon).</p>
+      <a href="/schools">Get a classroom quote →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="clubhouse.html">Clubhouse</a>
+      <a href="/book-club">Book Club</a>
+      <a href="/characters">Meet the Characters</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#support">Supporter Updates</a>
+      <a href="/schools">For Schools</a>
+      <a href="/printables">Free Printables</a>
+      <a href="https://madeoutofclayprod.com/">Main Site</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+      <a href="/how-we-make-money">How We Make Money</a>
+    </div>
+    <div class="disc">Made Out of Clay Productions is an independent children's-book imprint. Read-alongs, printables, and new titles are added regularly. No payment is collected on this site today. &copy; 2026 Made Out of Clay Productions.</div>
+  </div>
+</footer>
+
+<script>
+  // --- Free Book Club lead capture ---
+  // The email IS the membership — no password. Giving an email is the only way in.
+
+  // ⬇️ SET THIS: create a free access key at https://web3forms.com (uses Nate's email),
+  //    then paste it here. Until it's set, submissions still work on-screen but no email is sent.
+  var WEB3FORMS_KEY = 'b36f5fb3-641f-4258-aa33-9ca185466fe2';
+
+  (function(){
+    var form = document.getElementById('joinForm');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('joinEmail').value.trim();
+      if(!email) return;
+
+      // The personal club link (email already unlocks this device via the flag below).
+      var clubLink = window.location.origin + '/book-club';
+
+      // Fire the real email via Web3Forms (non-blocking — UI shows success regardless).
+      if(WEB3FORMS_KEY && WEB3FORMS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY'){
+        fetch('https://api.web3forms.com/submit', {
+          method:'POST',
+          headers:{'Content-Type':'application/json', 'Accept':'application/json'},
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'Welcome to the Made Out of Clay Book Club! 🎉',
+            from_name: 'The Book Club',
+            email: email,                       // submitter — used by the autoresponder
+            club_link: clubLink
+          })
+        }).catch(function(err){ /* email is best-effort; the on-device unlock still works */ });
+      }
+
+      // Analytics (fire if/when the tags are live)
+      try{ if(window.gtag) gtag('event','join_book_club',{method:'email'}); }catch(e){}
+      try{ if(window.fbq) fbq('track','Lead'); }catch(e){}
+
+      // Remember membership so the book club unlocks on this device.
+      try{ localStorage.setItem('mooc_club_unlocked','1'); localStorage.setItem('mooc_member_email', email); }catch(err){}
+
+      // Add them to the real weekly-letter list (Cloudflare Worker + KV).
+      try{
+        fetch('https://mooc-letters.natecosta0777.workers.dev/subscribe', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ email: email })
+        }).catch(function(){});
+      }catch(e){}
+
+      document.getElementById('joinEmailEcho').textContent = email;
+      form.style.display = 'none';
+      document.getElementById('joinDone').style.display = 'block';
+      document.getElementById('joinDone').scrollIntoView({behavior:'smooth',block:'center'});
+      try{ if(window.moocConfetti) window.moocConfetti(); }catch(e){}
+    });
+  })();
+
+</script>
+
+</body>
+</html>
