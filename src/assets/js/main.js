@@ -94,9 +94,11 @@
 
   /* ---------- Analytics loading (only after consent) ---------- */
   var analyticsLoaded = false;
+  var analyticsEnabled = false;
   function loadAnalytics() {
     if (analyticsLoaded) return;
     analyticsLoaded = true;
+    analyticsEnabled = true;
 
     // GA4
     if (cfg.ga4Id) {
@@ -146,6 +148,7 @@
     series_view: "ViewContent"
   };
   window.track = function (event, params) {
+    if (!analyticsEnabled) return;
     params = params || {};
     if (window.gtag) window.gtag("event", event, params);
     if (window.fbq) {
@@ -153,20 +156,11 @@
       if (mapped) window.fbq("track", mapped, params);
       else window.fbq("trackCustom", event, params);
     }
-    // Outbound beacon as a safety net so events survive tab navigation.
-    if (navigator.sendBeacon && cfg.ga4Id) {
-      try {
-        navigator.sendBeacon(
-          "/__moc_event", // no-op endpoint; harmless if unhandled. Keeps the call non-blocking.
-          new Blob([JSON.stringify({ event: event, params: params })], { type: "application/json" })
-        );
-      } catch (e) { /* ignore */ }
-    }
   };
 
   /* ---------- Consent banner ---------- */
   var banner = document.getElementById("consent-banner");
-  var needAnalytics = !!(cfg.ga4Id || cfg.metaPixelId);
+  var needAnalytics = !!(cfg.ga4Id || cfg.metaPixelId || cfg.metricoolHash);
   function getConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
   function setConsent(v) { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {} }
 
@@ -184,9 +178,23 @@
         var val = btn.getAttribute("data-consent");
         setConsent(val);
         banner.hidden = true;
-        if (val === "accept") loadAnalytics();
+        if (val === "accept") {
+          loadAnalytics();
+          if (window.gtag) window.gtag("consent", "update", { analytics_storage: "granted", ad_storage: "granted" });
+          if (window.fbq) window.fbq("consent", "grant");
+        } else {
+          analyticsEnabled = false;
+          if (window.gtag) window.gtag("consent", "update", { analytics_storage: "denied", ad_storage: "denied" });
+          if (window.fbq) window.fbq("consent", "revoke");
+        }
       });
     }
+    document.querySelectorAll("[data-manage-consent]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        banner.hidden = false;
+        banner.querySelector("[data-consent]").focus();
+      });
+    });
   }
 
   /* ---------- Outbound Amazon click tracking ---------- */
@@ -268,11 +276,4 @@
     window.track("series_view", { series: document.body.getAttribute("data-series") });
   }
 
-  /* ---------- animated wordmark: respect reduced motion, else ensure it runs ---------- */
-  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  document.querySelectorAll("video.brand-video").forEach(function (v) {
-    if (reduceMotion) { v.pause(); return; }
-    // Some browsers ignore the autoplay attribute; nudge. Poster stays if this fails.
-    if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-  });
 })();

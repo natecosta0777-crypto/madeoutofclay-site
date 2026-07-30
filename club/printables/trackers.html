@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Trackers · Made Out of Clay Book Club</title>
+<link rel="stylesheet" href="print.css">
+<style>
+  .ln{fill:none;stroke:#1a1712;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .star{fill:none;stroke:#C9744D;stroke-width:3}
+  table.log{width:100%;border-collapse:collapse;margin-top:6px}
+  table.log th{background:var(--sage);color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;padding:9px 8px}
+  table.log td{border:1.5px solid var(--line);height:44px;padding:4px 10px;font-size:.95rem;color:var(--muted)}
+  table.log td.starcell{text-align:center;width:70px}
+  .weekgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:10px}
+  .day{border:2px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;min-height:96px}
+  .day b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--terracotta);margin-bottom:6px}
+  .day .circ{width:44px;height:44px;border:2px solid #1a1712;border-radius:50%;margin:4px auto 0}
+  .day small{display:block;margin-top:6px;font-size:.62rem;color:var(--muted)}
+  .milestone{display:grid;grid-template-columns:repeat(10,1fr);gap:9px;margin-top:14px}
+  .msn{aspect-ratio:1;border:2px solid #1a1712;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#cfc6b4;font-size:.7rem}
+  .prompt{color:var(--muted);font-size:.9rem;text-align:center;margin-top:10px;font-weight:600}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="toolbar noprint">
+  <div class="t-title">Reading Trackers <small>Made Out of Clay · 3 pages</small></div>
+  <span class="hint">Print one per week, or the whole set at once</span>
+  <a class="ghost" href="/printables">← All printables</a>
+  <button type="button" onclick="window.print()">🖨️ Print / Save PDF</button>
+</div>
+
+<!-- PAGE 1 — Weekly reading week -->
+<div class="sheet">
+  <div class="brandline">
+    <div class="b-name">Made Out of <span>Clay</span> · Book Club</div>
+    <div class="b-tag">Reading tracker · one week</div>
+  </div>
+  <h2 class="page-title">My Reading Week</h2>
+  <p class="page-sub">Color a circle for every day you read. Even one page counts!</p>
+  <div class="name-line" style="margin:2px 0 4px">Name: <span>&nbsp;</span> &nbsp;&nbsp; Week of: <span style="min-width:150px">&nbsp;</span></div>
+  <div class="weekgrid">
+    <div class="day"><b>Mon</b><div class="circ"></div><small>minutes</small></div>
+    <div class="day"><b>Tue</b><div class="circ"></div><small>minutes</small></div>
+    <div class="day"><b>Wed</b><div class="circ"></div><small>minutes</small></div>
+    <div class="day"><b>Thu</b><div class="circ"></div><small>minutes</small></div>
+    <div class="day"><b>Fri</b><div class="circ"></div><small>minutes</small></div>
+    <div class="day"><b>Sat</b><div class="circ"></div><small>minutes</small></div>
+    <div class="day"><b>Sun</b><div class="circ"></div><small>minutes</small></div>
+  </div>
+  <div style="margin-top:22px">
+    <table class="log">
+      <thead><tr><th style="text-align:left">Books I read this week</th><th style="width:120px">Who read it</th><th style="width:90px">Loved it?</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td class="starcell"><svg width="26" height="26" viewBox="0 0 24 24"><path class="star" d="M12 3 l2.5 5.5 6 .6 -4.5 4 1.3 5.9 -5.3 -3.1 -5.3 3.1 1.3 -5.9 -4.5 -4 6 -.6 z"/></svg></td></tr>
+        <tr><td></td><td></td><td class="starcell"><svg width="26" height="26" viewBox="0 0 24 24"><path class="star" d="M12 3 l2.5 5.5 6 .6 -4.5 4 1.3 5.9 -5.3 -3.1 -5.3 3.1 1.3 -5.9 -4.5 -4 6 -.6 z"/></svg></td></tr>
+        <tr><td></td><td></td><td class="starcell"><svg width="26" height="26" viewBox="0 0 24 24"><path class="star" d="M12 3 l2.5 5.5 6 .6 -4.5 4 1.3 5.9 -5.3 -3.1 -5.3 3.1 1.3 -5.9 -4.5 -4 6 -.6 z"/></svg></td></tr>
+        <tr><td></td><td></td><td class="starcell"><svg width="26" height="26" viewBox="0 0 24 24"><path class="star" d="M12 3 l2.5 5.5 6 .6 -4.5 4 1.3 5.9 -5.3 -3.1 -5.3 3.1 1.3 -5.9 -4.5 -4 6 -.6 z"/></svg></td></tr>
+        <tr><td></td><td></td><td class="starcell"><svg width="26" height="26" viewBox="0 0 24 24"><path class="star" d="M12 3 l2.5 5.5 6 .6 -4.5 4 1.3 5.9 -5.3 -3.1 -5.3 3.1 1.3 -5.9 -4.5 -4 6 -.6 z"/></svg></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prompt">My favorite part this week was… <span style="border-bottom:1.5px solid var(--line);display:inline-block;min-width:260px">&nbsp;</span></p>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Every reader goes at their own pace.</span></div>
+</div>
+
+<!-- PAGE 2 — Monthly log -->
+<div class="sheet">
+  <div class="brandline">
+    <div class="b-name">Made Out of <span>Clay</span> · Book Club</div>
+    <div class="b-tag">Reading tracker · one month</div>
+  </div>
+  <h2 class="page-title">My Reading Month</h2>
+  <p class="page-sub">A whole month of stories. Fill a star for each book you finish.</p>
+  <div class="name-line" style="margin:2px 0 8px">Name: <span>&nbsp;</span> &nbsp;&nbsp; Month: <span style="min-width:150px">&nbsp;</span></div>
+  <table class="log">
+    <thead><tr><th style="width:44px">#</th><th style="text-align:left">Book title</th><th style="text-align:left;width:150px">Author</th><th style="width:80px">Star</th></tr></thead>
+    <tbody id="mrows"></tbody>
+  </table>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Every reader goes at their own pace.</span></div>
+</div>
+
+<!-- PAGE 3 — 100 Books milestone poster -->
+<div class="sheet">
+  <div class="brandline">
+    <div class="b-name">Made Out of <span>Clay</span> · Book Club</div>
+    <div class="b-tag">Milestone poster</div>
+  </div>
+  <h2 class="page-title">My 100 Books</h2>
+  <p class="page-sub">Color one circle for every book. Watch your reading grow!</p>
+  <div class="milestone" id="hundred"></div>
+  <p class="prompt" style="margin-top:20px">When I reach 100 books, I want to celebrate by… <span style="border-bottom:1.5px solid var(--line);display:inline-block;min-width:220px">&nbsp;</span></p>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Super reader in progress 🌟</span></div>
+</div>
+
+<script>
+  // monthly log rows
+  var starSvg='<svg width="26" height="26" viewBox="0 0 24 24"><path class="star" d="M12 3 l2.5 5.5 6 .6 -4.5 4 1.3 5.9 -5.3 -3.1 -5.3 3.1 1.3 -5.9 -4.5 -4 6 -.6 z"/></svg>';
+  var mrows='';for(var i=1;i<=16;i++){mrows+='<tr><td style="text-align:center;color:#cfc6b4;font-weight:800">'+i+'</td><td></td><td></td><td class="starcell">'+starSvg+'</td></tr>';}
+  document.getElementById('mrows').innerHTML=mrows;
+  // 100 circles
+  var h='';for(var n=1;n<=100;n++){h+='<div class="msn">'+n+'</div>';}
+  document.getElementById('hundred').innerHTML=h;
+</script>
+</body>
+</html>

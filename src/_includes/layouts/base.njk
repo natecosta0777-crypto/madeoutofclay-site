@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {# --- Title + description (Spec §4.1) --- #}
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
+  <title>{{ metaTitle or title }}</title>
+  <meta name="description" content="{{ (metaDescription or description) | metaDescription }}">
 
   {# --- Canonical (Spec §4.1 / §4.7) --- #}
   {%- set pageUrl = page.url | absoluteUrl(site.url) -%}
@@ -40,6 +40,7 @@
   <script type="application/ld+json">{{ {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": site.url + "/#organization",
     "name": site.name,
     "url": site.url,
     "email": site.email,
@@ -50,58 +51,87 @@
   <script type="application/ld+json">{{ {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": site.url + "/#website",
     "name": site.name,
-    "url": site.url
+    "url": site.url,
+    "publisher": { "@id": site.url + "/#organization" }
+  } | dump | safe }}</script>
+  {%- endif -%}
+
+  {%- if schemaPerson -%}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": page.url | absoluteUrl(site.url),
+    "url": page.url | absoluteUrl(site.url),
+    "name": title,
+    "mainEntity": {
+      "@type": "Person",
+      "@id": site.authorUrl + "#person",
+      "name": site.authorPenName,
+      "url": site.authorUrl,
+      "jobTitle": "Author and founder",
+      "worksFor": { "@id": site.url + "/#organization" }
+    }
   } | dump | safe }}</script>
   {%- endif -%}
 
   {%- if schemaBooks -%}
     {%- for b in books -%}
-  <script type="application/ld+json">{{ {
+  <script type="application/ld+json">
+  {
     "@context": "https://schema.org",
     "@type": "Book",
-    "name": b.title,
-    "author": { "@type": "Person", "name": site.authorPenName },
-    "publisher": { "@type": "Organization", "name": site.name },
+    "@id": {{ (("/book/" + b.slug + "/#book") | absoluteUrl(site.url)) | dump | safe }},
+    "name": {{ b.title | dump | safe }},
+    "description": {{ b.blurb | dump | safe }},
+    "author": { "@type": "Person", "@id": {{ (site.authorUrl + "#person") | dump | safe }}, "name": {{ site.authorPenName | dump | safe }}, "url": {{ site.authorUrl | dump | safe }} },
+    "publisher": { "@type": "Organization", "@id": {{ (site.url + "/#organization") | dump | safe }}, "name": {{ site.name | dump | safe }}, "url": {{ site.url | dump | safe }} },
     "bookFormat": "https://schema.org/Hardcover",
     "inLanguage": "en",
-    "image": b.cover | absoluteUrl(site.url),
-    "url": ("/book/" + b.slug + "/") | absoluteUrl(site.url),
-    "sku": b.asin,
+    "typicalAgeRange": "2-7",
+    "image": {{ (b.cover | absoluteUrl(site.url)) | dump | safe }},
+    "url": {{ (("/book/" + b.slug + "/") | absoluteUrl(site.url)) | dump | safe }},
+    "mainEntityOfPage": {{ (("/book/" + b.slug + "/") | absoluteUrl(site.url)) | dump | safe }},
+    "sku": {{ (b.asin if b.asin else b.slug) | dump | safe }}{% if b.status == "live" and b.asin %},
     "offers": {
       "@type": "Offer",
-      "price": site.bookPrice,
-      "priceCurrency": site.currency,
-      "availability": ("https://schema.org/InStock" if b.status == "live" else "https://schema.org/PreOrder"),
-      "url": (b.asin | amazonUrl(site.associateTag)) if b.asin else site.url + "/books/"
-    }
-  } | dump | safe }}</script>
+      "price": {{ site.bookPrice | dump | safe }},
+      "priceCurrency": {{ site.currency | dump | safe }},
+      "availability": "https://schema.org/InStock",
+      "url": {{ (b.asin | amazonUrl(site.associateTag)) | dump | safe }}
+    }{% endif %}
+  }
+  </script>
     {%- endfor -%}
   {%- endif -%}
 
   {%- if schemaBook -%}
-  <script type="application/ld+json">{{ {
+  <script type="application/ld+json">
+  {
     "@context": "https://schema.org",
     "@type": "Book",
-    "name": book.title,
-    "description": book.blurb,
-    "author": { "@type": "Person", "name": site.authorPenName },
-    "publisher": { "@type": "Organization", "name": site.name },
+    "@id": {{ ((page.url + "#book") | absoluteUrl(site.url)) | dump | safe }},
+    "name": {{ book.title | dump | safe }},
+    "description": {{ book.blurb | dump | safe }},
+    "author": { "@type": "Person", "@id": {{ (site.authorUrl + "#person") | dump | safe }}, "name": {{ site.authorPenName | dump | safe }}, "url": {{ site.authorUrl | dump | safe }} },
+    "publisher": { "@type": "Organization", "@id": {{ (site.url + "/#organization") | dump | safe }}, "name": {{ site.name | dump | safe }}, "url": {{ site.url | dump | safe }} },
     "bookFormat": "https://schema.org/Hardcover",
     "inLanguage": "en",
     "typicalAgeRange": "2-7",
-    "image": book.cover | absoluteUrl(site.url),
-    "url": page.url | absoluteUrl(site.url),
-    "mainEntityOfPage": page.url | absoluteUrl(site.url),
-    "sku": book.asin,
+    "image": {{ (book.cover | absoluteUrl(site.url)) | dump | safe }},
+    "url": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
+    "mainEntityOfPage": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
+    "sku": {{ (book.asin if book.asin else book.slug) | dump | safe }}{% if book.status == "live" and book.asin %},
     "offers": {
       "@type": "Offer",
-      "price": site.bookPrice,
-      "priceCurrency": site.currency,
-      "availability": ("https://schema.org/InStock" if book.status == "live" else "https://schema.org/PreOrder"),
-      "url": (book.asin | amazonUrl(site.associateTag)) if book.asin else (page.url | absoluteUrl(site.url))
-    }
-  } | dump | safe }}</script>
+      "price": {{ site.bookPrice | dump | safe }},
+      "priceCurrency": {{ site.currency | dump | safe }},
+      "availability": "https://schema.org/InStock",
+      "url": {{ (book.asin | amazonUrl(site.associateTag)) | dump | safe }}
+    }{% endif %}
+  }
+  </script>
   {%- endif -%}
 
   {%- if schemaFaq -%}
@@ -123,13 +153,14 @@
   <script type="application/ld+json">{{ {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": (page.url + "#article") | absoluteUrl(site.url),
     "headline": title,
     "description": description,
     "image": ogImage | absoluteUrl(site.url) if ogImage else ("/assets/og/default.png" | absoluteUrl(site.url)),
     "datePublished": page.date | isoDate,
     "dateModified": page.date | isoDate,
-    "author": { "@type": "Person", "name": site.authorPenName },
-    "publisher": { "@type": "Organization", "name": site.name },
+    "author": { "@type": "Person", "@id": site.authorUrl + "#person", "name": site.authorPenName, "url": site.authorUrl },
+    "publisher": { "@type": "Organization", "@id": site.url + "/#organization", "name": site.name, "url": site.url },
     "mainEntityOfPage": page.url | absoluteUrl(site.url)
   } | dump | safe }}</script>
   {%- endif -%}

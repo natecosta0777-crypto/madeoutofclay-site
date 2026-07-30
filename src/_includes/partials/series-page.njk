@@ -19,6 +19,24 @@
         {{ bookCard(book, site, "") }}
       {% endfor %}
     </div>
+    <div class="series-reading-guide">
+      <h2 class="section-title">Choose a story for today</h2>
+      <p class="section-intro">Each book stands on its own. These summaries and themes can help parents, caregivers, librarians, and educators choose the best starting point.</p>
+      {% for book in seriesBooks %}
+      <article class="content-panel">
+        <h3><a href="/book/{{ book.slug }}/">{{ book.title }}</a>{% if book.order %} <span class="subtle">· Book {{ book.order }}</span>{% endif %}</h3>
+        <p>{{ book.blurb }}</p>
+        <p><strong>Conversation themes:</strong>
+          {% for theme in book.themes %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{{ theme }}{% endfor %}.
+        </p>
+        {% if book.status == "live" %}
+        <p>Available as an 8.5×8.5 full-color hardcover for ages 2–7.</p>
+        {% elseif book.readUrl %}
+        <p>Coming soon. <a href="{{ book.readUrl }}">Read the free online preview.</a></p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>
 

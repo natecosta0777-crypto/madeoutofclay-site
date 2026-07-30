@@ -38,3 +38,10 @@ We built our **[Just the Way You Are](/series/just-the-way-you-are/)** series sp
 Whatever books you choose, the most affirming thing in the room is you — reading slowly, pausing when your child pauses, and letting them see themselves in the hero. A good book opens the door. You're the one who walks through it with them.
 
 *Looking for more? Browse [all our books](/books/) or explore the [Just the Way You Are series](/series/just-the-way-you-are/).*
+
+## Sources and further reading
+
+- [Identity-First Language — Autistic Self Advocacy Network](https://autisticadvocacy.org/about-asan/identity-first-language/)
+- [Signs and Symptoms of Autism Spectrum Disorder — CDC](https://www.cdc.gov/autism/signs-symptoms/index.html)
+
+Book suggestions on this page are editorial recommendations, not clinical or developmental advice.

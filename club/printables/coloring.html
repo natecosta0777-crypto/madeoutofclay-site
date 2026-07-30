@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Pals Coloring · Made Out of Clay Book Club</title>
+<link rel="stylesheet" href="print.css">
+<style>
+  .page-title{font-family:'Trebuchet MS',sans-serif}
+  .retro-badge{display:inline-block;background:var(--ink);color:#fff;font-weight:800;font-size:.7rem;
+    letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:6px;margin:0 auto 6px}
+  .center{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .grid-wrap{display:flex;gap:22px;align-items:center;justify-content:center;flex-wrap:wrap;flex:1}
+  .pixsvg rect{shape-rendering:crispEdges}
+  .pixnum{font:700 12px 'Courier New',monospace;fill:#b7ac95}
+  .legend{display:flex;flex-direction:column;gap:8px;min-width:150px}
+  .legend .li{display:flex;align-items:center;gap:9px;font-weight:700;font-size:.9rem}
+  .legend .sw{width:26px;height:26px;border-radius:5px;border:2px solid #1a1712;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;font:800 14px 'Courier New',monospace;color:#1a1712}
+  .legend .li b{font-weight:800}
+  .legend .li small{color:var(--muted);font-weight:600;display:block;font-size:.72rem}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;flex:1}
+  .card{border:2.5px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+  .card h3{font-family:'Trebuchet MS',sans-serif;font-size:1.05rem;margin-bottom:8px}
+  .legend-inline{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+  .legend-inline .li{display:flex;align-items:center;gap:5px;font-weight:700;font-size:.74rem}
+  .legend-inline .sw{width:18px;height:18px;border-radius:4px;border:1.5px solid #1a1712;font:800 11px monospace}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="toolbar noprint">
+  <div class="t-title">Pixel Pals — Color by Number <small>Made Out of Clay · 4 pages</small></div>
+  <span class="hint">Color each square to match its number — a retro friend appears!</span>
+  <a class="ghost" href="/printables">← All printables</a>
+  <button type="button" onclick="window.print()">🖨️ Print / Save PDF</button>
+</div>
+
+<!-- PAGE 1 — The Brave Lion -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Pixel color-by-number</div></div>
+  <div class="center"><span class="retro-badge">▚ Level 1 ▞</span></div>
+  <h2 class="page-title">The Brave Little Lion</h2>
+  <p class="page-sub">Color each square to match its number. The bravest lion in the pride appears!</p>
+  <div class="grid-wrap">
+    <div id="lion"></div>
+    <div class="legend" id="lionKey"></div>
+  </div>
+  <div class="name-line">This belongs to: <span>&nbsp;</span></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Roar — but a gentle one.</span></div>
+</div>
+
+<!-- PAGE 2 — Star & Heart (little hands) -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Pixel color-by-number</div></div>
+  <div class="center"><span class="retro-badge">★ Little Hands ♥</span></div>
+  <h2 class="page-title">Star &amp; Heart</h2>
+  <p class="page-sub">Big squares for little artists. One color each — easy peasy!</p>
+  <div class="two">
+    <div class="card"><h3>Shine Bright ★</h3><div id="star"></div>
+      <div class="legend-inline" id="starKey"></div></div>
+    <div class="card"><h3>Full of Kindness ♥</h3><div id="heart"></div>
+      <div class="legend-inline" id="heartKey"></div></div>
+  </div>
+  <div class="name-line">This belongs to: <span>&nbsp;</span></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>You are a bright, kind kid.</span></div>
+</div>
+
+<!-- PAGE 3 — Arcade Friends -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Pixel color-by-number</div></div>
+  <div class="center"><span class="retro-badge">▚ Arcade Friends ▞</span></div>
+  <h2 class="page-title">Cat &amp; Rocket</h2>
+  <p class="page-sub">Match the numbers to blast off with your new pixel pals.</p>
+  <div class="two">
+    <div class="card"><h3>Pixel Cat 🐱</h3><div id="cat"></div>
+      <div class="legend-inline" id="catKey"></div></div>
+    <div class="card"><h3>Blast Off 🚀</h3><div id="rocket"></div>
+      <div class="legend-inline" id="rocketKey"></div></div>
+  </div>
+  <div class="name-line">This belongs to: <span>&nbsp;</span></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Ready · Set · Read!</span></div>
+</div>
+
+<!-- PAGE 4 — Make Your Own -->
+<div class="sheet">
+  <div class="brandline"><div class="b-name">Made Out of <span>Clay</span> · Book Club</div><div class="b-tag">Design your own sprite</div></div>
+  <div class="center"><span class="retro-badge">✎ Create Mode</span></div>
+  <h2 class="page-title">Make Your Own Pixel Pal</h2>
+  <p class="page-sub">Pick your colors, write them in the key, then fill the grid to invent a friend.</p>
+  <div class="grid-wrap">
+    <div id="blank"></div>
+    <div class="legend" id="blankKey"></div>
+  </div>
+  <div class="name-line">Created by: <span>&nbsp;</span></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Every pixel is yours.</span></div>
+</div>
+
+<script>
+/* ---- pixel renderer: draws numbered, faintly-tinted squares for non-zero cells ---- */
+function pixel(grid, palette, cell){
+  cell = cell || 26;
+  var rows = grid.length, cols = grid[0].length;
+  var w = cols*cell, h = rows*cell;
+  var s = '<svg class="pixsvg" viewBox="0 0 '+w+' '+h+'" width="'+w+'" xmlns="http://www.w3.org/2000/svg">';
+  for(var r=0;r<rows;r++){
+    for(var c=0;c<cols;c++){
+      var d = grid[r][c];
+      if(d==='0'||d==='.'||d===' ') continue;
+      var x=c*cell, y=r*cell, hex=(palette[d]||{}).hex||'#ffffff';
+      s += '<rect x="'+x+'" y="'+y+'" width="'+cell+'" height="'+cell+'" fill="'+hex+'" fill-opacity="0.16" stroke="#1a1712" stroke-width="1.4"/>';
+      s += '<text class="pixnum" x="'+(x+cell/2)+'" y="'+(y+cell/2+4)+'" text-anchor="middle">'+d+'</text>';
+    }
+  }
+  s += '</svg>';
+  return s;
+}
+function legend(palette, keys){
+  return keys.map(function(k){
+    var p=palette[k];
+    return '<div class="li"><span class="sw" style="background:'+p.hex+'33">'+k+'</span><span><b>'+p.name+'</b>'+(p.hint?'<small>'+p.hint+'</small>':'')+'</span></div>';
+  }).join('');
+}
+function legendInline(palette, keys){
+  return keys.map(function(k){
+    var p=palette[k];
+    return '<div class="li"><span class="sw" style="background:'+p.hex+'33">'+k+'</span>'+p.name+'</div>';
+  }).join('');
+}
+
+/* ---------------- LION 16x16 ---------------- */
+var LION=[
+ "0000111111110000",
+ "0011111111111100",
+ "0111111111111110",
+ "1111122222211111",
+ "1112222222222111",
+ "1122222222222211",
+ "1122232222322211",
+ "1122222222222211",
+ "1122222332222211",
+ "1122222332222211",
+ "0112222222222110",
+ "0011122222111100",
+ "0001111111111000",
+ "0000111111110000",
+ "0000011111100000",
+ "0000000000000000"
+];
+var LION_PAL={ '1':{hex:'#E08A3C',name:'Orange',hint:'the mane'},
+               '2':{hex:'#F0C24B',name:'Gold',hint:'the face'},
+               '3':{hex:'#5A3A22',name:'Brown',hint:'eyes & nose'} };
+document.getElementById('lion').innerHTML = pixel(LION, LION_PAL, 26);
+document.getElementById('lionKey').innerHTML = legend(LION_PAL, ['1','2','3']);
+
+/* ---------------- STAR 11x11 ---------------- */
+var STAR=[
+ "00000100000",
+ "00000100000",
+ "00001110000",
+ "01111111110",
+ "11111111111",
+ "01111111110",
+ "00111111100",
+ "00111111100",
+ "00110001100",
+ "01100000110",
+ "00000000000"
+];
+var STAR_PAL={ '1':{hex:'#F0C24B',name:'Yellow'} };
+document.getElementById('star').innerHTML = pixel(STAR, STAR_PAL, 30);
+document.getElementById('starKey').innerHTML = legendInline(STAR_PAL, ['1']);
+
+/* ---------------- HEART 11x11 ---------------- */
+var HEART=[
+ "00000000000",
+ "01110001110",
+ "01111111110",
+ "11111111111",
+ "11111111111",
+ "01111111110",
+ "00111111100",
+ "00011111000",
+ "00001110000",
+ "00000100000",
+ "00000000000"
+];
+var HEART_PAL={ '1':{hex:'#C9444D',name:'Red'} };
+document.getElementById('heart').innerHTML = pixel(HEART, HEART_PAL, 30);
+document.getElementById('heartKey').innerHTML = legendInline(HEART_PAL, ['1']);
+
+/* ---------------- CAT 16x16 ---------------- */
+var CAT=[
+ "0000000000000000",
+ "0011000000001100",
+ "0011100000011100",
+ "0011110000111100",
+ "0011111111111100",
+ "0111111111111110",
+ "0111111111111110",
+ "0113111111113110",
+ "0111111111111110",
+ "0111111221111110",
+ "0111111111111110",
+ "0011111111111100",
+ "0001111111111000",
+ "0000111111110000",
+ "0000011111100000",
+ "0000000000000000"
+];
+var CAT_PAL={ '1':{hex:'#9AA0A6',name:'Gray'},
+              '2':{hex:'#E88AA0',name:'Pink'},
+              '3':{hex:'#6FA06B',name:'Green'} };
+document.getElementById('cat').innerHTML = pixel(CAT, CAT_PAL, 18);
+document.getElementById('catKey').innerHTML = legendInline(CAT_PAL, ['1','2','3']);
+
+/* ---------------- ROCKET 16x16 ---------------- */
+var ROCKET=[
+ "0000000110000000",
+ "0000000110000000",
+ "0000001111000000",
+ "0000011111100000",
+ "0000011221100000",
+ "0000012222100000",
+ "0000011221100000",
+ "0000011111100000",
+ "0000011111100000",
+ "0000111111110000",
+ "0001111111111000",
+ "0011111111111100",
+ "0311111111111130",
+ "3300111111110033",
+ "0000004444000000",
+ "0000004444000000"
+];
+var ROCKET_PAL={ '1':{hex:'#C9CDD2',name:'Silver'},
+                 '2':{hex:'#5E7FA3',name:'Blue'},
+                 '3':{hex:'#C9444D',name:'Red'},
+                 '4':{hex:'#E8823C',name:'Orange'} };
+document.getElementById('rocket').innerHTML = pixel(ROCKET, ROCKET_PAL, 18);
+document.getElementById('rocketKey').innerHTML = legendInline(ROCKET_PAL, ['1','2','3','4']);
+
+/* ---------------- BLANK 16x16 (create mode) ---------------- */
+(function(){
+  var cell=24, rows=16, cols=16, w=cols*cell, h=rows*cell;
+  var s='<svg class="pixsvg" viewBox="0 0 '+w+' '+h+'" width="'+w+'" xmlns="http://www.w3.org/2000/svg">';
+  s+='<rect x="0" y="0" width="'+w+'" height="'+h+'" fill="#fff"/>';
+  for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+    s+='<rect x="'+(c*cell)+'" y="'+(r*cell)+'" width="'+cell+'" height="'+cell+'" fill="#fff" stroke="#d8cdb6" stroke-width="1"/>';
+  }
+  s+='</svg>';
+  document.getElementById('blank').innerHTML=s;
+  var blankKeys=['1','2','3','4'];
+  document.getElementById('blankKey').innerHTML = blankKeys.map(function(k){
+    return '<div class="li"><span class="sw">'+k+'</span><span><b>_____________</b><small>write a color</small></span></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

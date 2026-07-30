@@ -7,11 +7,15 @@
   "scripts": {
     "start": "eleventy --serve",
     "dev": "eleventy --serve",
-    "build": "eleventy",
+    "build": "eleventy && node tools/postbuild.js",
     "clean": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "esbuild": "^0.25.0",
     "sharp": "^0.35.2"
+  },
+  "overrides": {
+    "brace-expansion": "5.0.9"
   }
 }

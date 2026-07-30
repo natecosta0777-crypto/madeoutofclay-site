@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 permalink: /
 title: "Made Out of Clay Productions — Picture Books by Isaiah Hartwell"
+metaTitle: "Children's Picture Books | Made Out of Clay"
 description: "Premium full-color picture books for kids ages 2–7. Four heartfelt series — gentle, inclusive, sing-along, and made to be read again and again. By Isaiah Hartwell."
 schemaOrg: true
 schemaFaq: true
@@ -20,10 +21,13 @@ schemaFaq: true
       </div>
     </div>
     <div class="hero-art" aria-hidden="false">
-      <img src="/assets/covers/scooter-cant-wait-for-spring.jpg" alt="Cover of Scooter Can't Wait for Spring" width="200" height="200">
-      <img src="/assets/covers/clay-has-amazing-powers.jpg" alt="Cover of Clay Has Amazing Powers" width="200" height="200">
-      <img src="/assets/covers/calebs-homeland.jpg" alt="Cover of Caleb's Homeland" width="200" height="200">
-      <img src="/assets/covers/titus-and-the-lions.jpg" alt="Cover of Titus and the Lions" width="200" height="200">
+      {% for heroBook in [books[0], books[3], books[7], books[6]] %}
+      <picture>
+        <source srcset="{{ heroBook.cover | assetVariant('avif') }}" type="image/avif">
+        <source srcset="{{ heroBook.cover | assetVariant('webp') }}" type="image/webp">
+        <img src="{{ heroBook.cover }}" alt="{{ heroBook.alt }}" width="200" height="200"{% if loop.first %} fetchpriority="high"{% endif %} decoding="async">
+      </picture>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -34,7 +38,7 @@ schemaFaq: true
     <span class="club-float club-float-2" aria-hidden="true">📚</span>
     <span class="club-float club-float-3" aria-hidden="true">🖍️</span>
     <div class="club-copy">
-      <span class="club-kicker">✨ New · free for our first 1,000 families</span>
+      <span class="club-kicker">✨ Founding membership is free</span>
       <h2>Step inside the Digital&nbsp;Book&nbsp;Club</h2>
       <p>A cozy clubhouse where our characters read along, write a letter home every week, and cheer your kid on — plus free printables to color.</p>
     </div>
@@ -68,7 +72,7 @@ schemaFaq: true
 <section class="section section-alt">
   <div class="wrap">
     <h2 class="section-title">The collection</h2>
-    <p class="section-intro">Tap any title to buy on Amazon — premium full color, 8.5×8.5, ${{ site.bookPrice }} each.</p>
+    <p class="section-intro">Nine hardcover titles are available on Amazon; <em>Titus and the Lions</em> is coming soon with a free preview.</p>
     <div class="book-grid">
       {% for book in books %}
         {{ bookCard(book, site, lookups.seriesBySlug[book.series].name) }}

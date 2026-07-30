@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feelings Charts · Made Out of Clay Book Club</title>
+<link rel="stylesheet" href="print.css">
+<style>
+  .facegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  .fc{border:2.5px solid var(--line);border-radius:16px;padding:12px 8px 10px;text-align:center;background:#fff}
+  .fc svg{width:96px;height:96px}
+  .fc .nm{font-weight:800;font-size:.92rem;margin-top:6px;letter-spacing:.02em}
+  .fc .sc{font-size:.72rem;color:var(--muted);font-weight:600;margin-top:2px}
+  .scale{display:flex;justify-content:space-between;gap:10px;margin-top:12px}
+  .scale .step{flex:1;border:2px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center}
+  .scale .step .dot{width:34px;height:34px;border-radius:50%;border:2px solid #1a1712;margin:0 auto 6px}
+  .scale .step b{font-size:.78rem;display:block}
+  .scale .step small{font-size:.66rem;color:var(--muted)}
+  .ln{fill:none;stroke:#1a1712;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+  .eye{fill:#1a1712}
+  .card-face{fill:#fff;stroke:#1a1712;stroke-width:5}
+  .checkin th{background:var(--denim);color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding:8px}
+  .checkin{width:100%;border-collapse:collapse;margin-top:8px}
+  .checkin td{border:1.5px solid var(--line);height:46px;padding:6px 10px;font-size:.9rem;color:var(--muted)}
+  .cut{border:1.5px dashed #b9ad97;border-radius:10px;padding:10px;margin-top:6px}
+  .arrowstrip{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:6px;flex-wrap:wrap}
+  .arrowstrip .pill{border:2px solid #1a1712;border-radius:30px;padding:6px 14px;font-weight:700;font-size:.8rem}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="toolbar noprint">
+  <div class="t-title">Feelings Charts <small>Made Out of Clay · 3 pages</small></div>
+  <span class="hint">Great for morning routines &amp; calm-down corners</span>
+  <a class="ghost" href="/printables">← All printables</a>
+  <button type="button" onclick="window.print()">🖨️ Print / Save PDF</button>
+</div>
+
+<!-- PAGE 1 — How Am I Feeling Today poster -->
+<div class="sheet">
+  <div class="brandline">
+    <div class="b-name">Made Out of <span>Clay</span> · Book Club</div>
+    <div class="b-tag">Daily check-in poster</div>
+  </div>
+  <h2 class="page-title">How Am I Feeling Today?</h2>
+  <p class="page-sub">Point to a face. There are no wrong feelings — every one is okay.</p>
+  <div class="facegrid" id="faces"></div>
+  <p class="prompt" style="text-align:center;color:var(--muted);font-weight:600;margin-top:14px">Tip: hang this at kid-height. Point to a face together each morning and each night.</p>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>All feelings are welcome here.</span></div>
+</div>
+
+<!-- PAGE 2 — Daily check-in log + calm-down scale -->
+<div class="sheet">
+  <div class="brandline">
+    <div class="b-name">Made Out of <span>Clay</span> · Book Club</div>
+    <div class="b-tag">Daily check-in log</div>
+  </div>
+  <h2 class="page-title">My Feelings This Week</h2>
+  <p class="page-sub">Draw or write how you felt. Morning and night — your call.</p>
+  <div class="name-line" style="margin:2px 0 6px">Name: <span>&nbsp;</span> &nbsp;&nbsp; Week of: <span style="min-width:150px">&nbsp;</span></div>
+  <table class="checkin">
+    <thead><tr><th style="width:90px">Day</th><th>This morning I felt…</th><th>Tonight I feel…</th><th style="width:120px">Something good today</th></tr></thead>
+    <tbody id="days"></tbody>
+  </table>
+
+  <h3 style="margin:20px 0 2px;font-size:1.05rem">My Calm-Down Scale</h3>
+  <p style="color:var(--muted);font-size:.85rem;font-weight:600">When feelings get big, where am I? Color the one that fits.</p>
+  <div class="scale">
+    <div class="step"><div class="dot" style="border-color:#8FAE8B"></div><b>Green</b><small>Calm &amp; ready</small></div>
+    <div class="step"><div class="dot" style="border-color:#E8B84B"></div><b>Yellow</b><small>Wiggly / silly</small></div>
+    <div class="step"><div class="dot" style="border-color:#C9744D"></div><b>Orange</b><small>Frustrated</small></div>
+    <div class="step"><div class="dot" style="border-color:#a8402a"></div><b>Red</b><small>Overwhelmed</small></div>
+    <div class="step"><div class="dot" style="border-color:#5E7FA3"></div><b>Blue</b><small>Sad / tired</small></div>
+  </div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>All feelings are welcome here.</span></div>
+</div>
+
+<!-- PAGE 3 — Calm-down cards to cut out -->
+<div class="sheet">
+  <div class="brandline">
+    <div class="b-name">Made Out of <span>Clay</span> · Book Club</div>
+    <div class="b-tag">Cut-out calm-down cards</div>
+  </div>
+  <h2 class="page-title">My Calm-Down Cards</h2>
+  <p class="page-sub">Cut along the dashes. Keep them in a pocket or a calm corner.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px" id="cards"></div>
+  <div class="footline"><span>madeoutofclayprod.com/printables</span><span>Breathe. You've got this.</span></div>
+</div>
+
+<script>
+  // Feeling faces (name, svg mouth/brow builder)
+  function face(inner){return '<svg viewBox="0 0 120 120"><circle class="card-face" cx="60" cy="60" r="48"/>'+inner+'</svg>';}
+  var FACES=[
+    ['Happy', face('<circle class="eye" cx="44" cy="52" r="4"/><circle class="eye" cx="76" cy="52" r="4"/><path class="ln" d="M40 72 Q60 92 80 72"/>')],
+    ['Sad', face('<circle class="eye" cx="44" cy="54" r="4"/><circle class="eye" cx="76" cy="54" r="4"/><path class="ln" d="M42 82 Q60 66 78 82"/><path class="ln" style="stroke-width:3" d="M78 58 q6 12 0 22"/>')],
+    ['Excited', face('<circle class="ln" style="fill:none;stroke-width:3" cx="44" cy="52" r="6"/><circle class="ln" style="fill:none;stroke-width:3" cx="76" cy="52" r="6"/><path class="ln" d="M40 70 Q60 96 80 70 Q60 82 40 70"/>')],
+    ['Worried', face('<path class="ln" style="stroke-width:3" d="M34 42 Q44 36 54 42 M66 42 Q76 36 86 42"/><circle class="eye" cx="44" cy="56" r="4"/><circle class="eye" cx="76" cy="56" r="4"/><path class="ln" d="M44 80 Q60 72 76 80"/>')],
+    ['Angry', face('<path class="ln" style="stroke-width:4" d="M36 46 L54 54 M84 46 L66 54"/><circle class="eye" cx="46" cy="60" r="4"/><circle class="eye" cx="74" cy="60" r="4"/><path class="ln" d="M44 84 Q60 74 76 84"/>')],
+    ['Calm', face('<path class="ln" d="M38 54 Q46 48 54 54 M66 54 Q74 48 82 54"/><path class="ln" d="M44 76 Q60 86 76 76"/>')],
+    ['Tired', face('<path class="ln" style="stroke-width:3" d="M38 52 L54 52 M66 52 L82 52"/><path class="ln" d="M46 78 Q60 72 74 78"/><text x="86" y="40" style="font:800 16px sans-serif;fill:#1a1712">z</text>')],
+    ['Silly', face('<circle class="eye" cx="44" cy="52" r="4"/><path class="ln" style="stroke-width:3" d="M68 46 L84 56 M84 46 L68 56"/><path class="ln" d="M40 74 Q60 90 80 76"/>')],
+    ['Loved', face('<circle class="eye" cx="44" cy="54" r="4"/><circle class="eye" cx="76" cy="54" r="4"/><path class="ln" d="M42 74 Q60 88 78 74"/><path class="ln" style="stroke:#C9744D;stroke-width:3;fill:none" d="M60 26 q-8 -10 -16 -2 q-8 8 16 22 q24 -14 16 -22 q-8 -8 -16 2 z"/>')]
+  ];
+  document.getElementById('faces').innerHTML=FACES.map(function(f){
+    return '<div class="fc">'+f[1]+'<div class="nm">'+f[0].toUpperCase()+'</div><div class="sc">I can feel this</div></div>';
+  }).join('');
+
+  // check-in days
+  var DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  document.getElementById('days').innerHTML=DAYS.map(function(d){
+    return '<tr><td style="font-weight:800;color:var(--terracotta)">'+d+'</td><td></td><td></td><td></td></tr>';
+  }).join('');
+
+  // calm-down cut-out cards
+  var CARDS=[
+    ['🫁 Belly Breaths','Breathe in for 4… hold for 4… out for 4. Do it three times.'],
+    ['🖐️ Five Senses','Name 5 things you see, 4 you hear, 3 you can touch, 2 you smell, 1 you like.'],
+    ['🐢 Slow Like a Turtle','Tuck in, go slow, count to ten before you do anything.'],
+    ['🤝 Ask for Help','It is brave to say: “I need a grown-up.” You are allowed.'],
+    ['💛 Kind Words','Say to yourself: “This feeling will pass. I am safe.”'],
+    ['🌟 Squeeze & Release','Squeeze your hands tight… then let go. Feel your body soften.']
+  ];
+  document.getElementById('cards').innerHTML=CARDS.map(function(c){
+    return '<div class="cut"><div style="font-weight:800;font-size:1rem;margin-bottom:4px">'+c[0]+'</div><div style="color:var(--muted);font-size:.9rem">'+c[1]+'</div></div>';
+  }).join('');
+</script>
+</body>
+</html>

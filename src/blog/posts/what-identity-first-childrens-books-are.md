@@ -16,6 +16,8 @@ Read these two sentences out loud: "a child with autism" and "an autistic child.
 
 (Preferences vary, and the respectful move is always to follow what an individual or community asks for. But in children's books especially, identity-first framing tends to send the most affirming message.)
 
+The Autistic Self Advocacy Network explains why it uses identity-first language while also recognizing that individual preferences differ. That community-led perspective informs the language choices described here.
+
 ## How this shows up in picture books
 
 The difference between an identity-first book and a well-meaning but deficit-framed one is usually visible on the first read:
@@ -38,3 +40,7 @@ Our **[Just the Way You Are](/series/just-the-way-you-are/)** series is built on
 Language is one of the first things kids absorb. Let's make sure the words we hand them say: *you are not a problem to be fixed. You are a person to be celebrated.*
 
 *Explore [Just the Way You Are](/series/just-the-way-you-are/) or browse [all our books](/books/).*
+
+## Source and further reading
+
+- [Identity-First Language — Autistic Self Advocacy Network](https://autisticadvocacy.org/about-asan/identity-first-language/)

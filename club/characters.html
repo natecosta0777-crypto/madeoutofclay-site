@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="canonical" href="https://club.madeoutofclayprod.com/characters">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/assets/club-fixes.css">
+<script src="/assets/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
+(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('/book-club');}}catch(e){}})();</script>
+<title>Meet the Characters — Made Out of Clay Book Club</title>
+<meta name="description" content="Meet Clay, Maya, Lena, Nia, Zoe, Scooter, Caleb, and Asher, then use the grown-up-managed character letter activities.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meet the Characters — Made Out of Clay Book Club">
+<meta property="og:description" content="Become pen pals with the Book Club characters — subscribe to their letters and write back and forth.">
+<style>
+  :root{
+    --mustard:#E8B84B; --sage:#8FAE8B; --terracotta:#C9744D; --cream:#FBF6EC;
+    --denim:#5E7FA3; --ink:#2F2A24; --muted:#6F6657; --line:#E7DCC8; --white:#fff;
+    --plum:#7E5A78;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1080px;margin:0 auto;gap:16px}
+  .logo{font-weight:800;font-size:1.05rem}.logo span{color:var(--terracotta)}
+  .barbtns a{padding:9px 16px;border-radius:30px;font-size:.88rem;font-weight:800}
+  .barbtns .ghost{color:var(--muted)}
+  .barbtns .solid{background:var(--terracotta);color:#fff}
+
+  .intro{background:radial-gradient(1000px 420px at 50% -20%,#fdf0d6,transparent 60%),linear-gradient(160deg,#fbf6ec,#fdeccf 60%,#eaf1e6);border-bottom:1px solid var(--line);padding:38px 0 30px;text-align:center}
+  .intro .badge{display:inline-block;background:var(--sage);color:#fff;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 15px;border-radius:30px;margin-bottom:12px}
+  .intro h1{font-size:clamp(1.9rem,5vw,2.8rem);letter-spacing:-.02em;max-width:760px;margin:0 auto}
+  .intro h1 em{color:var(--terracotta);font-style:normal}
+  .intro p{color:var(--muted);max-width:600px;margin:10px auto 0;font-weight:600}
+
+  section{padding:32px 0}
+  /* character grid */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .cha{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 6px 18px rgba(80,60,30,.06);display:flex;flex-direction:column}
+  .cha .top{display:flex;gap:16px;padding:20px 20px 12px}
+  /* headshot — swap real art via background-image on .shot */
+  .shot{flex:0 0 auto;width:96px;height:96px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff;box-shadow:inset 0 -10px 24px rgba(0,0,0,.12);background-size:cover;background-position:center}
+  .s-clay{background:linear-gradient(150deg,#E8B84B,#C9744D)}
+  .s-maya{background:linear-gradient(150deg,#C9744D,#7E5A78)}
+  .s-mira{background:linear-gradient(150deg,#5E7FA3,#8FAE8B)}
+  .s-tan{background:linear-gradient(150deg,#C9744D,#E8B84B)}
+  .s-glum{background:linear-gradient(150deg,#5E7FA3,#8FAE8B)}
+  .s-wuzzy{background:linear-gradient(150deg,#7E5A78,#5E7FA3)}
+  .s-pip{background:linear-gradient(150deg,#8FAE8B,#5E7FA3)}
+  .s-titus{background:linear-gradient(150deg,#f0c24b,#E8B84B)}
+  .cha .who h2{font-size:1.35rem}
+  .cha .series{color:var(--terracotta);font-weight:800;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+  .cha .tagline{font-weight:700;color:var(--ink);margin-top:6px;font-size:.95rem}
+  .cha .body{padding:4px 20px 0;color:var(--muted);font-size:.95rem;font-weight:600;flex:1}
+  .cha .loves{padding:12px 20px 0;font-size:.86rem;color:var(--ink)}
+  .cha .loves b{color:var(--sage)}
+  .cha .acts{display:flex;gap:10px;flex-wrap:wrap;padding:16px 20px 20px;margin-top:6px}
+  .cha .acts button{font-family:inherit;font-weight:800;font-size:.9rem;border-radius:30px;padding:11px 16px;cursor:pointer;border:none}
+  .penbtn{background:var(--terracotta);color:#fff;box-shadow:0 4px 0 #a85c3b;display:inline-flex;align-items:center;gap:7px}
+  .penbtn.on{background:var(--sage);box-shadow:0 4px 0 #6f8c6b}
+  .writebtn{background:#fff;color:var(--ink);border:2px solid var(--line)!important}
+
+  /* subscribe dock */
+  .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 26px rgba(80,60,30,.12);transform:translateY(120%);transition:transform .3s ease}
+  .dock.show{transform:translateY(0)}
+  .dock .in{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .dock .lbl{font-weight:800}
+  .dock .lbl span{color:var(--terracotta)}
+  .dock form{display:flex;gap:10px;flex:1;min-width:260px;flex-wrap:wrap}
+  .dock input{flex:1;min-width:180px;border:2px solid var(--line);border-radius:40px;padding:12px 16px;font-family:inherit;font-weight:600;font-size:1rem}
+  .dock input:focus{outline:none;border-color:var(--terracotta)}
+  .dock button{background:var(--terracotta);color:#fff;border:none;border-radius:40px;padding:12px 22px;font-family:inherit;font-weight:900;cursor:pointer;box-shadow:0 4px 0 #a85c3b}
+
+  /* toast / confirm */
+  .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);z-index:60;background:var(--sage);color:#fff;font-weight:800;padding:14px 22px;border-radius:40px;box-shadow:0 12px 30px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;max-width:90vw;text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* write-a-letter modal */
+  .modal{position:fixed;inset:0;z-index:70;background:rgba(40,30,20,.55);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.show{display:flex}
+  .compose{background:#fff;border-radius:22px;max-width:520px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .compose .ch{color:#fff;padding:18px 22px;display:flex;align-items:center;gap:12px;position:relative}
+  .compose .ch .mini{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;background:rgba(255,255,255,.22)}
+  .compose .ch b{display:block;font-size:1.1rem}
+  .compose .ch small{opacity:.92;font-weight:700;font-size:.8rem}
+  .compose .close{position:absolute;top:12px;right:14px;background:rgba(255,255,255,.25);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1.1rem;cursor:pointer;font-weight:800}
+  .compose .cb{padding:20px 22px}
+  .compose label{display:block;font-weight:800;font-size:.85rem;margin:10px 0 5px;color:var(--ink)}
+  .compose input,.compose textarea{width:100%;border:2px solid var(--line);border-radius:14px;padding:12px 14px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink)}
+  .compose input:focus,.compose textarea:focus{outline:none;border-color:var(--terracotta)}
+  .compose textarea{min-height:110px;resize:vertical}
+  .compose .send{margin-top:16px;width:100%;background:var(--terracotta);color:#fff;border:none;border-radius:40px;padding:14px;font-family:inherit;font-weight:900;font-size:1.05rem;cursor:pointer;box-shadow:0 5px 0 #a85c3b}
+  .compose .note{color:var(--muted);font-size:.82rem;margin-top:12px;font-weight:600}
+  .compose .donemsg{display:none;text-align:center;padding:10px 0 4px}
+  .compose .donemsg .big{font-size:2.4rem}
+
+  footer{padding:30px 0 110px;color:var(--muted);font-size:.82rem;text-align:center;border-top:1px solid var(--line);margin-top:14px}
+  footer a{color:var(--terracotta);font-weight:700}
+  @media(max-width:520px){.cha .top{flex-direction:column;align-items:center;text-align:center}}
+</style>
+<script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header>
+  <div class="bar">
+    <a class="logo" href="clubhouse.html" aria-label="Made Out of Clay Characters" style="display:inline-flex;align-items:center;gap:6px"><img class="club-static-logo" src="/assets/logo-header.webp" alt="" width="70" height="44"><span aria-hidden="true"> · Characters</span></a>
+    <div class="barbtns">
+      <a class="ghost" href="clubhouse.html">Clubhouse</a>
+      <a class="solid" href="app.html">My Bookshelf →</a>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+
+<div class="intro">
+  <span class="badge">✉️ Become pen pals</span>
+  <h1>Meet the friends of the <em>Book Club</em></h1>
+  <p>Every character loves getting letters. Pick your child's favorites, subscribe to their notes, and write back and forth — real pen pals who always write back. 💛</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="cards" id="cards"><!-- characters injected here --></div>
+  </div>
+</section>
+
+</main>
+<footer>
+  Made Out of Clay Book Club · pen-pal letters are gentle, weekly, and always kind ·
+  <a href="clubhouse.html">Back to the Clubhouse</a>
+</footer>
+
+<!-- SUBSCRIBE DOCK -->
+<div class="dock" id="dock">
+  <div class="in">
+    <div class="lbl">Pen pals for your kid: <span id="dockNames">—</span></div>
+    <form id="dockForm">
+      <input id="dockEmail" type="email" required placeholder="Parent email for the letters…" aria-label="Parent email">
+      <button type="submit">Start the letters ✉️</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- WRITE A LETTER MODAL -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeCompose()">
+  <div class="compose" role="dialog" aria-modal="true">
+    <div class="ch" id="composeHead">
+      <div class="mini" id="composeMini">💛</div>
+      <div><small>Write a letter to</small><b id="composeName">Clay</b></div>
+      <button type="button" class="close" onclick="closeCompose()" aria-label="Close">✕</button>
+    </div>
+    <div class="cb">
+      <form id="composeForm">
+        <label for="cKid">Your child's first name</label>
+        <input id="cKid" type="text" maxlength="24" placeholder="e.g. Lily" autocomplete="off" required>
+        <label for="cParent">Parent email (so <span id="composeName2">Clay</span> can write back)</label>
+        <input id="cParent" type="email" placeholder="you@email.com" required>
+        <label for="cMsg">Your letter</label>
+        <textarea id="cMsg" placeholder="Dear friend, today I..." required></textarea>
+        <button type="submit" class="send">Send my letter 💌</button>
+        <div class="note">A grown-up sends this, and <span id="composeName3">Clay</span> writes back in a day or two — kind, simple, and always age-appropriate.</div>
+      </form>
+      <div class="donemsg" id="composeDone">
+        <div class="big" id="doneBig">💌</div>
+        <h3 style="margin:6px 0" id="doneTitle">Your letter is on its way!</h3>
+        <p style="color:var(--muted);font-weight:600" id="doneSub"><span id="doneChar">Clay</span> will write back soon. Keep an eye on your inbox!</p>
+        <div id="doneReply" style="display:none;text-align:left;background:var(--cream);border-left:4px solid var(--sage);border-radius:12px;padding:14px 16px;margin-top:12px;font-weight:600;white-space:pre-wrap;line-height:1.6"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Keep in sync with index.html / book-club.html
+  var CLUB_PASSWORD = 'STORYTIME';
+  // ⬇️ SET THIS: same Web3Forms access key as index.html (https://web3forms.com).
+  var WEB3FORMS_KEY = 'b36f5fb3-641f-4258-aa33-9ca185466fe2';
+
+  // ---- Character roster — real book characters. Headshots cropped from the book covers. ----
+  var CHARACTERS = [
+    {id:'clay', name:'Clay', cls:'s-clay', face:'💛', img:'assets/characters/book/clay-face.webp', series:'Just the Way You Are',
+      tagline:'Some days are loud, some are quiet — and both are okay.',
+      body:'Clay has amazing powers — being exactly himself. His stories celebrate the things that make you YOU. Tell him about your favorite thing about yourself!',
+      loves:'big feelings, dinosaurs, and the things that make you one of a kind'},
+    {id:'maya', name:'Maya', cls:'s-maya', face:'⭐', img:'assets/characters/book/maya-face.webp', series:'Brave Like Me',
+      tagline:'Brave isn’t “not scared” — brave is trying anyway.',
+      body:'Maya gets butterflies just like you, then goes first anyway — one small step at a time. She loves hearing about YOUR brave moments.',
+      loves:'first tries, going first, and tiny acts of courage'},
+    {id:'lena', name:'Lena', cls:'s-clay', face:'🦊', img:'assets/characters/book/lena-face.webp', series:'Brave Like Me',
+      tagline:'Brave enough for a night away — one deep breath at a time.',
+      body:'On her first sleepover, Lena learned you can miss home AND have fun at the same time. Tell her about your own big-kid firsts.',
+      loves:'sleepovers, cozy blankets, and being far from home and okay'},
+    {id:'nia', name:'Nia', cls:'s-wuzzy', face:'✋', img:'assets/characters/book/nia-face.webp', series:'Brave Like Me',
+      tagline:'My voice matters — even when it shakes.',
+      body:'The day Nia spoke up, she found out her ideas were worth sharing. She’d love to hear the big thing YOU want to say.',
+      loves:'speaking up, big ideas, and using your voice'},
+    {id:'zoe', name:'Zoe', cls:'s-mira', face:'🛝', img:'assets/characters/book/zoe-face.webp', series:'Brave Like Me',
+      tagline:'Too-tall today, easy-and-fun tomorrow.',
+      body:'Zoe stared down the too-tall slide and climbed it anyway. Write to her about the scary-big thing you’re working up to.',
+      loves:'too-tall slides, playgrounds, and trying the scary thing'},
+    {id:'scooter', name:'Scooter', cls:'s-tan', face:'🦥', img:'assets/characters/book/scooter-face.webp', series:'At Sunny’s Table',
+      tagline:'Good things are worth the wait.',
+      body:'Scooter is a cozy little sloth who can’t WAIT for spring — and is learning that waiting can be its own kind of fun. Send him what you’re looking forward to.',
+      loves:'warm soup days, family dinners, and counting down to something good'},
+    {id:'caleb', name:'Caleb', cls:'s-tan', face:'🦁', img:'assets/characters/book/caleb-face.webp', series:'The Kingdom of Judea',
+      tagline:'Home is the pride you walk with.',
+      body:'Caleb is the gentle lion who watches over the whole pride on the long walk home. Write to him about the people who keep YOU safe.',
+      loves:'the savanna at sunrise, looking after the cubs, and brave little steps'},
+    {id:'asher', name:'Asher', cls:'s-mira', face:'🐾', img:'assets/characters/book/asher-face.webp', series:'The Kingdom of Judea',
+      tagline:'Even a small cub can climb a big rock.',
+      body:'Asher is a curious lion cub who climbed all the way up Lookout Rock. He’d love to hear about the big thing you’re brave enough to try.',
+      loves:'exploring, lookout spots, and growing up brave'},
+    {id:'titus', name:'Titus', cls:'s-titus', face:'🐑', img:'assets/characters/book/titus-face.webp', series:'Titus the Lamb',
+      tagline:'One question, one song, every single week.',
+      body:'Titus is a curious little lamb who keeps a big Bible question tucked in a satchel — pulled out every week for a story and a song that’s impossible to forget. Write in with the question on YOUR mind!',
+      loves:'wondering questions, the Shepherd’s stories, and songs that get stuck in your head'}
+  ];
+
+  var selected = {}; // id -> true
+
+  function render(){
+    var box = document.getElementById('cards');
+    box.innerHTML = CHARACTERS.map(function(c){
+      return '<div class="cha">'+
+        '<div class="top">'+
+          // Inline size/position too: the .s-* gradient classes use the background SHORTHAND,
+          // which resets background-size/position and was showing a zoomed top-left corner.
+          '<div class="shot '+c.cls+'"'+(c.img?(' style="background-image:url('+c.img+');background-size:cover;background-position:center"'):'')+'>'+(c.img?'':c.face)+'</div>'+
+          '<div class="who"><h2>'+c.name+'</h2><div class="series">'+c.series+'</div><div class="tagline">'+c.tagline+'</div></div>'+
+        '</div>'+
+        '<div class="body">'+c.body+'</div>'+
+        '<div class="loves">💌 <b>Loves letters about:</b> '+c.loves+'</div>'+
+        '<div class="acts">'+
+          '<button class="penbtn" id="pen-'+c.id+'" onclick="togglePen(\''+c.id+'\')">✉️ Be pen pals</button>'+
+          '<button class="writebtn" onclick="openCompose(\''+c.id+'\')">✍️ Write a letter</button>'+
+        '</div>'+
+      '</div>';
+    }).join('');
+  }
+  render();
+
+  function togglePen(id){
+    selected[id] = !selected[id];
+    var btn = document.getElementById('pen-'+id);
+    var c = CHARACTERS.find(function(x){return x.id===id;});
+    btn.classList.toggle('on', selected[id]);
+    btn.innerHTML = selected[id] ? '✓ Pen pals!' : '✉️ Be pen pals';
+    updateDock();
+  }
+  function updateDock(){
+    var names = CHARACTERS.filter(function(c){return selected[c.id];}).map(function(c){return c.name;});
+    var dock = document.getElementById('dock');
+    if(names.length){
+      document.getElementById('dockNames').textContent = names.join(', ');
+      dock.classList.add('show');
+    } else {
+      dock.classList.remove('show');
+    }
+  }
+
+  // ---- subscribe (pen-pal letters) ----
+  document.getElementById('dockForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('dockEmail').value.trim();
+    var picks = CHARACTERS.filter(function(c){return selected[c.id];}).map(function(c){return c.name;});
+    if(!email || !picks.length) return;
+
+    sendToWeb3({
+      subject: 'New Book Club pen-pal subscription 💌',
+      from_name: 'Book Club Pen Pals',
+      email: email,
+      type: 'penpal_subscribe',
+      characters: picks.join(', ')
+    });
+    try{ if(window.gtag) gtag('event','penpal_subscribe',{characters:picks.join(',')}); }catch(_){}
+    try{ if(window.fbq) fbq('track','Subscribe'); }catch(_){}
+
+    showToast('🎉 You’re pen pals with ' + picks.join(', ') + '! First letter is on the way.');
+    // reset selections
+    picks = []; selected = {}; render(); updateDock();
+    document.getElementById('dockEmail').value='';
+  });
+
+  // ---- write a letter ----
+  var composeId = null;
+  function openCompose(id){
+    composeId = id;
+    var c = CHARACTERS.find(function(x){return x.id===id;});
+    document.getElementById('composeHead').className = 'ch '+c.cls;
+    var mini = document.getElementById('composeMini');
+    if(c.img){ mini.textContent=''; mini.style.backgroundImage='url('+c.img+')'; mini.style.backgroundSize='cover'; mini.style.backgroundPosition='center'; }
+    else { mini.textContent=c.face; mini.style.backgroundImage='none'; }
+    ['composeName','composeName2','composeName3','doneChar'].forEach(function(elid){
+      document.getElementById(elid).textContent = c.name;
+    });
+    document.getElementById('composeForm').style.display='block';
+    document.getElementById('composeDone').style.display='none';
+    document.getElementById('composeForm').reset();
+    document.getElementById('modal').classList.add('show');
+  }
+  function closeCompose(){ document.getElementById('modal').classList.remove('show'); }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCompose(); });
+
+  document.getElementById('composeForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var c = CHARACTERS.find(function(x){return x.id===composeId;});
+    var kid = document.getElementById('cKid').value.trim();
+    var msg = document.getElementById('cMsg').value.trim();
+
+    // Always notify Nate (Web3Forms) so a human can follow up / archive.
+    sendToWeb3({
+      subject: 'A child wrote a letter to ' + c.name + ' 💌',
+      from_name: 'Book Club Pen Pals',
+      email: document.getElementById('cParent').value.trim(),
+      type: 'penpal_letter',
+      to_character: c.name,
+      child_name: kid,
+      message: msg
+    });
+    try{ if(window.gtag) gtag('event','penpal_letter',{character:c.name}); }catch(_){}
+
+    // Show the done panel; if the AI reply worker is live, show the character's reply inline.
+    document.getElementById('composeForm').style.display='none';
+    document.getElementById('composeDone').style.display='block';
+    var big=document.getElementById('doneBig'), title=document.getElementById('doneTitle'),
+        sub=document.getElementById('doneSub'), reply=document.getElementById('doneReply');
+    big.textContent='✍️'; title.textContent=c.name+' is writing back…';
+    sub.innerHTML='One moment — '+c.name+' is reading your letter.'; reply.style.display='none';
+
+    fetch('/api/reply', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ character:c.id, child_name:kid, message:msg })
+    }).then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(data){
+        if(data && data.ok && data.reply){
+          big.textContent='💌'; title.textContent='A letter from '+c.name+'!';
+          sub.innerHTML='Here’s what '+c.name+' wrote back — and we emailed you a copy:';
+          reply.textContent=data.reply; reply.style.display='block';
+        } else {
+          // worker not configured yet → the honest "on its way" message
+          big.textContent='💌'; title.textContent='Your letter is on its way!';
+          sub.innerHTML='<span>'+c.name+'</span> will write back soon. Keep an eye on your inbox!';
+        }
+      })
+      .catch(function(){
+        big.textContent='💌'; title.textContent='Your letter is on its way!';
+        sub.innerHTML='<span>'+c.name+'</span> will write back soon. Keep an eye on your inbox!';
+      });
+  });
+
+  // ---- shared Web3Forms sender (best-effort; UI never blocks on it) ----
+  function sendToWeb3(fields){
+    if(!WEB3FORMS_KEY || WEB3FORMS_KEY==='YOUR_WEB3FORMS_ACCESS_KEY') return;
+    fields.access_key = WEB3FORMS_KEY;
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(fields)
+    }).catch(function(){});
+  }
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove('show'); }, 4200);
+  }
+</script>
+
+</body>
+</html>
