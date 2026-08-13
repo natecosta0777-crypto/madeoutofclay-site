@@ -20,6 +20,7 @@ body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink)
   font:inherit;font-weight:800;font-size:.9rem;padding:10px 20px;cursor:pointer;text-decoration:none
 }
 .toolbar a.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.4)}
+.toolbar a.club-home-logo{background:#fff;border:none;padding:2px 6px}
 .toolbar .hint{font-size:.78rem;opacity:.75;font-weight:600}
 
 /* Each printable "sheet" = one letter page */

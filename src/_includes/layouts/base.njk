@@ -44,7 +44,7 @@
     "name": site.name,
     "url": site.url,
     "email": site.email,
-    "logo": "/favicon-192.png" | absoluteUrl(site.url),
+    "logo": "/assets/logo.png" | absoluteUrl(site.url),
     "description": site.description,
     "sameAs": [site.amazonAuthorUrl] if site.amazonAuthorUrl else []
   } | dump | safe }}</script>

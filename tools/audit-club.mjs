@@ -38,6 +38,9 @@ for (const file of htmlFiles) {
   if (!/<link\s+rel=["']canonical["'][^>]+href=["']https:\/\/club\.madeoutofclayprod\.com/i.test(html)) {
     failures.push(`${relative}: missing canonical URL`);
   }
+  if (!/<a\b[^>]*href=["']\/["'][^>]*>[\s\S]*?<img\b[^>]*logo-header\.webp/i.test(html)) {
+    failures.push(`${relative}: missing upper-left logo Home link`);
+  }
 
   const duplicateIds = [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
   if (duplicateIds.length) failures.push(`${relative}: duplicate IDs ${duplicateIds.join(", ")}`);
