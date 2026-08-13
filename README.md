@@ -32,7 +32,6 @@ the site degrades gracefully (no broken markup, no dangling params).
 |---|---|---|
 | `associateTag` | Amazon Associates store ID. Appended as `?tag=` to **every** buy link. Blank = clean untagged links. | #1 |
 | `ga4Id` | GA4 Measurement ID (`G-XXXX`). Blank = no analytics emitted. | #5 |
-| `metaPixelId` | Meta Pixel ID. Blank = no pixel. | #5 |
 | `newsletterAction` | ESP form POST URL (Mailchimp/Kit/etc). Blank = newsletter shows "coming soon". | #2 |
 | `contactAction` | Contact form endpoint (Formspree/Basin/Web3Forms). Blank = contact page shows a mailto fallback. | #3 |
 | `amazonAuthorUrl` | Amazon Author Central profile. Adds "Follow on Amazon" + schema `sameAs`. | #5.3 |
@@ -46,7 +45,7 @@ the site degrades gracefully (no broken markup, no dangling params).
 2. **ESP** — Mailchimp or Kit (ConvertKit). Paste the embedded-form *action* URL into `newsletterAction`; confirm the email field is named `email` (adjust `src/_includes/partials/newsletter.njk` if your ESP uses a different field name).
 3. **Contact backend** — Formspree is the fastest path for a static site. Create a form, paste its endpoint into `contactAction`.
 4. **Lead magnet** — not yet built. Recommended: a printable coloring pack PDF from *Just the Way You Are*. Drop the PDF at `src/assets/printables/` and add a `/free` opt-in page (scaffold on request).
-5. **GA4 + Pixel** — create GA4 first; set `ga4Id`. Add `metaPixelId` only when running Meta ads.
+5. **Analytics** — GA4 is the single consent-gated client-side analytics system. Cloudflare may also provide first-party delivery and performance analytics at the edge.
 6. **Reviews** — only real reviews. Add objects to `src/_data/reviews.json` as `{ "rating": 5, "quote": "…", "source": "Verified Amazon Review" }`. Empty = the block hides itself.
 7. **Direct sales** — Amazon-only for now (no change needed).
 8. **Hosting** — see Deploy below.
@@ -81,7 +80,7 @@ drop the file in and update that book's `cover` path in `books.json`.
 - ✅ Newsletter (hero + footer) and contact forms with honeypot, inline status, analytics events — wired to config endpoints (§1.4, §1.6)
 - ✅ Per-book anchor targets on `/books` (§1.7)
 - ✅ Social-proof + trust components, empty-state safe (§2)
-- ✅ Consent-gated GA4 + Meta Pixel; `track()` wrapper; the 6 custom events; `sendBeacon` on outbound Amazon clicks (§3)
+- ✅ Consent-gated GA4; semantic event tracking for book, Amazon, preview, form, and series actions (§3)
 - ✅ Full head metadata per route: unique title, description, canonical, OG, Twitter (§4.1)
 - ✅ One `<h1>` per page; logical headings (§4.2)
 - ✅ `robots.txt` + `sitemap.xml` (§4.3)
@@ -93,7 +92,7 @@ drop the file in and update that book's `cover` path in `books.json`.
 - ✅ Blog infra + content calendar (§5)
 
 **Needs Nate's real values to go fully live:** `associateTag`, `ga4Id`,
-`metaPixelId`, `newsletterAction`, `contactAction` (all in `site.js`); final book
+`newsletterAction`, `contactAction` (all in `site.js`); final book
 blurbs + author/press bios (placeholder DRAFT copy now); real reviews; *Just Like
 My Brother* cover when available. (Real covers + OG image are done.)
 

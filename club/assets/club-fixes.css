@@ -25,12 +25,62 @@ textarea:focus-visible {
 }
 .skip-link:focus { transform: translateY(0); }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.club-brand {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 9px;
+  color: #2f2a24 !important;
+  text-decoration: none;
+  line-height: 1.05;
+}
+.club-brand > span:last-child { display: flex; flex-direction: column; }
+.club-brand small { margin-top: 4px; color: #713018; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+.club-clay-mark {
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 52% 48% 45% 55% / 48% 46% 54% 52%;
+  background: #84391e;
+  color: #fff !important;
+  font-family: Georgia, serif;
+  font-size: .78rem;
+  box-shadow: inset 0 -4px 0 rgba(80, 30, 12, .16);
+}
+
 .club-static-logo {
-  display: block;
+  display: none;
   width: 70px;
   height: 44px;
   object-fit: contain;
 }
+.logo:not(.club-brand)::before {
+  content: "MC";
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 52% 48% 45% 55% / 48% 46% 54% 52%;
+  background: #84391e;
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: .78rem;
+  box-shadow: inset 0 -4px 0 rgba(80, 30, 12, .16);
+}
+.school-page-label { margin: 12px auto 0; color: #713018; font-family: "Trebuchet MS", system-ui, sans-serif; font-size: 1.25rem; font-weight: 800; }
 
 .muted,
 .fine,
@@ -74,8 +124,8 @@ button[type="submit"] {
 .save { color: #3f603c !important; }
 .schools { background: #3f603c !important; }
 .schools h2,
-.schools p,
-.schools a { color: #fff !important; }
+.schools p { color: #fff !important; }
+.schools a { background: #fff !important; color: #214d2c !important; }
 .compare-table th { background: #6f5940 !important; color: #fff !important; }
 footer p,
 footer .ftc { color: #554c3f !important; opacity: 1 !important; }
@@ -105,6 +155,8 @@ footer .ftc { color: #554c3f !important; opacity: 1 !important; }
 .club-consent strong { display: block; margin-bottom: 4px; font-size: 1rem; }
 .club-consent p { max-width: 50ch; margin: 0; color: #fff !important; font-size: .9rem; line-height: 1.45; }
 .club-consent a { color: #fff; }
+.club-consent__adult { display: flex; align-items: center; gap: 8px; margin-top: 10px; color: #fff; font-size: .86rem; }
+.club-consent__adult input { width: 20px; height: 20px; }
 .club-consent__actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .club-consent button {
   min-height: 44px;
@@ -118,6 +170,15 @@ footer .ftc { color: #554c3f !important; opacity: 1 !important; }
   cursor: pointer;
 }
 .club-consent .club-consent__accept { color: #2f2a24; background: #fff; }
+.club-consent button:disabled { cursor: not-allowed; opacity: .5; }
+
+.adult-check { display: flex; flex-basis: 100%; align-items: flex-start; gap: 8px; color: #554c3f; font-size: .78rem; text-align: left; }
+.adult-check input { width: 20px; height: 20px; flex: 0 0 auto; }
+.privacy-inline { display: block; margin-top: 8px; color: #554c3f; }
+.namegate :disabled { cursor: not-allowed; opacity: .55; }
+.member { width: 100%; color: inherit; font: inherit; }
+.member strong { display: block; font-size: 1rem; }
+.member .role { display: block; }
 
 .club-privacy-manage {
   display: block;

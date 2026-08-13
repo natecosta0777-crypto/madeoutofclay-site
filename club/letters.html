@@ -3,13 +3,13 @@
 <head>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://club.madeoutofclayprod.com/letters">
+<meta name="description" content="Read parent and caregiver notes from Made Out of Clay Book Club characters.">
 <link rel="stylesheet" href="/assets/club-fixes.css">
 <script src="/assets/consent.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
-(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('book-club.html');}}catch(e){}})();</script>
-<title>The Mailbox — Weekly Letters · Made Out of Clay Book Club</title>
+<title>The Mailbox — Parent Notes · Made Out of Clay Book Club</title>
 <style>
   :root{
     --mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;
@@ -57,7 +57,7 @@
 <div class="intro">
   <span class="badge">📬 One friendly letter a week</span>
   <h1>The Clubhouse Mailbox</h1>
-  <p>Each week a club friend writes home for your child — the story, a printable, and a tiny question, made to read out loud together. Here’s every letter so far.</p>
+  <p>Club friends sometimes write a note for your child—the story, a printable, and a tiny question made to read aloud together. Here’s every parent note so far.</p>
 </div>
 
 <section>
@@ -66,7 +66,7 @@
 
 </main>
 <footer>
-  Made Out of Clay Book Club · new letter every week · <a href="clubhouse.html">Back to the Clubhouse</a>
+  Made Out of Clay Book Club · notes for parents and caregivers · <a href="clubhouse.html">Back to the Clubhouse</a>
 </footer>
 
 <script src="assets/js/letters.js"></script>
@@ -92,7 +92,7 @@
           '<div class="wk">Week '+L.week+'</div>'+
         '</div>'+
         '<div class="lb">'+
-          '<div class="subj">'+L.subject + (isCur?'<span class="current">This week</span>':'') +'</div>'+
+          '<div class="subj">'+L.subject + (isCur?'<span class="current">Featured</span>':'') +'</div>'+
           '<div class="readaloud">“'+L.readAloud+'”</div>'+
           '<div class="note">'+L.note+'</div>'+
           '<a class="cta" href="'+L.readHref+'">Open “'+L.book+'” →</a>'+

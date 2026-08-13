@@ -3,12 +3,12 @@
 <head>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://club.madeoutofclayprod.com/clubhouse">
+<meta name="description" content="Explore the Made Out of Clay Book Club Clubhouse and open free digital stories and activities.">
 <link rel="stylesheet" href="/assets/club-fixes.css">
 <script src="/assets/consent.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
-(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('book-club.html');}}catch(e){}})();</script>
 <title>The Clubhouse — Made Out of Clay Book Club</title>
 <style>
   :root{
@@ -134,12 +134,12 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header>
   <div class="bar">
-    <a class="logo" href="/book-club" aria-label="Made Out of Clay Clubhouse" style="display:inline-flex;align-items:center;gap:6px"><img class="club-static-logo" src="/assets/logo-header.webp" alt="" width="70" height="44"><span aria-hidden="true"> · Clubhouse</span></a>
+    <a class="logo club-brand" href="/" aria-label="Made Out of Clay Book Club home"><span class="club-clay-mark" aria-hidden="true">MC</span><span>Made Out of Clay <small>Clubhouse</small></span></a>
     <div class="barbtns">
       <a class="ghost" href="/characters">Characters</a>
       <a class="ghost" href="app.html">My Bookshelf</a>
       <a class="ghost" href="/printables">Printables</a>
-      <a class="solid" href="reader.html">Read this week →</a>
+      <a class="solid" href="reader.html">Open Reader →</a>
     </div>
   </div>
 </header>
@@ -150,7 +150,7 @@
   <div class="curtain l"></div><div class="curtain r"></div>
   <span class="badge">🎪 Today at the Clubhouse</span>
   <h1>Come on in — the <em>Clubhouse</em> is open!</h1>
-  <p>Every week your club friends have a brand-new story, a fun thing to make, and a question just for you.</p>
+  <p>Your club friends have stories to read, things to make, and kind questions to wonder about together.</p>
 </div>
 
 <!-- HOST GREETING + NAME GATE -->
@@ -158,11 +158,13 @@
   <div class="face" id="hostFace" style="background-image:url('assets/characters/book/clay.webp');background-size:cover;background-position:center"></div>
   <div class="bubble">
     <div class="who">Clay · your club host</div>
-    <div class="say" id="hostSay">Hi hi! I’m so glad you came today. What should I call you?</div>
-    <div class="namegate" id="nameGate">
-      <input id="nameInput" type="text" placeholder="Type your name…" autocomplete="off" maxlength="20" aria-label="Your name">
-      <button type="button" onclick="saveName()">That’s me!</button>
-    </div>
+      <div class="say" id="hostSay">Hi hi! I’m so glad you came today.</div>
+      <div class="namegate" id="nameGate">
+        <label class="adult-check"><input id="adultPersonalization" type="checkbox"> I’m an adult and want to add a first name on this device.</label>
+        <input id="nameInput" type="text" placeholder="Optional first name…" autocomplete="off" maxlength="20" aria-label="Optional child first name" disabled>
+        <button id="saveNameButton" type="button" onclick="saveName()" disabled>Save on this device</button>
+      </div>
+      <small class="privacy-inline">Optional. The name stays in this browser and is never sent to us.</small>
   </div>
 </div>
 
@@ -171,7 +173,7 @@
   <div class="wrap">
     <div class="eyebrow">Club check-in</div>
     <h2 class="sec">How are you feeling today?</h2>
-    <p class="sub">Tap one — Clay always has something kind to say about it.</p>
+    <p class="sub">Tap one—Clay always has something kind to say about it. Your choice is not saved or sent anywhere.</p>
     <div class="checkin">
       <div class="feelbtns" id="feelBtns">
         <button type="button" class="feel" data-f="happy" onclick="pickFeel(this)">😄 Happy</button>
@@ -196,22 +198,22 @@
     <h2 class="sec">Meet the crew</h2>
     <p class="sub">Tap a friend to say hi — or <a href="/characters" style="color:var(--terracotta);font-weight:800">meet them all &amp; become pen pals →</a></p>
     <div class="cast" id="cast">
-      <div class="member" onclick="charSpeak('clay')"><div class="av" style="background-image:url('assets/characters/book/clay.webp')"></div><h3>Clay</h3><div class="role">Club host</div></div>
-      <div class="member" onclick="charSpeak('maya')"><div class="av" style="background-image:url('assets/characters/book/maya.webp')"></div><h3>Maya</h3><div class="role">Brave Like Me</div></div>
-      <div class="member" onclick="charSpeak('lena')"><div class="av" style="background-image:url('assets/characters/book/lena.webp')"></div><h3>Lena</h3><div class="role">Brave Like Me</div></div>
-      <div class="member" onclick="charSpeak('nia')"><div class="av" style="background-image:url('assets/characters/book/nia.webp')"></div><h3>Nia</h3><div class="role">Brave Like Me</div></div>
-      <div class="member" onclick="charSpeak('zoe')"><div class="av" style="background-image:url('assets/characters/book/zoe.webp')"></div><h3>Zoe</h3><div class="role">Brave Like Me</div></div>
-      <div class="member" onclick="charSpeak('scooter')"><div class="av" style="background-image:url('assets/characters/book/scooter.webp')"></div><h3>Scooter</h3><div class="role">At Sunny’s Table</div></div>
-      <div class="member" onclick="charSpeak('caleb')"><div class="av" style="background-image:url('assets/characters/book/caleb.webp')"></div><h3>Caleb</h3><div class="role">Kingdom of Judea</div></div>
-      <div class="member" onclick="charSpeak('asher')"><div class="av" style="background-image:url('assets/characters/book/asher.webp')"></div><h3>Asher</h3><div class="role">Kingdom of Judea</div></div>
+      <button type="button" class="member" onclick="charSpeak('clay')"><span class="av" style="background-image:url('assets/characters/book/clay.webp')"></span><strong>Clay</strong><span class="role">Club host</span></button>
+      <button type="button" class="member" onclick="charSpeak('maya')"><span class="av" style="background-image:url('assets/characters/book/maya.webp')"></span><strong>Maya</strong><span class="role">Brave Like Me</span></button>
+      <button type="button" class="member" onclick="charSpeak('lena')"><span class="av" style="background-image:url('assets/characters/book/lena.webp')"></span><strong>Lena</strong><span class="role">Brave Like Me</span></button>
+      <button type="button" class="member" onclick="charSpeak('nia')"><span class="av" style="background-image:url('assets/characters/book/nia.webp')"></span><strong>Nia</strong><span class="role">Brave Like Me</span></button>
+      <button type="button" class="member" onclick="charSpeak('zoe')"><span class="av" style="background-image:url('assets/characters/book/zoe.webp')"></span><strong>Zoe</strong><span class="role">Brave Like Me</span></button>
+      <button type="button" class="member" onclick="charSpeak('scooter')"><span class="av" style="background-image:url('assets/characters/book/scooter.webp')"></span><strong>Scooter</strong><span class="role">At Sunny’s Table</span></button>
+      <button type="button" class="member" onclick="charSpeak('caleb')"><span class="av" style="background-image:url('assets/characters/book/caleb.webp')"></span><strong>Caleb</strong><span class="role">Kingdom of Judea</span></button>
+      <button type="button" class="member" onclick="charSpeak('asher')"><span class="av" style="background-image:url('assets/characters/book/asher.webp')"></span><strong>Asher</strong><span class="role">Kingdom of Judea</span></button>
     </div>
   </div>
 </section>
 
-<!-- THIS WEEK -->
+<!-- FEATURED STORY -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">This week’s club pick</div>
+    <div class="eyebrow">Featured Clubhouse pick</div>
     <h2 class="sec">Everybody’s reading…</h2>
     <p class="sub"></p>
     <div class="weekcard">
@@ -234,7 +236,7 @@
   <div class="wrap">
     <div class="eyebrow">Read the whole story</div>
     <h2 class="sec">Full books — cover to cover</h2>
-    <p class="sub">The complete, illustrated books to read together right here — no purchase, it’s part of your membership. Pick any book in the reader’s <b>📚 Jukebox</b> and it swaps in with one tap.</p>
+    <p class="sub">Complete illustrated books to read together right here—no purchase or account required. Pick any title on the <b>Bookshelf</b>, then open it in the Reader.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:18px">
       <a href="reader.html?book=calebs-homeland" style="text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(80,60,30,.07);display:block">
         <div style="aspect-ratio:1;background-image:url('assets/covers/calebs-homeland.webp');background-size:cover;background-position:center"></div>
@@ -258,11 +260,11 @@
     <div class="parents">
       <div>
         <h2>📬 Parents — you’ve got mail</h2>
-        <p>Every week a club friend writes a short note home for <b><span id="pName">your child</span></b>, made to be read out loud together. It’s the whole week’s story, activity, and a tiny question — in about two minutes.</p>
+        <p>Club friends write short notes for parents and caregivers, made to be read aloud together. Each note connects a featured story, activity, and a tiny question.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-        <button type="button" class="mailbtn" onclick="openLetter()">Peek at this week’s letter <span class="dot">1</span></button>
-        <a href="letters.html" style="color:#fff;font-weight:800;font-size:.85rem;text-decoration:underline">See all weekly letters →</a>
+        <button type="button" class="mailbtn" onclick="openLetter()">Peek at the featured parent note <span class="dot">1</span></button>
+        <a href="letters.html" style="color:#fff;font-weight:800;font-size:.85rem;text-decoration:underline">See all parent notes →</a>
       </div>
     </div>
   </div>
@@ -276,26 +278,26 @@
 
 <!-- EMAIL / LETTER MODAL -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeLetter()">
-  <div class="letter" role="dialog" aria-modal="true" aria-label="This week's club letter">
+  <div class="letter" role="dialog" aria-modal="true" aria-label="Featured parent note">
     <div class="lh">
       <div class="face" style="background-image:url('assets/characters/book/clay.webp');background-size:cover;background-position:center"></div>
       <div class="from"><small>A letter for the grown-ups, from</small><b>Clay at the Clubhouse</b></div>
       <button type="button" class="close" onclick="closeLetter()" aria-label="Close">✕</button>
     </div>
     <div class="body">
-      <div class="subj">⭐ This week: “Maya Goes First”</div>
-      <p>Hi there! It’s Clay, from the Book Club. Here’s what’s waiting for <b id="pName2">your child</b> this week — you can read this part out loud:</p>
-      <p class="readaloud">“This week Maya had butterflies in her tummy — but she raised her hand and went FIRST anyway. We learned that brave isn’t ‘not scared.’ Brave is doing the thing even while your tummy flips. What’s something YOU were brave enough to try?”</p>
-      <p>Inside the clubhouse you’ll find the read-along (it reads itself out loud) and a printable brave-badge to color together. Two minutes at bedtime is plenty.</p>
-      <a class="cta" href="reader.html">Open this week’s story →</a>
+      <div class="subj">⭐ Featured story: “Maya Goes First”</div>
+      <p>Hi there! It’s Clay, from the Book Club. Here’s a note for <b id="pName2">your child</b> about the featured story—you can read this part out loud:</p>
+      <p class="readaloud">“Maya had butterflies in her tummy—but she raised her hand and went first anyway. We learned that brave isn’t ‘not scared.’ Brave is doing the thing even while your tummy flips. What’s something you were brave enough to try?”</p>
+      <p>Inside the Clubhouse you’ll find the self-read story and a printable brave-badge to color together. Narration is coming soon.</p>
+      <a class="cta" href="reader.html">Open the featured story →</a>
     </div>
-    <div class="foot">You’re getting this because you’re a Book Club member. One friendly note a week — pause or unsubscribe anytime. 💛</div>
+    <div class="foot">Parent notes are optional. Subscribers can unsubscribe at any time. 💛</div>
   </div>
 </div>
 
 <script src="assets/js/letters.js"></script>
 <script>
-  // ---------- weekly letter (current week drives the parent letter modal) ----------
+  // ---------- rotating featured parent note ----------
   (function(){
     if(!window.MOOC_LETTERS || !MOOC_LETTERS.length) return;
     var LAUNCH = new Date('2026-07-15T00:00:00');
@@ -314,7 +316,7 @@
     if(cta) cta.setAttribute('href', L.readHref);
   })();
 
-  // ---------- kid name (personalization) ----------
+  // ---------- optional adult-managed first-name personalization ----------
   var NAME = '';
   try{ NAME = localStorage.getItem('mooc_kid_name') || ''; }catch(e){}
 
@@ -322,13 +324,13 @@
     var g = NAME || 'friend';
     document.getElementById('hostSay').textContent =
       NAME ? ('Hi hi, ' + NAME + '! I’m SO glad you came today. Ready for some fun?')
-           : 'Hi hi! I’m so glad you came today. What should I call you?';
+           : 'Hi hi! I’m so glad you came today.';
     if(NAME){ document.getElementById('nameGate').style.display='none'; }
     var pn = NAME || 'your child';
-    document.getElementById('pName').textContent = pn;
     document.getElementById('pName2').textContent = pn;
   }
   function saveName(){
+    if(!document.getElementById('adultPersonalization').checked) return;
     var v = document.getElementById('nameInput').value.trim();
     if(!v) return;
     NAME = v.replace(/[<>]/g,'');
@@ -339,6 +341,12 @@
     hf.style.transition='transform .25s ease'; hf.style.transform='scale(1.15) rotate(-6deg)';
     setTimeout(function(){ hf.style.transform='scale(1)'; }, 500);
   }
+  document.getElementById('adultPersonalization').addEventListener('change',function(){
+    var enabled=this.checked;
+    document.getElementById('nameInput').disabled=!enabled;
+    document.getElementById('saveNameButton').disabled=!enabled;
+    if(enabled) document.getElementById('nameInput').focus();
+  });
   document.getElementById('nameInput').addEventListener('keydown',function(e){ if(e.key==='Enter') saveName(); });
   applyName();
 

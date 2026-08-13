@@ -3,13 +3,13 @@
 <head>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://club.madeoutofclayprod.com/app">
+<meta name="description" content="Browse the free Made Out of Clay Book Club digital Bookshelf.">
 <link rel="stylesheet" href="/assets/club-fixes.css">
 <script src="/assets/consent.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
-(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('book-club.html');}}catch(e){}})();</script>
-<title>My Library — Made Out of Clay</title>
+<title>Bookshelf — Made Out of Clay Book Club</title>
 <style>
   :root{
     --mustard:#E8B84B;--sage:#8FAE8B;--terracotta:#C9744D;--cream:#FBF6EC;
@@ -71,10 +71,10 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header>
   <div class="bar">
-    <a class="logo" href="clubhouse.html" aria-label="Made Out of Clay Library" style="display:inline-flex;align-items:center;gap:6px"><img class="club-static-logo" src="/assets/logo-header.webp" alt="" width="70" height="44"><span aria-hidden="true"> Library</span></a>
+    <a class="logo" href="clubhouse.html" aria-label="Made Out of Clay Bookshelf" style="display:inline-flex;align-items:center;gap:6px"><img class="club-static-logo" src="/assets/logo-header.webp" alt="" width="70" height="44"><span>Bookshelf</span></a>
     <nav class="menu">
       <a class="on" href="app.html">Home</a>
-      <a href="#new">New this week</a>
+      <a href="#new">Recently added</a>
       <a href="/printables">Printables</a>
       <a href="clubhouse.html">Clubhouse</a>
     </nav>
@@ -82,6 +82,7 @@
   </div>
 </header>
 <main id="main-content">
+  <h1 class="visually-hidden">Book Club Bookshelf</h1>
 
 <!-- PERSONALIZATION -->
 <div class="perso">
@@ -113,10 +114,10 @@
   </div>
 </section>
 
-<!-- NEW THIS WEEK (cadence/retention) -->
+<!-- RECENTLY ADDED -->
 <section id="new">
   <div class="wrap">
-    <div class="row-head"><h2>✨ New this week</h2><a href="#">See all</a></div>
+    <div class="row-head"><h2>✨ Recently added</h2></div>
     <div class="shelf">
       <a class="book" href="reader.html?book=asher-and-the-high-ridge"><div class="cover" style="background-image:url('assets/covers/asher-rock.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 Audio soon · 🖍️ Activity</div></div></a>
       <a class="book" href="reader.html?book=just-like-my-brother"><div class="cover" style="background-image:url('assets/covers/just-like-brother.webp')"><span class="ribbon">NEW</span></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 Audio soon · 🖍️ Activity</div></div></a>
@@ -126,10 +127,10 @@
   </div>
 </section>
 
-<!-- FOR LILY THIS WEEK (theme-led) -->
+<!-- READER PICK (theme-led) -->
 <section>
   <div class="wrap">
-    <div class="row-head"><h2>For <span id="kidName3">your reader</span> this week · Brave Girls</h2><a href="#">Browse theme</a></div>
+    <div class="row-head"><h2>For <span id="kidName3">your reader</span> · Everyday courage</h2></div>
     <div class="shelf">
       <a class="book" href="reader.html?book=maya-goes-first"><div class="cover" style="background-image:url('assets/covers/maya-goes-first.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
       <a class="book" href="reader.html?book=lenas-first-sleepover"><div class="cover" style="background-image:url('assets/covers/lena-sleepover.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
@@ -142,7 +143,7 @@
 <!-- BROWSE BY SERIES -->
 <section>
   <div class="wrap">
-    <div class="row-head"><h2>Brave Like Me</h2><a href="#">See series</a></div>
+    <div class="row-head"><h2>Brave Like Me</h2></div>
     <div class="shelf">
       <a class="book" href="reader.html?book=maya-goes-first"><div class="cover" style="background-image:url('assets/covers/maya-goes-first.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
       <a class="book" href="reader.html?book=maya-and-the-lights-out-night"><div class="cover" style="background-image:url('assets/covers/maya-lights-out.webp')"></div><div class="meta"><div class="series">Brave Like Me</div><div class="feat">🎧 soon · 🖍️</div></div></a>
@@ -155,7 +156,7 @@
 
 <section>
   <div class="wrap">
-    <div class="row-head"><h2>Just the Way You Are</h2><a href="#">See series</a></div>
+    <div class="row-head"><h2>Just the Way You Are</h2></div>
     <div class="shelf">
       <a class="book" href="reader.html?book=clay-has-amazing-powers"><div class="cover" style="background-image:url('assets/covers/clay-powers.webp')"></div><div class="meta"><div class="series">Just the Way You Are</div><div class="feat">🎧 soon · 🖍️</div></div></a>
       <a class="book" href="reader.html?book=good-night-dinosaur"><div class="cover" style="background-image:url('assets/covers/goodnight-dino.webp')"></div><div class="meta"><div class="series">Just the Way You Are</div><div class="feat">🎧 soon · 🖍️</div></div></a>
@@ -166,7 +167,7 @@
 
 <section>
   <div class="wrap">
-    <div class="row-head"><h2>At Sunny’s Table · cozy &amp; bedtime</h2><a href="#">See series</a></div>
+    <div class="row-head"><h2>At Sunny’s Table · cozy &amp; bedtime</h2></div>
     <div class="shelf">
       <a class="book" href="reader.html?book=scooter-cant-wait-for-spring"><div class="cover" style="background-image:url('assets/covers/scooter-spring.webp')"></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 soon · 🖍️</div></div></a>
       <a class="book" href="reader.html?book=scooter-needs-it-quiet"><div class="cover" style="background-image:url('assets/covers/scooter-quiet.webp')"></div><div class="meta"><div class="series">At Sunny’s Table</div><div class="feat">🎧 soon · 🖍️</div></div></a>
@@ -177,7 +178,7 @@
 
 <section>
   <div class="wrap">
-    <div class="row-head"><h2>The Kingdom of Judea</h2><a href="#">See series</a></div>
+    <div class="row-head"><h2>The Kingdom of Judea</h2></div>
     <div class="shelf">
       <a class="book" href="reader.html?book=calebs-homeland"><div class="cover" style="background-image:url('assets/covers/calebs-homeland.webp')"></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 soon · 🖍️</div></div></a>
       <a class="book" href="reader.html?book=the-long-walk"><div class="cover" style="background-image:url('assets/covers/long-walk.webp?v=2')"></div><div class="meta"><div class="series">The Kingdom of Judea</div><div class="feat">🎧 soon · 🖍️</div></div></a>
@@ -201,7 +202,7 @@
 
 </main>
 <footer>
-  Made Out of Clay Book Club · free membership · no behavioral ads or tracking of children · <a href="/" style="color:var(--terracotta);font-weight:700">Account</a>
+  Made Out of Clay Book Club · free library · no behavioral ads or tracking of children · <a href="/" style="color:var(--terracotta);font-weight:700">Book Club home</a>
 </footer>
 
 <script>

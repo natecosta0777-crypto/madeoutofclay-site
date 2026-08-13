@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 /**
  * Directory data for blog posts.
  * Drafts (draft: true) are fully excluded: no output file, not in any
@@ -9,17 +12,21 @@ module.exports = {
   eleventyComputed: {
     metaTitle: (data) => {
       const title = String(data.title || "");
-      if (title.length <= 58) return title;
-      const short = title.split(/\s+[—|:]\s+/)[0];
-      if (short.length >= 30 && short.length <= 58) return short;
-      return `${title.slice(0, 55).replace(/\s+\S*$/, "")}…`;
+      if (title.length <= 60) return title;
+      const naturalShort = title.split(/\s+[—|:]\s+/)[0];
+      if (naturalShort.length >= 28 && naturalShort.length <= 60) return naturalShort;
+      return title.slice(0, 60).replace(/\s+\S*$/, "");
     },
     metaDescription: (data) => {
       const description = String(data.description || "");
       if (description.length <= 155) return description;
       return `${description.slice(0, 152).replace(/\s+\S*$/, "")}…`;
     },
-    ogImage: (data) => `/assets/og/posts/${data.page.fileSlug}.png`,
+    ogImage: (data) => {
+      const filename = `${data.page.fileSlug}.png`;
+      const localPath = path.join(__dirname, "..", "..", "assets", "og", "posts", filename);
+      return fs.existsSync(localPath) ? `/assets/og/posts/${filename}` : "/assets/og/default.png";
+    },
     breadcrumbs: (data) => [
       { name: "Home", url: "/" },
       { name: "Blog", url: "/blog/" },

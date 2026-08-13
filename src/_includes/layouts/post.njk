@@ -7,12 +7,36 @@ schemaArticle: true
     <p class="post-meta"><a href="/blog/">&larr; All posts</a></p>
     <h1>{{ title }}</h1>
     <p class="post-meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> · By <a href="/author/" rel="author">{{ site.authorPenName }}</a></p>
+    {% if ogImage %}<img class="post-hero-image" src="{{ ogImage }}" alt="" width="1200" height="630">{% endif %}
     {{ content | safe }}
     <hr>
     <aside class="editorial-note">
       <h2>About our guidance</h2>
       <p>Made Out of Clay shares general reading and family ideas, not medical advice. Children differ; use your judgment and ask a qualified health professional about individual sensory, developmental, or safety concerns.</p>
     </aside>
-    <p><a class="btn btn-primary" href="/books/">Browse the books</a></p>
+    <aside class="article-next-step">
+      <h2>Keep reading together</h2>
+      {% if tag == 'Neurodivergent Kids' or tag == 'Big Feelings' %}
+      <p>Explore identity-first and gentle stories in <a href="/series/just-the-way-you-are/">Just the Way You Are</a>, then pair one with a <a href="https://club.madeoutofclayprod.com/printables">free printable</a>.</p>
+      {% elif tag == 'Faith & Family' or tag == 'Faith and Family' %}
+      <p>Meet <a href="/series/titus-the-lamb/">Titus the Lamb</a> for an explicitly Christian picture-book preview and sing-along.</p>
+      {% else %}
+      <p><a href="/books/#find-by-need">Find a print book by theme</a> or <a href="https://club.madeoutofclayprod.com/">open a free digital story</a>.</p>
+      {% endif %}
+    </aside>
+
+    <aside class="related-posts">
+      <h2>More from the Journal</h2>
+      <ul>
+        {% for related in collections.posts %}{% if related.url != page.url and loop.index <= 4 %}<li><a href="{{ related.url }}">{{ related.data.title }}</a></li>{% endif %}{% endfor %}
+      </ul>
+    </aside>
+
+    <section class="article-signup">
+      <h2>New stories and free printables</h2>
+      <p>Join the parent and caregiver list for new releases, practical reading ideas, and printable activities.</p>
+      {% set signupLocation = "article" %}
+      {% include "partials/newsletter.njk" %}
+    </section>
   </div>
 </article>

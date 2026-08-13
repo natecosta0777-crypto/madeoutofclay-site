@@ -3,7 +3,7 @@ layout: layouts/base.njk
 permalink: /
 title: "Made Out of Clay Productions — Picture Books by Isaiah Hartwell"
 metaTitle: "Children's Picture Books | Made Out of Clay"
-description: "Premium full-color picture books for kids ages 2–7. Four heartfelt series — gentle, inclusive, sing-along, and made to be read again and again. By Isaiah Hartwell."
+description: "Gentle, neurodiversity-affirming, and faith-filled picture books for ages 2–7 from a small family-run studio."
 schemaOrg: true
 schemaFaq: true
 ---
@@ -13,12 +13,13 @@ schemaFaq: true
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <p class="eyebrow">Independent picture-book imprint</p>
-      <h1>Stories for the kids who feel things deeply.</h1>
-      <p class="lead">Premium full-color picture books across four heartfelt series — about patience, belonging, courage, and songs your kids will never stop singing.</p>
+      <h1>Stories that help kids feel seen, steady, and brave.</h1>
+      <p class="lead">Gentle, neurodiversity-affirming, and faith-filled picture books for ages 2–7—created by a small family-run studio and made for reading together.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href="/books/">Explore all books</a>
-        <a class="btn btn-secondary btn-lg" href="/series/just-the-way-you-are/">Meet the series</a>
+        <a class="btn btn-primary btn-lg" href="/books/#find-by-need">Find a book for your child</a>
+        <a class="btn btn-secondary btn-lg" href="https://club.madeoutofclayprod.com/reader/">Read a story free</a>
       </div>
+      <p class="hero-proof">9 hardcovers available · 4 print series · free digital stories and printables</p>
     </div>
     <div class="hero-art" aria-hidden="false">
       {% for heroBook in [books[0], books[3], books[7], books[6]] %}
@@ -38,13 +39,13 @@ schemaFaq: true
     <span class="club-float club-float-2" aria-hidden="true">📚</span>
     <span class="club-float club-float-3" aria-hidden="true">🖍️</span>
     <div class="club-copy">
-      <span class="club-kicker">✨ Founding membership is free</span>
-      <h2>Step inside the Digital&nbsp;Book&nbsp;Club</h2>
-      <p>A cozy clubhouse where our characters read along, write a letter home every week, and cheer your kid on — plus free printables to color.</p>
+      <span class="club-kicker">✨ Free digital library</span>
+      <h2>Step inside the Book&nbsp;Club</h2>
+      <p>Read free digital stories in self-read mode—including the digital-only <em>Brave Like Me</em> collection—explore the Clubhouse, and download printables. Narration is coming soon.</p>
     </div>
     <a class="btn-club" href="https://club.madeoutofclayprod.com/">
       <span class="btn-club-emoji" aria-hidden="true">📖</span>
-      <span class="btn-club-text">Enter the Book&nbsp;Club</span>
+      <span class="btn-club-text">Open the Book&nbsp;Club</span>
       <span class="btn-club-arrow" aria-hidden="true">→</span>
     </a>
   </div>
@@ -52,13 +53,14 @@ schemaFaq: true
 
 {% include "partials/trust.njk" %}
 
-<section class="section">
+<section class="section" id="series">
   <div class="wrap">
-    <h2 class="section-title">Four series, one heart</h2>
-    <p class="section-intro">Every book stands on its own — pick the one that fits your kid today.</p>
+    <h2 class="section-title">What does your reader need today?</h2>
+    <p class="section-intro">Four print series, each with a clear place to begin.</p>
     <div class="series-grid">
       {% for s in series %}
       <div class="series-card" style="--accent: {{ s.accent }}; --accent-soft: {{ s.accentSoft }}; --accent-text: {{ s.accentText or s.accent }};">
+        <p class="need-label">{% if s.slug == 'sunnys-table' %}Big feelings and calm{% elif s.slug == 'just-the-way-you-are' %}Neurodiversity and belonging{% elif s.slug == 'titus-the-lamb' %}Faith and Bible stories{% else %}Courage and adventure{% endif %}</p>
         <h3>{{ s.name }}</h3>
         <p class="series-tag">{{ s.tagline }}</p>
         <p>{{ s.blurb }}</p>
@@ -69,15 +71,26 @@ schemaFaq: true
   </div>
 </section>
 
+<section class="section origin-story">
+  <div class="wrap wrap-narrow">
+    <p class="eyebrow">Why Made Out of Clay exists</p>
+    <h2>A father, his son, and the stories he could not find.</h2>
+    <p>The studio began with a father creating affirming stories inspired by his autistic son—stories where different ways of sensing, communicating, and belonging are part of a whole child, never a deficit to repair.</p>
+    <a class="btn btn-secondary" href="/blog/why-it-is-called-made-out-of-clay/">Read the founding story</a>
+  </div>
+</section>
+
 <section class="section section-alt">
   <div class="wrap">
-    <h2 class="section-title">The collection</h2>
-    <p class="section-intro">Nine hardcover titles are available on Amazon; <em>Titus and the Lions</em> is coming soon with a free preview.</p>
+    <h2 class="section-title">Start with these stories</h2>
+    <p class="section-intro">Six reader favorites and useful starting points. Browse the full catalog for every title.</p>
+    <p class="purchase-disclosure"><strong>Affiliate disclosure:</strong> Buy on Amazon buttons are affiliate links. As an Amazon Associate I earn from qualifying purchases. <a href="/affiliate-disclosure/">Details.</a></p>
     <div class="book-grid">
-      {% for book in books %}
+      {% for book in books %}{% if loop.index <= 6 %}
         {{ bookCard(book, site, lookups.seriesBySlug[book.series].name) }}
-      {% endfor %}
+      {% endif %}{% endfor %}
     </div>
+    <p class="section-action"><a class="btn btn-secondary" href="/books/">Browse all ten print titles</a></p>
   </div>
 </section>
 

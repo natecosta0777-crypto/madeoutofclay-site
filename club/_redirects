@@ -1,5 +1,10 @@
 /index.html / 301
-/book-club.html /book-club 301
+/app.html /app 301
+/clubhouse.html /clubhouse 301
+/reader.html /reader 301
+/letters.html /letters 301
+/book-club / 301
+/book-club.html / 301
 /schools.html /schools 301
 /characters.html /characters 301
 /printables.html /printables 301
@@ -7,4 +12,5 @@
 /terms.html /terms 301
 /affiliate-disclosure.html /affiliate-disclosure 301
 /how-we-make-money.html /how-we-make-money 301
-/pricing.html /pricing 301
+/pricing / 301
+/pricing.html / 301

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {# --- Title + description (Spec §4.1) --- #}
-  <title>{{ metaTitle or title }}</title>
-  <meta name="description" content="{{ (metaDescription or description) | metaDescription }}">
+  <title>{{ (metaTitle or title) | safe }}</title>
+  <meta name="description" content="{{ (metaDescription or description) | metaDescription | safe }}">
 
   {# --- Canonical (Spec §4.1 / §4.7) --- #}
   {%- set pageUrl = page.url | absoluteUrl(site.url) -%}
@@ -16,16 +16,16 @@
   {# --- Open Graph (Spec §4.1) --- #}
   {%- set ogImg = (ogImage or "/assets/og/default.png") | absoluteUrl(site.url) -%}
   <meta property="og:site_name" content="{{ site.name }}">
-  <meta property="og:title" content="{{ ogTitle or title }}">
-  <meta property="og:description" content="{{ description }}">
+  <meta property="og:title" content="{{ (ogTitle or title) | safe }}">
+  <meta property="og:description" content="{{ description | safe }}">
   <meta property="og:type" content="{{ ogType or 'website' }}">
   <meta property="og:url" content="{{ pageUrl }}">
   <meta property="og:image" content="{{ ogImg }}">
 
   {# --- Twitter Card (Spec §4.1) --- #}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ ogTitle or title }}">
-  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:title" content="{{ (ogTitle or title) | safe }}">
+  <meta name="twitter:description" content="{{ description | safe }}">
   <meta name="twitter:image" content="{{ ogImg }}">
 
   <link rel="alternate" type="application/rss+xml" title="The Clay Journal" href="/feed.xml">
@@ -44,7 +44,7 @@
     "name": site.name,
     "url": site.url,
     "email": site.email,
-    "logo": "/assets/og/default.png" | absoluteUrl(site.url),
+    "logo": "/favicon-192.png" | absoluteUrl(site.url),
     "description": site.description,
     "sameAs": [site.amazonAuthorUrl] if site.amazonAuthorUrl else []
   } | dump | safe }}</script>
@@ -122,6 +122,9 @@
     "image": {{ (book.cover | absoluteUrl(site.url)) | dump | safe }},
     "url": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
     "mainEntityOfPage": {{ (page.url | absoluteUrl(site.url)) | dump | safe }},
+    {% if book.isbn13 %}"isbn": {{ book.isbn13 | dump | safe }},{% endif %}
+    {% if book.pageCount %}"numberOfPages": {{ book.pageCount | dump | safe }},{% endif %}
+    {% if book.datePublished %}"datePublished": {{ book.datePublished | dump | safe }},{% endif %}
     "sku": {{ (book.asin if book.asin else book.slug) | dump | safe }}{% if book.status == "live" and book.asin %},
     "offers": {
       "@type": "Offer",
@@ -132,6 +135,15 @@
     }{% endif %}
   }
   </script>
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+      { "@type": "ListItem", "position": 2, "name": "Books", "item": site.url + "/books/" },
+      { "@type": "ListItem", "position": 3, "name": book.title, "item": page.url | absoluteUrl(site.url) }
+    ]
+  } | dump | safe }}</script>
   {%- endif -%}
 
   {%- if schemaFaq -%}
@@ -182,14 +194,12 @@
   {# --- Analytics config (consent-gated; tags injected by main.js after accept — Spec §3.5) --- #}
   <script>
     window.MOC_CONFIG = {
-      ga4Id: {{ site.ga4Id | dump | safe }},
-      metaPixelId: {{ site.metaPixelId | dump | safe }},
-      metricoolHash: {{ site.metricoolHash | dump | safe }}
+      ga4Id: {{ site.ga4Id | dump | safe }}
     };
   </script>
   <script src="/assets/js/main.js" defer></script>
 </head>
-<body{% if seriesSlug %} data-series="{{ seriesSlug }}"{% endif %}>
+<body data-page-url="{{ page.url }}"{% if seriesSlug %} data-series="{{ seriesSlug }}"{% endif %}>
   <a class="skip-link" href="#main">Skip to content</a>
   {% include "partials/header.njk" %}
   <main id="main">

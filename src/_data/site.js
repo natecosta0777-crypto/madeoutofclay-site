@@ -12,10 +12,11 @@ module.exports = {
   url: "https://madeoutofclayprod.com", // no trailing slash
   email: "clay@madeoutofclayprod.com",
   authorPenName: "Isaiah Hartwell",
-  tagline: "Premium full-color picture books for the kids who feel things deeply.",
+  tagline: "Picture books that help kids feel seen, steady, and brave.",
   description:
-    "An independent children's picture-book imprint with ten full-color picture books across four series, by Isaiah Hartwell.",
+    "An independent picture-book imprint creating gentle, neurodiversity-affirming, and faith-filled stories for reading together.",
   authorUrl: "https://madeoutofclayprod.com/author/",
+  clubUrl: "https://club.madeoutofclayprod.com",
 
   // --- OPEN DECISION #1: Amazon Associates ---------------------------------
   // Provide your store ID (e.g. "madeoutofcl-20") to tag every buy link.
@@ -24,8 +25,8 @@ module.exports = {
 
   // --- OPEN DECISION #5: Analytics -----------------------------------------
   ga4Id: "G-B4ZQX8FJ8J", // GA4 "Made Out of Clay Productions" — set 2026-07-07
-  metaPixelId: "1719897139144003", // Meta Pixel "Made Out of Clay" — consent-gated
-  metricoolHash: "9a57567d14513fb7d65dbe5bdc6e9372", // Metricool web tracker (Made Out of Clay brand) — consent-gated; first hash was another brand's, corrected 2026-07-08
+  // GA4 is the single client-side analytics system. Cloudflare's first-party
+  // performance beacon may also be injected at the edge by the hosting layer.
 
   // --- OPEN DECISION #2: Email provider (ESP) ------------------------------
   // Paste the form ACTION url from your ESP's embedded form (Mailchimp/Kit/etc).
@@ -55,6 +56,8 @@ module.exports = {
   catalogTitleCount: 10,
   availableTitleCount: 9,
   seriesCount: 4,
+  printAgeRange: "2–7",
+  digitalAgeRange: "3–9",
 
   // Build stamp surfaced in footer / sitemap
   buildYear: new Date().getFullYear(),

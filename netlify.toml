@@ -8,6 +8,11 @@
 
 # Digital Book Club routes (mirror of vercel.json; live deploy is Vercel)
 [[redirects]]
+  from = "/titus/*"
+  to = "/series/titus-the-lamb/"
+  status = 301
+
+[[redirects]]
   from = "/schools"
   to = "/library/schools/"
   status = 302

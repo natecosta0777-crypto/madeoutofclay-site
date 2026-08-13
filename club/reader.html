@@ -3,12 +3,12 @@
 <head>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://club.madeoutofclayprod.com/reader">
+<meta name="description" content="Read a free Made Out of Clay Book Club story in the digital Reader.">
 <link rel="stylesheet" href="/assets/club-fixes.css">
 <script src="/assets/consent.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>/* Members-only: an email is the key. Bounce first-timers to the email door. */
-(function(){try{if(localStorage.getItem('mooc_club_unlocked')!=='1'){location.replace('book-club.html');}}catch(e){}})();</script>
 <title>The Reader · Made Out of Clay Book Club</title>
 <style>
   :root{
@@ -81,7 +81,7 @@
   .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
   h2.more{font-size:1.2rem;margin-bottom:14px}
   .shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(120px,1fr);gap:14px;overflow-x:auto;padding-bottom:6px}
-  .book{cursor:pointer}
+  .book{cursor:pointer;border:0;background:none;text-align:left;padding:0;font:inherit}
   .book .cover{border-radius:12px;aspect-ratio:1;background-size:cover;background-position:center;box-shadow:0 4px 12px rgba(80,60,30,.18)}
   .book .s{font-size:.8rem;color:var(--ink);font-weight:700;padding-top:6px;line-height:1.2}
   .book .s span{color:var(--muted);font-weight:600;display:block;font-size:.72rem}
@@ -119,6 +119,7 @@
 <script>window.moocConfetti=function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99999";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),C=["#E8B84B","#C9744D","#8FAE8B","#5E7FA3","#7E5A78","#f0c24b","#fff"],P=[];for(var i=0;i<150;i++)P.push({x:c.width/2+(Math.random()-.5)*c.width*.5,y:c.height*.35-Math.random()*40,r:6+Math.random()*8,co:C[i%C.length],vx:(Math.random()-.5)*12,vy:-6-Math.random()*8,ro:Math.random()*6.28,vr:(Math.random()-.5)*.4,sh:Math.random()<.5});var s=Date.now();(function f(){var t=Date.now()-s;x.clearRect(0,0,c.width,c.height);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.28;p.vx*=.99;p.ro+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.ro);x.fillStyle=p.co;x.globalAlpha=Math.max(0,1-t/2800);if(p.sh){x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);}else{x.beginPath();x.arc(0,0,p.r/2,0,6.28);x.fill();}x.restore();}if(t<2800)requestAnimationFrame(f);else c.remove();})();};</script></head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
+<h1 class="visually-hidden" id="main-content">Digital story Reader</h1>
 <div class="topbar">
   <a class="back" href="clubhouse.html">‹ Clubhouse</a>
   <div class="title" id="tbTitle">The Reader</div>
@@ -138,7 +139,7 @@
   <div class="sooncard" id="sooncard">
     <img id="soonCover" src="/assets/logo-header.webp" alt="" width="1200" height="1200">
     <h2 id="soonTitle">Book coming soon</h2>
-    <p>This one is coming to the reader very soon! Meanwhile, the jukebox is full of stories ready to go.</p>
+    <p>This one is coming to the Reader very soon. Meanwhile, the Bookshelf is full of stories ready to go.</p>
     <button type="button" onclick="openJuke()">📚 Pick another book</button>
   </div>
 </div>
@@ -148,7 +149,7 @@
   <div class="progressbar"><i id="prog"></i></div>
   <div class="controls">
     <button type="button" onclick="turn(-1)" aria-label="Previous page">⏮</button>
-    <button type="button" class="play" id="playbtn" onclick="togglePlay()" aria-label="Play read-along">▶</button>
+    <button type="button" class="play" id="playbtn" onclick="togglePlay()" aria-label="Start automatic page turns">▶</button>
     <button type="button" onclick="turn(1)" aria-label="Next page">⏭</button>
   </div>
   <div class="pagecount">Page <span id="pnum">1</span> of <span id="ptot">–</span></div>
@@ -156,7 +157,7 @@
     <button type="button" id="m-tome" onclick="setMode('tome')">🎧 Read to me · soon</button>
     <button type="button" id="m-myself" class="on" onclick="setMode('myself')">📖 Read myself</button>
   </div>
-  <div id="soonNote">🎧 Narrated read-alongs are coming soon — for now, press play to auto-turn the pages, or read along together.</div>
+  <div id="soonNote">🎧 Narration is coming soon. For now, press play to auto-turn the pages, pause at any time, or read together at your own pace.</div>
 </div>
 
 <!-- BELOW THE FOLD -->
@@ -183,7 +184,7 @@
 <div class="jukebox" id="jukebox" role="dialog" aria-modal="true" aria-label="Pick a book">
   <div class="jbhead">
     <div>
-      <h2>📚 The Book Jukebox</h2>
+      <h2>📚 Bookshelf</h2>
       <p>Tap a cover and it pops right into the reader.</p>
     </div>
     <button type="button" class="jbclose" onclick="closeJuke()">Close ✕</button>
@@ -308,7 +309,7 @@
     return '<span class="badge soon">Soon</span>';
   }
   function buildJuke(){
-    var order=['Brave Like Me','The Kingdom of Judea',"At Sunny's Table",'Just the Way You Are'];
+    var order=['Just the Way You Are','Brave Like Me',"At Sunny's Table",'The Kingdom of Judea'];
     var html='';
     order.forEach(function(s){
       var list=BOOKS.filter(function(b){return b.series===s;});
@@ -329,10 +330,10 @@
     var same=BOOKS.filter(function(x){return x.series===b.series && x.slug!==b.slug;});
     var rest=BOOKS.filter(function(x){return x.series!==b.series;});
     var list=same.concat(rest).slice(0,8);
-    document.getElementById('moreTitle').textContent='More from the jukebox';
+    document.getElementById('moreTitle').textContent='More from the Bookshelf';
     document.getElementById('shelf').innerHTML=list.map(function(x){
       var tag = x.type==='soon' ? 'coming soon' : (x.type==='pdf' ? 'full book' : 'read together');
-      return '<div class="book" onclick="pick(\''+x.slug+'\')"><div class="cover" style="background-image:url(\''+x.cover+'\')"></div><div class="s">'+esc(x.title)+'<span>'+esc(x.series)+' · '+tag+'</span></div></div>';
+      return '<button type="button" class="book" onclick="pick(\''+x.slug+'\')" aria-label="Open '+esc(x.title)+'"><span class="cover" style="display:block;background-image:url(\''+x.cover+'\')"></span><span class="s">'+esc(x.title)+'<span>'+esc(x.series)+' · '+tag+'</span></span></button>';
     }).join('');
   }
   function buildNextup(b){

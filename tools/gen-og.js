@@ -48,9 +48,9 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   ${images}
   <text x="70" y="250" font-family="Georgia, serif" font-weight="700" font-size="68" fill="#2c2420">Made Out of Clay</text>
   <text x="72" y="312" font-family="Georgia, serif" font-size="40" fill="#c2562e">Productions</text>
-  <text x="72" y="392" font-family="Arial, sans-serif" font-size="27" fill="#5e544c">Premium full-color picture books</text>
-  <text x="72" y="430" font-family="Arial, sans-serif" font-size="27" fill="#5e544c">by Isaiah Hartwell</text>
-  <text x="72" y="500" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#9e421f">10 books · 4 series · 9 available now</text>
+  <text x="72" y="392" font-family="Arial, sans-serif" font-size="27" fill="#5e544c">Stories that help kids feel seen,</text>
+  <text x="72" y="430" font-family="Arial, sans-serif" font-size="27" fill="#5e544c">steady, and brave.</text>
+  <text x="72" y="500" font-family="Arial, sans-serif" font-weight="700" font-size="24" fill="#9e421f">10 print books · 4 print series · free digital stories</text>
 </svg>`;
 
 function escapeXml(value) {

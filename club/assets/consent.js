@@ -42,15 +42,6 @@
     ga.src = "https://www.googletagmanager.com/gtag/js?id=G-B4ZQX8FJ8J";
     document.head.appendChild(ga);
 
-    var metricool = document.createElement("script");
-    metricool.async = true;
-    metricool.src = "https://tracker.metricool.com/resources/be.js";
-    metricool.onload = function () {
-      if (window.beTracker) {
-        window.beTracker.t({ hash: "9a57567d14513fb7d65dbe5bdc6e9372" });
-      }
-    };
-    document.head.appendChild(metricool);
   }
 
   function createBanner() {
@@ -61,10 +52,11 @@
     banner.setAttribute("aria-labelledby", "club-consent-title");
     banner.innerHTML =
       '<div><strong id="club-consent-title">Your privacy choice</strong>' +
-      '<p>Optional Google Analytics and Metricool measurements help us improve the library. They do not load unless an adult accepts. <a href="/privacy">Privacy details</a></p></div>' +
+      '<p>Optional Google Analytics helps us improve the adult-facing Book Club pages. It is never loaded in the Clubhouse, Bookshelf, Reader, Characters, or Mailbox. <a href="/privacy">Privacy details</a></p>' +
+      '<label class="club-consent__adult"><input type="checkbox" data-club-adult> I am a parent, caregiver, educator, or other adult.</label></div>' +
       '<div class="club-consent__actions">' +
       '<button type="button" data-club-consent="decline">Decline</button>' +
-      '<button type="button" class="club-consent__accept" data-club-consent="accept">Accept analytics</button>' +
+      '<button type="button" class="club-consent__accept" data-club-consent="accept" disabled>Accept analytics</button>' +
       '</div>';
     document.body.appendChild(banner);
     return banner;
@@ -76,16 +68,25 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    var childExperience = /^\/(app|reader|clubhouse|characters|letters)(\/|$)/.test(location.pathname);
+    if (childExperience) return;
     var banner = createBanner();
     var choice = readChoice();
 
     if (choice === "accept") loadAnalytics();
     if (!choice) setVisible(banner, true);
 
+    var adultCheck = banner.querySelector("[data-club-adult]");
+    var acceptButton = banner.querySelector('[data-club-consent="accept"]');
+    adultCheck.addEventListener("change", function () {
+      acceptButton.disabled = !adultCheck.checked;
+    });
+
     banner.addEventListener("click", function (event) {
       var button = event.target.closest("[data-club-consent]");
       if (!button) return;
       var value = button.getAttribute("data-club-consent");
+      if (value === "accept" && !adultCheck.checked) return;
       saveChoice(value);
       setVisible(banner, false);
       if (value === "accept") loadAnalytics();
@@ -108,5 +109,14 @@
       manage.addEventListener("click", function () { setVisible(banner, true); });
       footer.appendChild(manage);
     }
+
+    document.addEventListener("submit", function (event) {
+      if (!window.gtag) return;
+      var form = event.target;
+      var eventName = location.pathname.indexOf("/schools") === 0 ? "school_inquiry_submit" :
+        (form.id === "printForm" ? "printable_updates_signup" :
+        (form.id === "joinForm" ? "parent_note_signup" : "form_submit"));
+      window.gtag("event", eventName, { page_path: location.pathname });
+    });
   });
 })();

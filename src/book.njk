@@ -26,7 +26,7 @@ schemaBook: true
 
 <section class="section">
   <div class="wrap">
-    <article class="book-detail">
+    <article class="book-detail" data-product-title="{{ book.title }}" data-product-series="{{ book.series }}">
       <picture>
         <source srcset="{{ book.cover | assetVariant('avif') }}" type="image/avif">
         <source srcset="{{ book.cover | assetVariant('webp') }}" type="image/webp">
@@ -37,8 +37,11 @@ schemaBook: true
         <div class="themes">
           {% for t in book.themes %}<span class="theme-tag">{{ t }}</span>{% endfor %}
         </div>
-        <p class="book-meta">Hardcover · 8.5×8.5 full color · ${{ site.bookPrice }} · Ages 2–7</p>
+        <p class="book-best"><strong>Best for:</strong> {{ book.bestFor }}</p>
+        {% if book.faithNote %}<p class="content-note"><strong>Faith note:</strong> {{ book.faithNote }}</p>{% endif %}
+        <p class="book-meta">Hardcover · 8.5×8.5 full color · ${{ site.bookPrice }} · Ages {{ site.printAgeRange }}</p>
         {% if book.status == "live" and book.asin %}
+        <p class="affiliate-note affiliate-note-prominent">Affiliate disclosure: As an Amazon Associate I earn from qualifying purchases. You pay the same price.</p>
         <a class="btn btn-primary"
            href="{{ book.asin | amazonUrl(site.associateTag) }}"
            target="_blank" rel="sponsored noopener"
@@ -46,14 +49,19 @@ schemaBook: true
            data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">
           Buy on Amazon — ${{ site.bookPrice }}
         </a>
-        <p class="affiliate-note">As an Amazon Associate I earn from qualifying purchases.</p>
         {% else %}
         <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
         {% endif %}
         {% if book.readUrl %}
         <a class="btn btn-primary" href="{{ book.readUrl }}"
-           data-track="read_free_click" data-book-title="{{ book.title }}">
+           data-track="preview_start" data-book-title="{{ book.title }}">
           📖 Read it free
+        </a>
+        {% endif %}
+        {% if book.previewUrl %}
+        <a class="btn btn-secondary" href="{{ book.previewUrl }}"
+           data-track="preview_start" data-book-title="{{ book.title }}">
+          Look inside free
         </a>
         {% endif %}
         <p style="margin-top: 16px;"><a href="/series/{{ s.slug }}/">More from {{ s.name }} →</a> · <a href="/books/">All books</a></p>
@@ -63,7 +71,7 @@ schemaBook: true
     <div class="book-guide-grid">
       <section class="content-panel">
         <h2>What families will find</h2>
-        <p><em>{{ book.title }}</em> is a picture-book story for ages 2–7 built around
+        <p><em>{{ book.title }}</em> is a picture-book story for ages {{ site.printAgeRange }} built around
           {% for theme in book.themes %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{{ theme }}{% endfor %}.
           It works as a shared read-aloud, and it can be read on its own even when it belongs to a series.</p>
         <p>Use the story as an opening for a gentle conversation, then let the child decide how much they want to say. There is no single “right” response to a picture book.</p>
@@ -71,8 +79,12 @@ schemaBook: true
       <section class="content-panel">
         <h2>Before you choose</h2>
         <dl class="book-facts">
-          <div><dt>Suggested audience</dt><dd>Ages 2–7 with an adult reader</dd></div>
+          <div><dt>Suggested audience</dt><dd>Ages {{ site.printAgeRange }} with an adult reader</dd></div>
           <div><dt>Edition</dt><dd>{% if book.status == "live" %}Hardcover, 8.5×8.5, full color{% else %}Coming soon; free online preview available{% endif %}</dd></div>
+          {% if book.pageCount %}<div><dt>Page count</dt><dd>{{ book.pageCount }}</dd></div>{% endif %}
+          {% if book.isbn13 %}<div><dt>ISBN-13</dt><dd>{{ book.isbn13 }}</dd></div>{% endif %}
+          {% if book.datePublished %}<div><dt>Published</dt><dd>{{ book.datePublished }}</dd></div>{% endif %}
+          <div><dt>Language</dt><dd>English</dd></div>
           <div><dt>Series</dt><dd><a href="/series/{{ s.slug }}/">{{ s.name }}</a>{% if book.order %}, Book {{ book.order }}{% endif %}</dd></div>
           <div><dt>Author</dt><dd><a href="/author/" rel="author">{{ site.authorPenName }}</a></dd></div>
         </dl>
@@ -81,14 +93,31 @@ schemaBook: true
 
     <section class="content-panel reading-prompts">
       <h2>Questions to ask after reading</h2>
-      <ul>
-        <li>Which moment in the story felt most important to you?</li>
-        <li>How did the character's choices connect with {% for theme in book.themes %}{% if loop.index <= 2 %}{% if loop.index == 2 %} and {% endif %}{{ theme }}{% endif %}{% endfor %}?</li>
-        <li>What would you want to say or do if you were part of this story?</li>
-      </ul>
+      <ul>{% for question in book.questions %}<li>{{ question }}</li>{% endfor %}</ul>
+    </section>
+
+    <section class="content-panel book-access">
+      <h2>For libraries, classrooms, and reviewers</h2>
+      <p>Need catalog details, a classroom set, wholesale information, or a review copy? Tell us the title and how you plan to use it.</p>
+      <p><a href="https://club.madeoutofclayprod.com/schools">School and library inquiries</a> · <a href="mailto:{{ site.email }}?subject=Review%20copy%20request%3A%20{{ book.title | urlencode }}">Request a review copy</a></p>
     </section>
   </div>
 </section>
+
+{% if book.previewUrl %}
+<section class="section section-alt look-inside" aria-labelledby="look-inside-title">
+  <div class="wrap">
+    <h2 class="section-title" id="look-inside-title">Look inside</h2>
+    <p class="section-intro">A few interior spreads from the free digital edition. Open the Reader for the complete story.</p>
+    <div class="spread-grid">
+      {% for number in [1, 2, 3] %}
+      <img src="https://club.madeoutofclayprod.com/assets/club/{{ book.slug }}/spread-0{{ number }}.webp" alt="Interior spread {{ number }} from {{ book.title }}" width="800" height="800" loading="lazy" decoding="async">
+      {% endfor %}
+    </div>
+    <p class="section-action"><a class="btn btn-primary" href="{{ book.previewUrl }}" data-track="preview_start" data-book-title="{{ book.title }}">Open the complete free preview</a></p>
+  </div>
+</section>
+{% endif %}
 
 {% if book.songVideo %}
 <section class="section section-alt" id="song">
@@ -118,7 +147,7 @@ schemaBook: true
     <h2>More in this series</h2>
     <div class="book-grid">
       {%- for b in seriesBooks %}
-      <a class="book-card" href="/book/{{ b.slug }}/">
+      <a class="book-card related-book-card" href="/book/{{ b.slug }}/">
         <picture>
           <source srcset="{{ b.cover | assetVariant('avif') }}" type="image/avif">
           <source srcset="{{ b.cover | assetVariant('webp') }}" type="image/webp">
@@ -131,3 +160,12 @@ schemaBook: true
   </div>
 </section>
 {%- endif %}
+
+<div class="sticky-book-action" aria-label="Book actions">
+  <span>{{ book.title }}</span>
+  {% if book.status == "live" and book.asin %}
+  <a class="btn btn-primary" href="{{ book.asin | amazonUrl(site.associateTag) }}" target="_blank" rel="sponsored noopener" data-track="buy_on_amazon_click" data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">Buy</a>
+  {% elif book.readUrl %}
+  <a class="btn btn-primary" href="{{ book.readUrl }}" data-track="preview_start" data-book-title="{{ book.title }}">Read free</a>
+  {% endif %}
+</div>

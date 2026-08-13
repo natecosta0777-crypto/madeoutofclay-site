@@ -1,27 +1,18 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/" aria-label="{{ site.name }} home">
-      <img class="brand-logo" src="/assets/logo-header.webp" alt="" width="160" height="100">
+      <span class="brand-mark" aria-hidden="true">MC</span>
+      <span class="brand-lockup"><strong>Made Out of Clay</strong><small>Productions</small></span>
     </a>
     <nav class="site-nav" aria-label="Primary">
       <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">Menu</button>
       <ul id="nav-menu" class="nav-menu">
-        <li><a href="/books/">Books</a></li>
-        <li class="nav-dropdown">
-          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-            Series <span class="caret" aria-hidden="true">▾</span>
-          </button>
-          <ul class="nav-dropdown-menu">
-            <li><a href="/series/sunnys-table/">At Sunny's Table</a></li>
-            <li><a href="/series/just-the-way-you-are/">Just the Way You Are</a></li>
-            <li><a href="/series/kingdom-of-judea/">The Kingdom of Judea</a></li>
-            <li><a href="/titus/">Titus the Lamb <span class="nav-badge">New</span></a></li>
-          </ul>
-        </li>
-        <li><a href="https://club.madeoutofclayprod.com/">Book Club</a></li>
-        <li><a href="/author/">Author</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/books/" data-nav-prefix="/book">Books</a></li>
+        <li><a href="/books/#find-by-need">Find by Need</a></li>
+        <li><a href="https://club.madeoutofclayprod.com/">Free Book Club</a></li>
+        <li><a href="/author/" data-nav-prefix="/author">About</a></li>
+        <li><a href="/blog/" data-nav-prefix="/blog">Journal</a></li>
+        <li><a href="https://club.madeoutofclayprod.com/schools">For Schools</a></li>
       </ul>
     </nav>
   </div>

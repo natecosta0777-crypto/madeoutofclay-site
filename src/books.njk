@@ -8,54 +8,67 @@ breadcrumbs:
   - { name: "Home", url: "/" }
   - { name: "Books", url: "/books/" }
 ---
+{% from "partials/book-card.njk" import bookCard %}
 <section class="page-head">
   <div class="wrap">
     <h1>All Books</h1>
-    <p>Ten picture books across four series. Nine are available on Amazon; <em>Titus and the Lions</em> is coming soon with a free read-along preview.</p>
+    <p>Ten print picture books across four print series for ages {{ site.printAgeRange }}. Nine are available on Amazon; <em>Titus and the Lions</em> is coming soon with a free preview.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="section section-compact" id="find-by-need">
   <div class="wrap">
+    <div class="catalog-start content-panel">
+      <div>
+        <p class="eyebrow">Not sure where to begin?</p>
+        <h2>Start with the feeling in front of you.</h2>
+        <p>Choose calm for a noisy or full day, belonging for an affirming identity-first story, courage for a new challenge, or faith for an explicitly Christian read-aloud.</p>
+      </div>
+      <a class="btn btn-secondary" href="https://club.madeoutofclayprod.com/">Try a free digital story first</a>
+    </div>
+
+    <div class="catalog-controls" aria-labelledby="filter-heading">
+      <h2 id="filter-heading">Filter the catalog</h2>
+      <div class="filter-fields">
+        <label>Series
+          <select id="catalog-series">
+            <option value="all">All print series</option>
+            {% for s in series %}<option value="{{ s.slug }}">{{ s.name }}</option>{% endfor %}
+          </select>
+        </label>
+        <label>Theme or need
+          <select id="catalog-theme">
+            <option value="all">All themes</option>
+            <option value="calm">Big feelings and calm</option>
+            <option value="neurodiversity">Neurodiversity and belonging</option>
+            <option value="courage">Courage and trying new things</option>
+            <option value="faith">Faith-based</option>
+            <option value="bedtime">Bedtime</option>
+            <option value="sensory">Sensory needs</option>
+            <option value="classroom">Classroom conversations</option>
+          </select>
+        </label>
+        <button class="btn btn-secondary" type="button" id="catalog-reset">Clear filters</button>
+      </div>
+      <p id="catalog-count" class="catalog-count" aria-live="polite">Showing all ten print titles.</p>
+    </div>
+
+    <p class="purchase-disclosure"><strong>Affiliate disclosure:</strong> The Buy on Amazon buttons are affiliate links. As an Amazon Associate I earn from qualifying purchases; you pay the same price. <a href="/affiliate-disclosure/">Details.</a></p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="book-grid catalog-grid" id="catalog-grid">
     {% for book in books %}
       {%- set s = lookups.seriesBySlug[book.series] -%}
-      <article class="book-detail" id="{{ book.slug }}">
-        <picture>
-          <source srcset="{{ book.cover | assetVariant('avif') }}" type="image/avif">
-          <source srcset="{{ book.cover | assetVariant('webp') }}" type="image/webp">
-          <img src="{{ book.cover }}" alt="{{ book.alt }}" width="280" height="280" loading="lazy" decoding="async">
-        </picture>
-        <div>
-          <p class="book-card-series" style="color: {{ s.accentText or s.accent }}">{{ s.name }}{% if book.order %} · Book {{ book.order }}{% endif %}</p>
-          <h2>{{ book.title }}</h2>
-          <p>{{ book.blurb }}</p>
-          <div class="themes">
-            {% for t in book.themes %}<span class="theme-tag">{{ t }}</span>{% endfor %}
-          </div>
-          <p class="book-meta">Hardcover · 8.5×8.5 full color · ${{ site.bookPrice }}</p>
-          {% if book.status == "live" and book.asin %}
-          <a class="btn btn-primary"
-             href="{{ book.asin | amazonUrl(site.associateTag) }}"
-             target="_blank" rel="sponsored noopener"
-             data-track="buy_on_amazon_click"
-             data-book-title="{{ book.title }}" data-asin="{{ book.asin }}" data-series="{{ book.series }}">
-            Buy on Amazon
-          </a>
-          <p class="affiliate-note">As an Amazon Associate I earn from qualifying purchases.</p>
-          {% else %}
-          <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
-          {% if book.readUrl %}<a class="text-link" href="{{ book.readUrl }}">Read the free preview</a>{% endif %}
-          {% endif %}
-        </div>
-      </article>
+      <div class="catalog-item" id="{{ book.slug }}" data-series="{{ book.series }}" data-themes="{{ book.themes | join(' ') }}{% if book.series == 'just-the-way-you-are' %} neurodiversity classroom{% endif %}{% if book.series == 'titus-the-lamb' %} faith{% endif %}{% if 'courage' in book.themes or 'self-advocacy' in book.themes or 'identity' in book.themes %} classroom{% endif %}">
+        {{ bookCard(book, site, s.name) }}
+      </div>
     {% endfor %}
+    </div>
+    <p class="catalog-empty" id="catalog-empty" hidden>No books match those filters yet. Try clearing one filter.</p>
   </div>
 </section>
-
-<aside class="section section-compact" aria-label="Purchase disclosure">
-  <div class="wrap prose purchase-disclosure">
-    <p><strong>Purchase disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. You pay the same price, and eligible commissions help support Made Out of Clay Productions. <a href="/affiliate-disclosure/">Read the full disclosure.</a></p>
-  </div>
-</aside>
 
 {% include "partials/faq.njk" %}

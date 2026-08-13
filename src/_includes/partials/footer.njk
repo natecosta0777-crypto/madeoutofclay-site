@@ -2,13 +2,14 @@
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <span class="brand-text">Made Out of Clay Productions</span>
-      <p>Premium full-color picture books by {{ site.authorPenName }}. Independent imprint.</p>
+      <p>Gentle, neurodiversity-affirming, and faith-filled picture books by {{ site.authorPenName }}.</p>
     </div>
 
     <nav class="footer-col" aria-label="Books">
       <h2>Books</h2>
       <ul>
         <li><a href="/books/">All Books</a></li>
+        <li><a href="/books/#find-by-need">Find by Need</a></li>
         <li><a href="/series/sunnys-table/">At Sunny's Table</a></li>
         <li><a href="/series/just-the-way-you-are/">Just the Way You Are</a></li>
         <li><a href="/series/titus-the-lamb/">Titus the Lamb</a></li>
@@ -17,48 +18,36 @@
     </nav>
 
     <nav class="footer-col" aria-label="More">
-      <h2>More</h2>
+      <h2>Explore</h2>
       <ul>
-        <li><a href="/author/">Author</a></li>
+        <li><a href="https://club.madeoutofclayprod.com/">Free Book Club</a></li>
+        <li><a href="https://club.madeoutofclayprod.com/schools">For Schools</a></li>
+        <li><a href="/author/">About the studio</a></li>
         <li><a href="/press/">Press</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/">Journal</a></li>
         <li><a href="/contact/">Contact</a></li>
       </ul>
     </nav>
 
-    {# Footer newsletter signup (Spec §1.4 — site-wide second signup) #}
-    <div class="footer-signup">
-      <h2>Stay in the loop</h2>
-      {% include "partials/newsletter.njk" %}
-    </div>
+    <nav class="footer-col" aria-label="Policies">
+      <h2>Policies</h2>
+      <ul>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li>
+        <li><a href="/accessibility/">Accessibility</a></li>
+        <li><a href="https://club.madeoutofclayprod.com/privacy">Child privacy</a></li>
+        <li><a href="https://club.madeoutofclayprod.com/how-we-make-money">How we make money</a></li>
+      </ul>
+    </nav>
   </div>
 
   <div class="wrap footer-bottom">
     <p>&copy; {{ site.buildYear }} {{ site.name }}. All rights reserved.</p>
     <p>
-      <a href="/privacy/">Privacy</a> ·
-      <a href="/terms/">Terms</a> ·
-      <a href="/affiliate-disclosure/">Affiliate Disclosure</a> ·
       <button type="button" class="footer-link-button" data-manage-consent>Privacy choices</button> ·
       <a href="mailto:{{ site.email }}">{{ site.email }}</a>
     </p>
     <p class="footer-affiliate-note">As an Amazon Associate I earn from qualifying purchases.</p>
-  </div>
-
-  {# Penny's Highest Recommendation — reciprocal badge, links to the full review on The Review Group #}
-  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;margin:6px 0 28px;">
-    <div style="font-family:'Segoe UI',system-ui,sans-serif;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#9a9a9a;margin-bottom:12px;">As Seen On</div>
-    <div class="penny-badge">
-      <div class="penny-badge-inner">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="badge-label">Penny's Highest Recommendation</div>
-        <div class="badge-title">Made Out of Clay Productions</div>
-        <div class="badge-score">94 / 100 — Worth It</div>
-        <p class="badge-quote">Neurodiversity-affirming books that meet kids where they are. In a category full of good intentions, these books deliver.</p>
-        <p class="badge-byline">— <strong>Penny</strong>, The Review Group</p>
-        <a href="https://the-review-group.com/pennys-consumer-reports/made-out-of-clay/" class="badge-link" target="_blank" rel="noopener">See the full review →</a>
-        <p class="badge-disclosure">The Review Group and Made Out of Clay Productions share common ownership. The score reflects The Review Group's editorial assessment.</p>
-      </div>
-    </div>
   </div>
 </footer>

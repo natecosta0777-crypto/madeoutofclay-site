@@ -8,6 +8,9 @@
     "status": "live",
     "blurb": "Scooter the sloth is sure spring will never come. A warm, funny story about patience and learning to love the wait.",
     "themes": ["patience", "waiting", "seasons", "family"],
+    "bestFor": "Kids who find waiting hard or need reassurance that good things can take time.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=scooter-cant-wait-for-spring",
+    "questions": ["What made waiting hardest for Scooter?", "What did Scooter notice while spring was still on its way?", "What is something worth waiting for in our family?"],
     "cover": "/assets/covers/scooter-cant-wait-for-spring.jpg",
     "alt": "Cover of Scooter Can't Wait for Spring, a sloth picture book from At Sunny's Table"
   },
@@ -20,6 +23,9 @@
     "status": "live",
     "blurb": "When the world gets too loud, Scooter learns it's okay to ask for quiet. A gentle story for sensitive kids who get overwhelmed by noise.",
     "themes": ["sensory", "quiet", "self-advocacy", "calm"],
+    "bestFor": "Sound-sensitive kids and families practicing simple ways to ask for a quieter space.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=scooter-needs-it-quiet",
+    "questions": ["How could Scooter tell that things were getting too loud?", "What helped Scooter ask for what he needed?", "Where can you go when your ears or body need a break?"],
     "cover": "/assets/covers/scooter-needs-it-quiet.jpg",
     "alt": "Cover of Scooter Needs It Quiet, a sloth picture book from At Sunny's Table"
   },
@@ -32,6 +38,9 @@
     "status": "live",
     "blurb": "A tender story about looking up to a big sibling — and discovering the wonderful things that make you exactly you. Book three in the At Sunny's Table series.",
     "themes": ["siblings", "belonging", "growing up"],
+    "bestFor": "Younger siblings who admire an older child and are learning to value their own strengths.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=just-like-my-brother",
+    "questions": ["What did the younger sibling admire most?", "When did the character begin to notice their own strengths?", "What is one thing that makes each person in our family special?"],
     "cover": "/assets/covers/just-like-my-brother.webp",
     "alt": "Cover of Just Like My Brother, a sloth picture book from the At Sunny's Table series"
   },
@@ -44,6 +53,9 @@
     "status": "live",
     "blurb": "Inspired by a real boy, Clay sees the world a little differently — and that's exactly his superpower. An identity-first story of neurodiversity and self-worth.",
     "themes": ["neurodiversity", "self-worth", "inclusion", "identity"],
+    "bestFor": "Neurodivergent children and classmates who benefit from an affirming story about different ways of thinking and sensing.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=clay-has-amazing-powers",
+    "questions": ["Which of Clay's ways of noticing the world stood out to you?", "When did Clay feel most understood?", "What is one of your own amazing ways of thinking, moving, or noticing?"],
     "cover": "/assets/covers/clay-has-amazing-powers.jpg",
     "alt": "Cover of Clay Has Amazing Powers, a neurodiversity picture book from Just the Way You Are"
   },
@@ -56,6 +68,9 @@
     "status": "live",
     "blurb": "A soothing bedtime story that helps big feelings settle down for the night. Calm, rhythmic, and made for the hardest part of the day.",
     "themes": ["bedtime", "calm", "routine", "big feelings"],
+    "bestFor": "Bedtime wind-downs, especially after an active or emotionally full day.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=good-night-dinosaur",
+    "questions": ["What helped Dinosaur's body slow down?", "Which part of the bedtime routine felt coziest?", "What helps your body know it is time to rest?"],
     "cover": "/assets/covers/good-night-dinosaur.jpg",
     "alt": "Cover of Good Night Dinosaur, a bedtime picture book from Just the Way You Are"
   },
@@ -68,6 +83,9 @@
     "status": "live",
     "blurb": "The water is scary until it isn't. A reassuring story for nervous kids learning to love the pool at their own pace.",
     "themes": ["courage", "anxiety", "water", "trying new things"],
+    "bestFor": "Children who feel nervous around pools or are approaching a new experience in small steps.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=hello-pool",
+    "questions": ["What made the pool feel scary at first?", "Which small step helped the character feel braver?", "What new thing would you like to try one tiny step at a time?"],
     "cover": "/assets/covers/hello-pool.jpg",
     "alt": "Cover of Hello, Pool, a picture book about courage from Just the Way You Are"
   },
@@ -83,6 +101,9 @@
     "songTitle": "God Shut the Lions' Mouths!",
     "blurb": "Why did Daniel keep praying — even when the king said stop? Titus the little lamb peeks into the lions' den to find out, and comes back with a song you'll be singing all week: God shut the lions' mouths! (ROAR!)",
     "themes": ["courage", "prayer", "faith", "sing-along"],
+    "bestFor": "Faith-minded families introducing Daniel's story through a gentle picture book and sing-along.",
+    "faithNote": "This title retells the biblical story of Daniel in the lions' den and includes explicit Christian references to prayer and God.",
+    "questions": ["Why did Daniel keep praying when it was difficult?", "What helped Titus understand Daniel's courage?", "When can prayer help us feel steady?"],
     "cover": "/assets/covers/titus-and-the-lions.jpg",
     "alt": "Cover of Titus and the Lions, a sing-along Bible picture book from the Titus the Lamb series"
   },
@@ -95,6 +116,9 @@
     "status": "live",
     "blurb": "Young Caleb the lion sets out to discover what 'home' really means. Book one of the Kingdom of Judea adventure.",
     "themes": ["adventure", "home", "courage", "identity"],
+    "bestFor": "Adventure-loving children thinking about home, identity, and where they belong.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=calebs-homeland",
+    "questions": ["What did Caleb think home meant at the beginning?", "Who helped Caleb understand where he belonged?", "What people, places, or traditions make somewhere feel like home to you?"],
     "cover": "/assets/covers/calebs-homeland.jpg",
     "alt": "Cover of Caleb's Homeland, a lion adventure picture book from The Kingdom of Judea"
   },
@@ -107,6 +131,9 @@
     "status": "live",
     "blurb": "The journey is long and the cubs are weary, but courage is built one step at a time. Book two of the Kingdom of Judea.",
     "themes": ["perseverance", "courage", "journey", "friendship"],
+    "bestFor": "Kids working through a long challenge and learning that persistence can happen one step at a time.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=the-long-walk",
+    "questions": ["When did the journey feel hardest for the cubs?", "How did the friends help one another continue?", "What is one hard thing you can take one small step toward?"],
     "cover": "/assets/covers/the-long-walk.jpg",
     "alt": "Cover of The Long Walk, a lion adventure picture book from The Kingdom of Judea"
   },
@@ -119,6 +146,9 @@
     "status": "live",
     "blurb": "At the high ridge, Asher must choose who he wants to become. The stirring finale of the Kingdom of Judea adventure.",
     "themes": ["courage", "growing up", "choices", "leadership"],
+    "bestFor": "Older picture-book listeners exploring choices, responsibility, and what thoughtful leadership looks like.",
+    "previewUrl": "https://club.madeoutofclayprod.com/reader/?book=asher-and-the-high-ridge",
+    "questions": ["What choice did Asher face at the ridge?", "Which action showed the kind of leader Asher wanted to become?", "What makes someone safe to follow?"],
     "cover": "/assets/covers/asher-and-the-high-ridge.jpg",
     "alt": "Cover of Asher and the High Ridge, a lion adventure picture book from The Kingdom of Judea"
   }

@@ -1,7 +1,7 @@
 /* =========================================================================
    Made Out of Clay Productions — site behavior
    - Mobile nav
-   - Consent-gated analytics (GA4 + Meta Pixel) — Spec §3.5
+   - Consent-gated analytics (GA4) — Spec §3.5
    - track(event, params) wrapper forwarding to GA4 + Pixel — Spec §3.3
    - Outbound Amazon click events (sendBeacon so they aren't dropped) — Spec §3.3
    - Newsletter + contact form handling (honeypot, inline status) — Spec §1.4/§1.6
@@ -55,11 +55,34 @@
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("nav-menu");
   if (toggle && menu) {
-    toggle.addEventListener("click", function () {
-      var open = menu.classList.toggle("open");
+    function setMenu(open) {
+      menu.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    toggle.addEventListener("click", function () {
+      setMenu(!menu.classList.contains("open"));
+    });
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setMenu(false);
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menu.classList.contains("open")) {
+        setMenu(false);
+        toggle.focus();
+      }
     });
   }
+
+  /* ---------- Current navigation state ---------- */
+  var pageUrl = document.body.getAttribute("data-page-url") || location.pathname;
+  document.querySelectorAll(".nav-menu a").forEach(function (link) {
+    if (link.origin !== location.origin) return;
+    var prefix = link.getAttribute("data-nav-prefix") || link.pathname;
+    var isCurrent = prefix === "/" ? pageUrl === "/" : pageUrl.indexOf(prefix) === 0;
+    if (link.pathname === "/books/" && (pageUrl.indexOf("/series/") === 0 || pageUrl.indexOf("/read/") === 0)) isCurrent = true;
+    if (isCurrent) link.setAttribute("aria-current", "page");
+  });
 
   /* ---------- Series nav dropdown (click-to-toggle; works on touch + trackpad) ---------- */
   document.querySelectorAll(".nav-dropdown").forEach(function (dd) {
@@ -112,55 +135,18 @@
       window.gtag("config", cfg.ga4Id);
     }
 
-    // Meta Pixel
-    if (cfg.metaPixelId) {
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return; n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
-        t = b.createElement(e); t.async = !0; t.src = v;
-        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
-      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      window.fbq("init", cfg.metaPixelId);
-      window.fbq("track", "PageView");
-    }
-
-    // Metricool (web analytics for content planning) — same consent gate as GA4/Pixel
-    if (cfg.metricoolHash) {
-      var m = document.createElement("script");
-      m.async = true;
-      m.src = "https://tracker.metricool.com/resources/be.js";
-      m.onload = function () {
-        if (window.beTracker) window.beTracker.t({ hash: cfg.metricoolHash });
-      };
-      document.head.appendChild(m);
-    }
   }
 
-  /* ---------- track() wrapper — forwards to GA4 + Pixel ---------- */
-  // Maps our semantic events to Pixel standard events where sensible (Spec §3.3).
-  var PIXEL_MAP = {
-    buy_on_amazon_click: "ViewContent",
-    newsletter_signup: "Subscribe",
-    lead_magnet_download: "Lead",
-    contact_submit: "Contact",
-    series_view: "ViewContent"
-  };
+  /* ---------- track() wrapper — forwards semantic events to GA4 ---------- */
   window.track = function (event, params) {
     if (!analyticsEnabled) return;
     params = params || {};
     if (window.gtag) window.gtag("event", event, params);
-    if (window.fbq) {
-      var mapped = PIXEL_MAP[event];
-      if (mapped) window.fbq("track", mapped, params);
-      else window.fbq("trackCustom", event, params);
-    }
   };
 
   /* ---------- Consent banner ---------- */
   var banner = document.getElementById("consent-banner");
-  var needAnalytics = !!(cfg.ga4Id || cfg.metaPixelId || cfg.metricoolHash);
+  var needAnalytics = !!cfg.ga4Id;
   function getConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
   function setConsent(v) { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {} }
 
@@ -180,12 +166,10 @@
         banner.hidden = true;
         if (val === "accept") {
           loadAnalytics();
-          if (window.gtag) window.gtag("consent", "update", { analytics_storage: "granted", ad_storage: "granted" });
-          if (window.fbq) window.fbq("consent", "grant");
+          if (window.gtag) window.gtag("consent", "update", { analytics_storage: "granted", ad_storage: "denied" });
         } else {
           analyticsEnabled = false;
           if (window.gtag) window.gtag("consent", "update", { analytics_storage: "denied", ad_storage: "denied" });
-          if (window.fbq) window.fbq("consent", "revoke");
         }
       });
     }
@@ -274,6 +258,78 @@
   /* ---------- series_view event ---------- */
   if (document.body.getAttribute("data-series")) {
     window.track("series_view", { series: document.body.getAttribute("data-series") });
+  }
+
+  var product = document.querySelector("[data-product-title]");
+  if (product) {
+    window.track("book_detail_view", {
+      book_title: product.getAttribute("data-product-title"),
+      series: product.getAttribute("data-product-series")
+    });
+  }
+
+  document.addEventListener("click", function (event) {
+    var preview = event.target.closest('[data-track="preview_start"]');
+    if (!preview) return;
+    window.track("preview_start", {
+      book_title: preview.getAttribute("data-book-title"),
+      page: location.pathname
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href]");
+    if (!link || link.hostname !== "club.madeoutofclayprod.com") return;
+    window.track(link.pathname.indexOf("/schools") === 0 ? "school_interest_click" : "book_club_click", {
+      destination: link.href,
+      page: location.pathname
+    });
+  });
+
+  /* ---------- Catalog filters ---------- */
+  var catalogSeries = document.getElementById("catalog-series");
+  var catalogTheme = document.getElementById("catalog-theme");
+  var catalogItems = Array.prototype.slice.call(document.querySelectorAll(".catalog-item"));
+  function filterCatalog() {
+    if (!catalogItems.length) return;
+    var seriesValue = catalogSeries ? catalogSeries.value : "all";
+    var themeValue = catalogTheme ? catalogTheme.value : "all";
+    var visible = 0;
+    catalogItems.forEach(function (item) {
+      var seriesMatch = seriesValue === "all" || item.getAttribute("data-series") === seriesValue;
+      var themes = " " + (item.getAttribute("data-themes") || "") + " ";
+      var themeMatch = themeValue === "all" || themes.indexOf(" " + themeValue + " ") !== -1;
+      item.hidden = !(seriesMatch && themeMatch);
+      if (!item.hidden) visible += 1;
+    });
+    var count = document.getElementById("catalog-count");
+    if (count) count.textContent = "Showing " + visible + " of " + catalogItems.length + " print titles.";
+    var empty = document.getElementById("catalog-empty");
+    if (empty) empty.hidden = visible !== 0;
+  }
+  if (catalogSeries) catalogSeries.addEventListener("change", filterCatalog);
+  if (catalogTheme) catalogTheme.addEventListener("change", filterCatalog);
+  var catalogReset = document.getElementById("catalog-reset");
+  if (catalogReset) catalogReset.addEventListener("click", function () {
+    if (catalogSeries) catalogSeries.value = "all";
+    if (catalogTheme) catalogTheme.value = "all";
+    filterCatalog();
+    if (catalogSeries) catalogSeries.focus();
+  });
+
+  /* ---------- Journal topic filter ---------- */
+  var journalTopic = document.getElementById("journal-topic");
+  if (journalTopic) {
+    journalTopic.addEventListener("change", function () {
+      var topic = journalTopic.value;
+      var shown = 0;
+      document.querySelectorAll(".journal-tile").forEach(function (tile) {
+        tile.hidden = topic !== "all" && tile.getAttribute("data-topic") !== topic;
+        if (!tile.hidden) shown += 1;
+      });
+      var empty = document.getElementById("journal-empty");
+      if (empty) empty.hidden = shown !== 0;
+    });
   }
 
 })();

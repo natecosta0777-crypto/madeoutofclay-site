@@ -13,6 +13,12 @@
   <div class="book-card-body">
     {% if seriesName %}<p class="book-card-series">{{ seriesName }}</p>{% endif %}
     <h3 class="book-card-title"><a href="/book/{{ book.slug }}/" style="color:inherit;text-decoration:none;">{{ book.title }}</a></h3>
+    <div class="book-card-badges" aria-label="Book details">
+      <span>Ages {{ site.printAgeRange }}</span>
+      <span>{{ book.themes[0] }}</span>
+      {% if book.series == 'titus-the-lamb' %}<span>Faith-based</span>{% endif %}
+      {% if book.order %}<span>Book {{ book.order }}</span>{% endif %}
+    </div>
     {% if book.status == "live" and book.asin %}
     <a class="btn btn-primary btn-buy"
        href="{{ book.asin | amazonUrl(site.associateTag) }}"
@@ -22,7 +28,6 @@
       Buy on Amazon
     </a>
     <p class="book-card-price">${{ site.bookPrice }} · 8.5×8.5 full color</p>
-    <p class="affiliate-note">As an Amazon Associate I earn from qualifying purchases.</p>
     {% else %}
     <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
     {% if book.readUrl %}<a class="text-link" href="{{ book.readUrl }}">Read the free preview</a>{% endif %}

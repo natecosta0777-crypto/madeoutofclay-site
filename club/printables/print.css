@@ -35,7 +35,7 @@ body{font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;color:var(--ink)
 .sheet .brandline .b-name{font-weight:800;font-size:.82rem;letter-spacing:.02em}
 .sheet .brandline .b-name span{color:var(--terracotta)}
 .sheet .brandline .b-tag{font-size:.72rem;color:var(--muted);font-weight:600}
-.sheet h2.page-title{font-size:1.5rem;text-align:center;margin:4px 0 2px}
+.sheet h1.page-title,.sheet h2.page-title{font-size:1.5rem;text-align:center;margin:4px 0 2px}
 .sheet p.page-sub{text-align:center;color:var(--muted);font-weight:600;font-size:.92rem;margin-bottom:12px}
 .sheet .art{flex:1;display:flex;align-items:center;justify-content:center}
 .sheet .art svg{max-width:100%;height:auto}

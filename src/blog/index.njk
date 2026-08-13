@@ -18,19 +18,46 @@ breadcrumbs:
 <section class="section">
   <div class="wrap">
     {% if collections.posts.length %}
+    {% set featured = collections.posts[0] %}
+    <article class="journal-feature">
+      <img src="{{ featured.data.ogImage or ('/assets/og/posts/' + featured.fileSlug + '.png') }}" alt="" width="1200" height="630">
+      <div>
+        <span class="jtag">Featured</span>
+        <h2><a href="{{ featured.url }}">{{ featured.data.title }}</a></h2>
+        <p>{{ featured.data.description }}</p>
+        <a class="btn btn-primary" href="{{ featured.url }}">Read the featured story</a>
+      </div>
+    </article>
+
+    <div class="journal-filters" aria-labelledby="journal-filter-title">
+      <h2 id="journal-filter-title">Browse by topic</h2>
+      <label>Topic
+        <select id="journal-topic">
+          <option value="all">All topics</option>
+          <option value="neurodivergent-kids">Neurodivergent kids</option>
+          <option value="big-feelings">Big feelings</option>
+          <option value="faith-family">Faith and family</option>
+          <option value="family-life">Family life</option>
+          <option value="bedtime-calm">Bedtime and calm</option>
+          <option value="read-alouds">Read-alouds</option>
+        </select>
+      </label>
+    </div>
     <div class="journal-grid">
-      {% for post in collections.posts %}
-      <a class="journal-tile" href="{{ post.url }}">
+      {% for post in collections.posts %}{% if not loop.first %}
+      <a class="journal-tile" href="{{ post.url }}" data-topic="{{ post.data.tag | slugify }}">
+        <img class="journal-tile-image" src="{{ post.data.ogImage or ('/assets/og/posts/' + post.fileSlug + '.png') }}" alt="" width="1200" height="630" loading="lazy" decoding="async">
         {% if post.data.tag %}<span class="jtag jtag-{{ post.data.tag | slugify }}">{{ post.data.tag }}</span>{% endif %}
-        <h3>{{ post.data.title }}</h3>
+        <h2>{{ post.data.title }}</h2>
         <p>{{ post.data.description }}</p>
         <div class="jfoot">
           <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
           <span class="jread">Read &rarr;</span>
         </div>
       </a>
-      {% endfor %}
+      {% endif %}{% endfor %}
     </div>
+    <p id="journal-empty" hidden>No articles match that topic yet.</p>
     {% else %}
     <p class="prose">First posts coming soon.</p>
     {% endif %}
